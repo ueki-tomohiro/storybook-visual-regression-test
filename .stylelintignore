@@ -1,0 +1,7 @@
+.cache
+__generated__
+build
+coverage
+node_modules
+public
+storybook-static

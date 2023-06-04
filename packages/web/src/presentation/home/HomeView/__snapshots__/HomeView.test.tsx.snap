@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`views/HomeView renders Default 1`] = `
+<body>
+  <div>
+    <a
+      class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2"
+      href="/register"
+    >
+      登録
+    </a>
+    <div
+      class="mt-4"
+    >
+      <a
+        class="w-full"
+        href="/todo/63460"
+      >
+        <div
+          class="my-2 flex items-center border-2 p-2"
+        >
+          <div>
+            <span
+              class="material-symbols-outlined"
+            >
+              label_important
+            </span>
+          </div>
+          <div
+            class="mx-2 text-xl"
+          >
+            HTTP
+          </div>
+          <div
+            class="text-tertiary text-xs"
+          >
+            2022-12-07 21:13:58
+          </div>
+        </div>
+      </a>
+      <a
+        class="w-full"
+        href="/todo/43073"
+      >
+        <div
+          class="my-2 flex items-center border-2 p-2"
+        >
+          <div>
+            <span
+              class="material-symbols-outlined"
+            >
+              done
+            </span>
+          </div>
+          <div
+            class="mx-2 text-xl"
+          >
+            parse
+          </div>
+          <div
+            class="text-tertiary text-xs"
+          >
+            2023-01-22 07:30:27
+          </div>
+        </div>
+      </a>
+      <a
+        class="w-full"
+        href="/todo/49534"
+      >
+        <div
+          class="my-2 flex items-center border-2 p-2"
+        >
+          <div>
+            <span
+              class="material-symbols-outlined"
+            >
+              label_important
+            </span>
+          </div>
+          <div
+            class="mx-2 text-xl"
+          >
+            apud
+          </div>
+          <div
+            class="text-tertiary text-xs"
+          >
+            2022-07-07 03:01:16
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`views/HomeView renders Loading 1`] = `
+<body>
+  <div>
+    <div>
+      Loading...
+    </div>
+  </div>
+</body>
+`;

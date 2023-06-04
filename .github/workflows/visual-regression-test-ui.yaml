@@ -1,0 +1,66 @@
+name: visual regression test
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - libs/**
+      - package.json
+      - packages/ui/**
+      - yarn.lock
+
+  push:
+    branches:
+      - master
+    paths:
+      - libs/**
+      - package.json
+      - packages/ui/**
+      - yarn.lock
+
+jobs:
+  visual_regression_test:
+    name: visual regression test(ui)
+    runs-on: ubuntu-latest
+    steps:
+      - name: set up base repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+      - name: set base env
+        run: |
+          echo "EXPECTED_KEY=$KEY" >> $GITHUB_ENV
+        env:
+          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'yarn.lock') }}
+      - name: set up head repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: set head env
+        run: |
+          echo "ACTUAL_KEY=$KEY" >> $GITHUB_ENV
+        env:
+          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'yarn.lock') }}
+      - name: Set up node_modules
+        uses: ./.github/workflows/setup-node-modules
+      - name: Japanese Font Install
+        run: sudo apt install fonts-noto-cjk
+      - name: Set up playwright
+        run: yarn playwright install
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+      - name: Build ui
+        run: |
+          yarn ui vrtest-setup
+          yarn ui vrtest-snapshot
+      - name: run reg-suit
+        run: yarn ui vrtest-regression
+
+env:
+  REG_S3_BUCKET_NAME: ${{ secrets.REG_S3_BUCKET_NAME }}
+  REG_NOTICE_CLIENT_ID: ${{ secrets.REG_NOTICE_CLIENT_ID }}

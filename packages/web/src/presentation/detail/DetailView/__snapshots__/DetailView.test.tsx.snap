@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`views/DetailView renders Default 1`] = `
+<body>
+  <div>
+    <div
+      class="mb-4 flex items-center gap-2"
+    >
+      <div
+        class="text-xl"
+      >
+        Hybrid
+      </div>
+      <div
+        class="text-tertiary text-xs"
+      >
+        2022-09-04 00:52:59
+      </div>
+    </div>
+    <div
+      class="mb-4 flex items-center"
+    >
+      <span
+        class="material-symbols-outlined"
+      >
+        done
+      </span>
+      完了済み
+    </div>
+    <a
+      class="mx-auto max-w-3xl text-white bg-secondary rounded px-4 py-2"
+      href="/todo/86624/edit"
+    >
+      編集
+    </a>
+  </div>
+</body>
+`;
+
+exports[`views/DetailView renders Loading 1`] = `
+<body>
+  <div />
+</body>
+`;

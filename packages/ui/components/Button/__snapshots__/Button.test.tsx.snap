@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Button renders Default 1`] = `
+<body>
+  <div>
+    <button
+      class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+    >
+      Button
+    </button>
+  </div>
+</body>
+`;

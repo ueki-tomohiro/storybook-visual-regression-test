@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@demo-libs/*": ["../../libs/*"]
+    }
+  },
+  "include": ["./components/**/*.ts", "./components/**/*.tsx", "../../libs/**/*.ts"]
+}

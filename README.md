@@ -30,43 +30,41 @@
     ├── ui                              # UIコンポーネント
     │   └── components
     └── api                             # OpenAPIの書き出し先
-        └── lib                          
+        └── lib
             └── demo
 ```
 
-# 起動
+## 起動
 
 ```shell script
 $ yarn web start
 ```
 
-# ビルド
+## ビルド
 
 ```shell script
 $ yarn web build
 ```
 
-# Storybook
-
-## 全体
+## Storybook
 
 ```shell script
 $ yarn start-storybook
 ```
 
-# Test
+## Test
 
 ```shell script
 $ yarn test
 ```
 
-# Lint
+## Lint
 
 ```shell script
 $ yarn lint
 ```
 
-# Format
+## Format
 
 ```shell script
 $ yarn format
