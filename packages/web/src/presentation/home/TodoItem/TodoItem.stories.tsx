@@ -3,7 +3,7 @@ import { getGetTodoMock } from "@demo/api/lib/demo/todo/todo.msw";
 import { TodoItem, TodoItemProps } from "./TodoItem";
 
 const defaultArgs: TodoItemProps = {
-  todo: { todo_id: 79208, description: "Bedfordshire", end_date: "2022-07-19T12:00:21.000Z", completed: false },
+  todo: { todo_id: 79208, description: "Bedfordshire", end_date: "2022-07-19T12:00:21+09:00", completed: false },
 };
 
 export default {

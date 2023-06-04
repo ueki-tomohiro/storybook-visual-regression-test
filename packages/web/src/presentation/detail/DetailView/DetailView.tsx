@@ -1,6 +1,6 @@
 import { Todo } from "@demo/api/lib/demo/model";
 import { LinkButton } from "@demo/ui/components/LinkButton";
-import dayjs from "dayjs";
+import dayjs from "@demo-libs/dayjs";
 import React from "react";
 
 export type DetailViewProps = {
@@ -14,7 +14,7 @@ export const DetailView: React.FC<DetailViewProps> = ({ todo }) => {
     <>
       <div className="mb-4 flex items-center gap-2">
         <div className="text-xl">{todo.description}</div>
-        <div className="text-tertiary text-xs">{dayjs(todo.end_date).format("YYYY-MM-DD HH:mm:ss")}</div>
+        <div className="text-tertiary text-xs">{dayjs(todo.end_date).tz().format("YYYY-MM-DD HH:mm:ss")}</div>
       </div>
       <div className="mb-4 flex items-center">
         {todo.completed ? (

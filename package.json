@@ -12,6 +12,7 @@
   "scripts": {
     "api": "yarn workspace @demo/api",
     "format": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --write",
+    "formatcheck": "yarn format --check",
     "generate-api": "yarn api generate",
     "lint": "yarn lint-es && yarn lint-css",
     "lint-css": "stylelint '**/*.css' --cache",

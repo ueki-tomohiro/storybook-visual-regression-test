@@ -6,7 +6,7 @@ const defaultArgs: DetailViewProps = {
   todo: {
     todo_id: 86624,
     description: "Hybrid",
-    end_date: "2022-09-03T15:52:59.000Z",
+    end_date: "2022-09-03T15:52:59+09:00",
     completed: true,
   },
 };

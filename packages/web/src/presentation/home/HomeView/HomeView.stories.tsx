@@ -7,19 +7,19 @@ const defaultArgs: HomeViewProps = {
     {
       todo_id: 63460,
       description: "HTTP",
-      end_date: "2022-12-07T12:13:58.000Z",
+      end_date: "2022-12-07T12:13:58+09:00",
       completed: false,
     },
     {
       todo_id: 43073,
       description: "parse",
-      end_date: "2023-01-21T22:30:27.000Z",
+      end_date: "2023-01-21T22:30:27+09:00",
       completed: true,
     },
     {
       todo_id: 49534,
       description: "apud",
-      end_date: "2022-07-06T18:01:16.000Z",
+      end_date: "2022-07-06T18:01:16+09:00",
       completed: false,
     },
   ],

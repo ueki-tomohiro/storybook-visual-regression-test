@@ -1,5 +1,5 @@
 import { Todo } from "@demo/api/lib/demo/model";
-import dayjs from "dayjs";
+import dayjs from "@demo-libs/dayjs";
 import Link, { LinkProps } from "next/link";
 import React from "react";
 
@@ -19,7 +19,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, ...props }) => {
           )}
         </div>
         <div className="mx-2 text-xl">{todo.description}</div>
-        <div className="text-tertiary text-xs">{dayjs(todo.end_date).format("YYYY-MM-DD HH:mm:ss")}</div>
+        <div className="text-tertiary text-xs">{dayjs(todo.end_date).tz().format("YYYY-MM-DD HH:mm:ss")}</div>
       </div>
     </Link>
   );
