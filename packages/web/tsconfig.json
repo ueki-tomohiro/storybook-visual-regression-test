@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@demo/api/*": ["../api/*"],
+      "@demo/ui/*": ["../ui/*"],
+      "@demo-libs/*": ["../../libs/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../api/**/*.ts",
+    "../ui/**/*.ts",
+    "../../libs/**/*.ts",
+    ".next/types/**/*.ts"
+  ]
+}

@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`views/RegisterView renders Default 1`] = `
+<body>
+  <div>
+    <form>
+      <div
+        class="relative w-full"
+      >
+        <fieldset
+          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        >
+          <legend
+            class="min-h-3 ml-2 flex px-0.5"
+          >
+            <label
+              class="flex text-xs"
+            >
+              詳細
+            </label>
+          </legend>
+        </fieldset>
+      </div>
+      <div
+        class="relative w-full"
+      >
+        <fieldset
+          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        >
+          <legend
+            class="min-h-3 ml-2 flex px-0.5"
+          >
+            <label
+              class="flex text-xs"
+            >
+              完了日
+            </label>
+          </legend>
+        </fieldset>
+      </div>
+      <button
+        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+        type="submit"
+      >
+        登録
+      </button>
+    </form>
+  </div>
+</body>
+`;
+
+exports[`views/RegisterView renders Loading 1`] = `
+<body>
+  <div>
+    <form>
+      <div
+        class="relative w-full"
+      >
+        <fieldset
+          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        >
+          <legend
+            class="min-h-3 ml-2 flex px-0.5"
+          >
+            <label
+              class="flex text-xs"
+            >
+              詳細
+            </label>
+          </legend>
+        </fieldset>
+      </div>
+      <div
+        class="relative w-full"
+      >
+        <fieldset
+          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        >
+          <legend
+            class="min-h-3 ml-2 flex px-0.5"
+          >
+            <label
+              class="flex text-xs"
+            >
+              完了日
+            </label>
+          </legend>
+        </fieldset>
+      </div>
+      <button
+        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+        disabled=""
+        type="submit"
+      >
+        <span
+          class="material-symbols-outlined animate-rotate"
+        >
+          refresh
+        </span>
+      </button>
+    </form>
+  </div>
+</body>
+`;

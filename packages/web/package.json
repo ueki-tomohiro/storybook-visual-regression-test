@@ -1,0 +1,51 @@
+{
+  "name": "@demo/web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Demo Web",
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "start": "next dev",
+    "start-storybook": "storybook dev --port 3001 --quiet",
+    "test": "jest --ci --updateSnapshot",
+    "test-ci": "jest --ci",
+    "typecheck": "tsc",
+    "vrtest-regression": "yarn reg-suit run",
+    "vrtest-setup": "storybook build --quiet --output-dir ./build",
+    "vrtest-server": "http-server ./build -p 3001",
+    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:3001 'yarn playwright test --update-snapshots'"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
+    "@types/node": "^18.15.13",
+    "@types/react": "18.0.38",
+    "@types/react-dom": "18.0.11",
+    "autoprefixer": "10.4.14",
+    "dayjs": "^1.11.8",
+    "http-server": "^14.1.1",
+    "jotai": "^2.0.4",
+    "lodash": "^4.17.21",
+    "next": "^13.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
+    "start-server-and-test": "^2.0.0",
+    "typescript": "5.0.4",
+    "yup": "^1.1.1"
+  },
+  "engines": {
+    "node": "^20",
+    "yarn": ">=1"
+  },
+  "volta": {
+    "node": "20.0.0",
+    "yarn": "1.22.19"
+  },
+  "devDependencies": {
+    "reg-notify-github-plugin": "^0.12.1",
+    "reg-publish-s3-plugin": "^0.12.1",
+    "reg-simple-keygen-plugin": "0.12.1",
+    "reg-suit": "0.12.1"
+  }
+}

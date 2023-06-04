@@ -1,0 +1,17 @@
+:root {
+  --green: #00796b;
+  --blue: #0277bd;
+  --gray: #9e9e9e;
+  --red: #b71c1c;
+  --white: #ffffff;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-reset {
+    background: none;
+  }
+}

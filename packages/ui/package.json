@@ -1,0 +1,36 @@
+{
+  "name": "@demo/ui",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Demo UI Library",
+  "license": "MIT",
+  "scripts": {
+    "start-storybook": "storybook dev --port 4001 --quiet",
+    "storybook": "storybook dev -p 6006",
+    "test": "jest --ci --updateSnapshot",
+    "test-ci": "jest --ci",
+    "typecheck": "tsc",
+    "vrtest-regression": "yarn reg-suit run",
+    "vrtest-setup": "storybook build --quiet --output-dir ./build",
+    "vrtest-server": "http-server ./build -p 3001",
+    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:3001 'yarn playwright test --update-snapshots'"
+  },
+  "devDependencies": {
+    "reg-notify-github-plugin": "^0.12.1",
+    "reg-publish-s3-plugin": "^0.12.1",
+    "reg-simple-keygen-plugin": "0.12.1",
+    "reg-suit": "0.12.1"
+  },
+  "engines": {
+    "node": "^20",
+    "yarn": ">=1"
+  },
+  "volta": {
+    "node": "20.0.0",
+    "yarn": "1.22.19"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "start-server-and-test": "^2.0.0"
+  }
+}

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/LinkButton renders Default 1`] = `
+<body>
+  <div>
+    <a
+      class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2"
+      href="/"
+    >
+      Button
+    </a>
+  </div>
+</body>
+`;

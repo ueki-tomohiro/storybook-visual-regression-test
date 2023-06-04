@@ -1,0 +1,31 @@
+name: Set up node_modules
+description: setup node_modules
+runs:
+  using: composite
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: ./.node-version
+        cache: yarn
+
+    - name: Cache node_modules
+      id: cache-yarn
+      uses: actions/cache@v3
+      with:
+        path: |
+          **/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          ${{ runner.os }}-
+
+    - name: List the state of node modules
+      if: ${{ steps.cache-yarn.outputs.cache-hit != 'true' }}
+      shell: bash
+      run: yarn list
+      continue-on-error: true
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile

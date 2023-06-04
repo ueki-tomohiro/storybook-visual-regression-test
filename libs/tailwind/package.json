@@ -1,0 +1,19 @@
+{
+  "name": "@demo-libs/tailwind",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Demo Tailwind",
+  "license": "MIT",
+  "dependencies": {
+    "postcss": "8.4.23",
+    "tailwindcss": "3.3.1"
+  },
+  "engines": {
+    "node": "^20",
+    "yarn": ">=1"
+  },
+  "volta": {
+    "node": "20.0.0",
+    "yarn": "1.22.19"
+  }
+}

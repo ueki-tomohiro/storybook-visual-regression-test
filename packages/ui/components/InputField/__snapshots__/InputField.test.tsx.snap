@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/InputField renders Default 1`] = `
+<body>
+  <div>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full mt-1 h-11 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+      />
+    </div>
+  </div>
+</body>
+`;

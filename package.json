@@ -1,0 +1,65 @@
+{
+  "name": "demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Demo Web",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "libs/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "api": "yarn workspace @demo/api",
+    "format": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --write",
+    "generate-api": "yarn api generate",
+    "lint": "yarn lint-es && yarn lint-css",
+    "lint-css": "stylelint '**/*.css' --cache",
+    "lint-es": "eslint . --ext .jsx,.js,.tsx,.ts --cache",
+    "lintfix": "yarn lint-es --fix && yarn lint-css --fix",
+    "start-storybook": "lerna run start-storybook --stream",
+    "test": "lerna run test --stream",
+    "test-ci": "lerna run test-ci --stream",
+    "typecheck": "lerna run typecheck --no-bail --stream",
+    "ui": "yarn workspace @demo/ui",
+    "web": "yarn workspace @demo/web"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.32.3",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.39.0",
+    "eslint-config-next": "^13.4.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-config-standard-with-typescript": "latest",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "latest",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-tailwindcss": "^3.12.0",
+    "lerna": "^6.6.1",
+    "prettier": "2.8.7",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "rimraf": "^5.0.0",
+    "rome": "^12.0.0",
+    "stylelint": "^15.5.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recess-order": "^4.0.0",
+    "stylelint-config-recommended": "^12.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-prettier": "^3.0.0",
+    "typescript": "*"
+  },
+  "engines": {
+    "node": "^20",
+    "yarn": ">=1"
+  },
+  "volta": {
+    "node": "20.0.0",
+    "yarn": "1.22.19"
+  }
+}
