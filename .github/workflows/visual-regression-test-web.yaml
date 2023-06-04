@@ -3,7 +3,7 @@ name: visual regression test
 on:
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - libs/**
       - package.json
@@ -44,22 +44,22 @@ jobs:
           echo "ACTUAL_KEY=$KEY" >> $GITHUB_ENV
         env:
           KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
-      - name: Set up node_modules
-        uses: ./.github/workflows/setup-node-modules
+      - name: Set up
+        uses: ./.github/actions/setup-node
       - name: Japanese Font Install
         run: sudo apt install fonts-noto-cjk
       - name: Set up playwright
         run: yarn playwright install
+      - name: Build web
+        run: |
+          yarn web vrtest-setup
+          yarn web vrtest-snapshot
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
-      - name: Build web
-        run: |
-          yarn web vrtest-setup
-          yarn web vrtest-snapshot
       - name: run reg-suit
         run: yarn web vrtest-regression
 

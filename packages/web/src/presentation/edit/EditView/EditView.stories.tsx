@@ -7,7 +7,7 @@ const defaultArgs: EditViewProps = {
   todo: {
     todo_id: 90856,
     description: "turquoise",
-    end_date: "2022-12-29T16:14:31.000Z",
+    end_date: "2022-12-29T16:14:31+09:00",
     completed: true,
   },
   updateTodo: action("updateTodo"),

@@ -11,7 +11,7 @@ const items = Object.values(data.stories);
 items.forEach(async (story: any) => {
   test(`snapshot test ${story.title}: ${story.name}`, async ({ page }) => {
     if (story.name.match(/Default/)) {
-      await page.goto(`http://127.0.0.1:3001/iframe.html?id=${story.id}&viewMode=story`, { waitUntil: "networkidle" });
+      await page.goto(`http://127.0.0.1:4001/iframe.html?id=${story.id}&viewMode=story`, { waitUntil: "networkidle" });
       const image = await page.screenshot({ fullPage: true });
       expect(image, {}).toMatchSnapshot([story.title, `${story.id}.png`]);
     } else {

@@ -25,7 +25,7 @@ exports[`views/TodoItem renders Default 1`] = `
         <div
           class="text-tertiary text-xs"
         >
-          2022-07-19 21:00:21
+          2022-07-19 12:00:21
         </div>
       </div>
     </a>
