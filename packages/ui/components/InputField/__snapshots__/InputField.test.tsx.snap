@@ -8,7 +8,20 @@ exports[`components/InputField renders Default 1`] = `
     >
       <fieldset
         class="w-full mt-1 h-11 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
-      />
+      >
+        <div
+          class="absolute inset-0 flex items-centerundefined"
+        >
+          <input
+            class="text-tertiary bg-reset focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
     </div>
   </div>
 </body>
