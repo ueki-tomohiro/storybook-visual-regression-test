@@ -6,7 +6,7 @@ export type InputFieldProps = ComponentPropsWithoutRef<"input"> & {
 };
 
 export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
-  ({ label, error, type = "text", value, ...props }, ref) => {
+  ({ label, error, type = "text", value, children, ...props }, ref) => {
     return (
       <>
         <div className="relative w-full">
@@ -22,6 +22,16 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
                 <label className={`flex text-xs`}>{label}</label>
               </legend>
             )}
+            <div className={`absolute inset-0 flex items-center${label && "pt-1.5"}`}>
+              <input
+                {...props}
+                className="text-tertiary bg-reset focus:text-secondary h-11 w-full px-2 focus:outline-none"
+                type={type}
+                defaultValue={value}
+                ref={ref}
+              />
+            </div>
+            <div className="-z-1 absolute inset-0" />
           </fieldset>
         </div>
         {error && <div className="text-caution ml-2 mt-2 text-sm">{error}</div>}
