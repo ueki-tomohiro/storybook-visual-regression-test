@@ -18,6 +18,7 @@
     "lint-css": "stylelint '**/*.css' --cache",
     "lint-es": "eslint . --ext .jsx,.js,.tsx,.ts --cache",
     "lintfix": "yarn lint-es --fix && yarn lint-css --fix",
+    "new-version": "lerna version",
     "start-storybook": "lerna run start-storybook --stream",
     "test": "lerna run test --stream",
     "test-ci": "lerna run test-ci --stream",
