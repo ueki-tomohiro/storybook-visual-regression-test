@@ -38,7 +38,7 @@ jobs:
           yarn new-version ${{ github.event.inputs.bump }} --yes --no-push --no-git-tag-version 
       - name: set env
         run: |
-          cd packages/app
+          cd packages/web
           echo "BUMP_VERSION=$(npx -c 'echo $npm_package_version')" >> $GITHUB_ENV
           cd ../..
       - name: create branch
