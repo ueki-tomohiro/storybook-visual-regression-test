@@ -22,14 +22,12 @@
     "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.14",
-    "http-server": "^14.1.1",
     "jotai": "^2.0.4",
     "lodash": "^4.17.21",
     "next": "^13.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
-    "start-server-and-test": "^2.0.0",
     "typescript": "5.0.4",
     "yup": "^1.1.1"
   },
@@ -42,9 +40,11 @@
     "yarn": "1.22.19"
   },
   "devDependencies": {
+    "http-server": "^14.1.1",
     "reg-notify-github-plugin": "^0.12.1",
     "reg-publish-s3-plugin": "^0.12.1",
     "reg-simple-keygen-plugin": "0.12.1",
-    "reg-suit": "0.12.1"
+    "reg-suit": "0.12.1",
+    "start-server-and-test": "^2.0.0"
   }
 }

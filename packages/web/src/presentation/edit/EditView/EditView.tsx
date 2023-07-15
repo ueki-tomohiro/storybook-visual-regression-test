@@ -17,7 +17,8 @@ export const EditView: React.FC<EditViewProps> = ({ todo, updateTodo, isLoading 
   const resolver = yupResolver(
     Yup.object().shape({
       description: Yup.string().required("詳細を入力してください"),
-      end_date: Yup.date().typeError("完了日を入力してください").required("完了日を入力してください"),
+      end_date: Yup.string().typeError("完了日を入力してください").required("完了日を入力してください"),
+      completed: Yup.boolean().required(),
     })
   );
   const {

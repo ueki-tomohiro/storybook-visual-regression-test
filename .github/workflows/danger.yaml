@@ -7,7 +7,7 @@ on:
 jobs:
   danger:
     runs-on: ubuntu-latest
-    env: 
+    env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/Danger.gemfile
     steps:
       - uses: actions/checkout@v3

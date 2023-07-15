@@ -1,28 +1,27 @@
 {
-    "core": {
-      "actualDir": "./snapshot/__snapshots__",
-      "thresholdRate": 0,
-      "addIgnore": false,
-      "ximgdiff": {
-        "invocationType": "client"
-      }
+  "core": {
+    "actualDir": "./snapshot/__snapshots__",
+    "thresholdRate": 0,
+    "addIgnore": false,
+    "ximgdiff": {
+      "invocationType": "client"
+    }
+  },
+  "plugins": {
+    "reg-simple-keygen-plugin": {
+      "expectedKey": "${EXPECTED_KEY}",
+      "actualKey": "${ACTUAL_KEY}"
     },
-    "plugins": {
-      "reg-simple-keygen-plugin": {
-        "expectedKey": "${EXPECTED_KEY}",
-        "actualKey": "${ACTUAL_KEY}"
-      },
-      "reg-notify-github-plugin": {
-        "clientId": "${REG_NOTICE_CLIENT_ID}",
-        "prComment": true,
-        "prCommentBehavior": "new",
-        "setCommitStatus": true,
-        "shortDescription": true
-      },
-      "reg-publish-s3-plugin": {
-        "bucketName": "${REG_S3_BUCKET_NAME}",
-        "pathPrefix": "web"
-      }
+    "reg-notify-github-plugin": {
+      "clientId": "${REG_NOTICE_CLIENT_ID}",
+      "prComment": true,
+      "prCommentBehavior": "new",
+      "setCommitStatus": true,
+      "shortDescription": true
+    },
+    "reg-publish-s3-plugin": {
+      "bucketName": "${REG_S3_BUCKET_NAME}",
+      "pathPrefix": "web"
     }
   }
-  
+}

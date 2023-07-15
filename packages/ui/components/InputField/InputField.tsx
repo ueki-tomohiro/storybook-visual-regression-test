@@ -25,7 +25,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
             <div className={`absolute inset-0 flex items-center${label && "pt-1.5"}`}>
               <input
                 {...props}
-                className="text-tertiary bg-reset focus:text-secondary h-11 w-full px-2 focus:outline-none"
+                className="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
                 type={type}
                 defaultValue={value}
                 ref={ref}
@@ -34,7 +34,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
             <div className="-z-1 absolute inset-0" />
           </fieldset>
         </div>
-        {error && <div className="text-caution ml-2 mt-2 text-sm">{error}</div>}
+        {error && <div className="ml-2 mt-2 text-sm text-caution">{error}</div>}
       </>
     );
   }

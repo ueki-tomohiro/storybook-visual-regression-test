@@ -13,7 +13,7 @@ exports[`components/InputField renders Default 1`] = `
           class="absolute inset-0 flex items-centerundefined"
         >
           <input
-            class="text-tertiary bg-reset focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
             type="text"
             value=""
           />

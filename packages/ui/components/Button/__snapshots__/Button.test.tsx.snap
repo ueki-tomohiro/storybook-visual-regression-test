@@ -4,7 +4,7 @@ exports[`components/Button renders Default 1`] = `
 <body>
   <div>
     <button
-      class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+      class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2 disabled:bg-tertiary"
     >
       Button
     </button>

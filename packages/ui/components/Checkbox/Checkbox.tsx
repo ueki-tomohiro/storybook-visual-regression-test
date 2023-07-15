@@ -8,7 +8,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ label, ..
   return (
     <label className="mb-4 flex">
       <div className="mr-2 grow-0">
-        <input {...props} type="checkbox" className="accent-primary mr-2 scale-150" ref={ref} />
+        <input {...props} type="checkbox" className="mr-2 scale-150 accent-primary" ref={ref} />
       </div>
       <div className="grow font-bold">{label}</div>
     </label>
