@@ -1,0 +1,8 @@
+web:
+  - packages/web/**/*
+api:
+  - packages/api/**/*
+chore:
+  - libs/**/*
+  - tools/**/*
+  - .github/**/*
