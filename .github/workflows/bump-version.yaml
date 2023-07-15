@@ -23,7 +23,9 @@ jobs:
   bump:
     name: Bump up version
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      contents: write
+      pull-requests: write
     needs: setup
     steps:
       - name: Checkout
