@@ -12,7 +12,12 @@ module.exports = {
   ignorePatterns: ["*.config.js", "config.js", ".eslintrc.cjs", "env.*.js"],
   overrides: [
     {
-      files: ["**/src/templates/**/*.tsx", "**/src/pages/**/*.tsx", "*.stories.tsx"],
+      files: [       
+        "**/components/**/*.tsx",
+        "**/src/presentation/**/*.tsx",
+        "**/src/pages/**/*.tsx",
+        "*.stories.tsx",
+      ],
       rules: {
         "import/no-anonymous-default-export": "off",
       },

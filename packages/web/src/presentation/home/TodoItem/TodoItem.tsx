@@ -19,7 +19,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, ...props }) => {
           )}
         </div>
         <div className="mx-2 text-xl">{todo.description}</div>
-        <div className="text-tertiary text-xs">{dayjs(todo.end_date).tz().format("YYYY-MM-DD HH:mm:ss")}</div>
+        <div className="text-xs text-tertiary">{dayjs(todo.end_date).tz().format("YYYY-MM-DD HH:mm:ss")}</div>
       </div>
     </Link>
   );
