@@ -1,4 +1,4 @@
-name: bump
+name: bump version
 
 on:
   workflow_dispatch:
@@ -7,7 +7,6 @@ on:
         type: choice
         description: Please Choice Bump Target
         options:
-          - build
           - patch
           - minor
           - major
@@ -24,29 +23,44 @@ jobs:
   bump:
     name: Bump up version
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     needs: setup
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
+      - uses: ./.github/actions/setup-node
       - name: bump up version
         run: |
-          yarn new-version ${{ github.event.inputs.bump }} --yes
-      - name: Labeler from title
-        uses: actions/github-script@v6
-        with:
-          script: |
+          yarn new-version ${{ github.event.inputs.bump }} --yes --no-push --no-git-tag-version 
+      - name: set env
+        run: |
+          echo "BUMP_VERSION=$(node scripts/lerna-version.js)" >> $GITHUB_ENV
+      - name: create branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b version-${{ env.BUMP_VERSION }}
+          git commit -a -m "bump version"
+          git push  origin version-${{ env.BUMP_VERSION }}
+      - name: create pull request
+        run: |
+          gh pr create --base main --title "build: Bump version ${{ env.BUMP_VERSION }}" --body ""
 
   update_release_draft:
     needs: bump
     permissions:
       contents: write
       pull-requests: write
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-node
       - name: Release Drafter
         uses: release-drafter/release-drafter@v5.21.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
