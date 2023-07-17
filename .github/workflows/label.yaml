@@ -8,6 +8,9 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-node
       - name: Labeler from web
         uses: actions/labeler@v4.3.0
         with:
