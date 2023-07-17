@@ -18,9 +18,10 @@ jobs:
       - name: Labeler from title
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const result = await github.rest.issues.get({
-              issue_number: context.issue.number,
+            const result = await github.rest.pulls.get({
+              pull_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
             });
