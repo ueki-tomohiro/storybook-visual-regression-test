@@ -45,7 +45,9 @@ jobs:
           git config user.email github-actions@github.com
           git checkout -b version-${{ env.BUMP_VERSION }}
           git commit -a -m "bump version"
-          git push  origin version-${{ env.BUMP_VERSION }}
+          git tag -a ${{ env.BUMP_VERSION }} -m ""
+          git push origin version-${{ env.BUMP_VERSION }}
+          git push origin ${{ env.BUMP_VERSION }}
       - name: create pull request
         run: |
           gh pr create --base main --title "build: Bump version ${{ env.BUMP_VERSION }}" --body ""
