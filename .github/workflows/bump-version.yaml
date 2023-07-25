@@ -44,8 +44,8 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git checkout -b version-${{ env.BUMP_VERSION }}
-          git tag -a ${{ env.BUMP_VERSION }}
           git commit -a -m "bump version"
+          git tag -a ${{ env.BUMP_VERSION }} -m ""
           git push origin version-${{ env.BUMP_VERSION }}
           git push origin ${{ env.BUMP_VERSION }}
       - name: create pull request
