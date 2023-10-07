@@ -5,7 +5,7 @@
   "description": "Demo Tailwind",
   "license": "MIT",
   "dependencies": {
-    "postcss": "8.4.23",
+    "postcss": "8.4.31",
     "tailwindcss": "3.3.1"
   },
   "engines": {
