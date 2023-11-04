@@ -41,6 +41,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({ regisiterTodo, isLoa
         label="詳細"
         disabled={isSubmitting || isLoading}
         error={errors.description?.message}
+        data-testid="description"
       />
       <InputField
         {...register("end_date")}
@@ -48,8 +49,15 @@ export const RegisterView: React.FC<RegisterViewProps> = ({ regisiterTodo, isLoa
         type="date"
         disabled={isSubmitting || isLoading}
         error={errors.end_date?.message}
+        data-testid="end-date"
       />
-      <Button variant="primary" type="submit" disabled={isSubmitting || isLoading} isLoading={isLoading}>
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={isSubmitting || isLoading}
+        isLoading={isLoading}
+        data-testid="register-button"
+      >
         登録
       </Button>
     </form>

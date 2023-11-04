@@ -83,7 +83,7 @@ exports[`views/EditView renders Default 1`] = `
         </div>
       </label>
       <button
-        class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2 disabled:bg-tertiary"
+        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
         type="submit"
       >
         登録
@@ -179,7 +179,7 @@ exports[`views/EditView renders Loading 1`] = `
         </div>
       </label>
       <button
-        class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2 disabled:bg-tertiary"
+        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
         disabled=""
         type="submit"
       >

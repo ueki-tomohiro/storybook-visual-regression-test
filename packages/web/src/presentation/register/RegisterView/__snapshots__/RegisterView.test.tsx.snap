@@ -24,6 +24,7 @@ exports[`views/RegisterView renders Default 1`] = `
           >
             <input
               class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              data-testid="description"
               name="description"
               type="text"
               value=""
@@ -54,6 +55,7 @@ exports[`views/RegisterView renders Default 1`] = `
           >
             <input
               class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              data-testid="end-date"
               name="end_date"
               type="date"
               value=""
@@ -65,7 +67,8 @@ exports[`views/RegisterView renders Default 1`] = `
         </fieldset>
       </div>
       <button
-        class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2 disabled:bg-tertiary"
+        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+        data-testid="register-button"
         type="submit"
       >
         登録
@@ -99,6 +102,7 @@ exports[`views/RegisterView renders Loading 1`] = `
           >
             <input
               class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              data-testid="description"
               disabled=""
               name="description"
               type="text"
@@ -130,6 +134,7 @@ exports[`views/RegisterView renders Loading 1`] = `
           >
             <input
               class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              data-testid="end-date"
               disabled=""
               name="end_date"
               type="date"
@@ -142,7 +147,8 @@ exports[`views/RegisterView renders Loading 1`] = `
         </fieldset>
       </div>
       <button
-        class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2 disabled:bg-tertiary"
+        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+        data-testid="register-button"
         disabled=""
         type="submit"
       >
