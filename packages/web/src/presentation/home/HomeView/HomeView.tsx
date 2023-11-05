@@ -4,12 +4,12 @@ import React from "react";
 
 import { TodoItem } from "../TodoItem";
 
-export type HomeViewProps = {
+export type HomeViewProps = React.PropsWithChildren<{
   todos?: Todo[];
   isLoading?: boolean;
-};
+}>;
 
-export const HomeView: React.FC<HomeViewProps> = ({ isLoading, todos }) => {
+export const HomeView = ({ isLoading, todos }: HomeViewProps) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }

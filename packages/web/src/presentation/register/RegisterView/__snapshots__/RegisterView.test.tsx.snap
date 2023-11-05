@@ -23,7 +23,7 @@ exports[`views/RegisterView renders Default 1`] = `
             class="absolute inset-0 flex items-centerpt-1.5"
           >
             <input
-              class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
               data-testid="description"
               name="description"
               type="text"
@@ -54,7 +54,7 @@ exports[`views/RegisterView renders Default 1`] = `
             class="absolute inset-0 flex items-centerpt-1.5"
           >
             <input
-              class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
               data-testid="end-date"
               name="end_date"
               type="date"
@@ -101,7 +101,7 @@ exports[`views/RegisterView renders Loading 1`] = `
             class="absolute inset-0 flex items-centerpt-1.5"
           >
             <input
-              class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
               data-testid="description"
               disabled=""
               name="description"
@@ -133,7 +133,7 @@ exports[`views/RegisterView renders Loading 1`] = `
             class="absolute inset-0 flex items-centerpt-1.5"
           >
             <input
-              class="bg-reset h-11 w-full px-2 text-tertiary focus:text-secondary focus:outline-none"
+              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
               data-testid="end-date"
               disabled=""
               name="end_date"

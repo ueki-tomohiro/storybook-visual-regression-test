@@ -8,6 +8,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:tailwindcss/recommended",
     "next/core-web-vitals",
+    "plugin:storybook/recommended"
   ],
   ignorePatterns: ["*.config.js", "config.js", ".eslintrc.cjs", "env.*.js"],
   overrides: [

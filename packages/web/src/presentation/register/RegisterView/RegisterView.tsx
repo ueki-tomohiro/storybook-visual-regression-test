@@ -6,12 +6,12 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
 
-export type RegisterViewProps = {
+export type RegisterViewProps = React.PropsWithChildren<{
   regisiterTodo: (args: TodoRegisterble) => void;
   isLoading?: boolean;
-};
+}>;
 
-export const RegisterView: React.FC<RegisterViewProps> = ({ regisiterTodo, isLoading }) => {
+export const RegisterView = ({ regisiterTodo, isLoading }: RegisterViewProps) => {
   const resolver = yupResolver(
     Yup.object().shape({
       description: Yup.string().required("詳細を入力してください"),
