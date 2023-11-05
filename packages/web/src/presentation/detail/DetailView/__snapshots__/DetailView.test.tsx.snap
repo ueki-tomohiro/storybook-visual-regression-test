@@ -12,7 +12,7 @@ exports[`views/DetailView renders Default 1`] = `
         Hybrid
       </div>
       <div
-        class="text-xs text-tertiary"
+        class="text-tertiary text-xs"
       >
         2022-09-03 15:52:59
       </div>

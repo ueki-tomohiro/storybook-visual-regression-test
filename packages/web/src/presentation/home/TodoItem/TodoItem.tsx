@@ -3,11 +3,13 @@ import dayjs from "@demo-libs/dayjs";
 import Link, { LinkProps } from "next/link";
 import React from "react";
 
-export type TodoItemProps = Omit<LinkProps, "href"> & {
-  todo: Todo;
-};
+export type TodoItemProps = React.PropsWithChildren<
+  Omit<LinkProps, "href"> & {
+    todo: Todo;
+  }
+>;
 
-export const TodoItem: React.FC<TodoItemProps> = ({ todo, ...props }) => {
+export const TodoItem = ({ todo, ...props }: TodoItemProps) => {
   return (
     <Link {...props} href={`/todo/${todo.todo_id}`} className="w-full">
       <div className="my-2 flex items-center border-2 p-2">
@@ -19,7 +21,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, ...props }) => {
           )}
         </div>
         <div className="mx-2 text-xl">{todo.description}</div>
-        <div className="text-xs text-tertiary">{dayjs(todo.end_date).tz().format("YYYY-MM-DD HH:mm:ss")}</div>
+        <div className="text-tertiary text-xs">{dayjs(todo.end_date).tz().format("YYYY-MM-DD HH:mm:ss")}</div>
       </div>
     </Link>
   );

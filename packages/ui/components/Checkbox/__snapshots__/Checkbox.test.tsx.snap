@@ -10,7 +10,7 @@ exports[`components/Checkbox renders Default 1`] = `
         class="mr-2 grow-0"
       >
         <input
-          class="mr-2 scale-150 accent-primary"
+          class="accent-primary mr-2 scale-150"
           type="checkbox"
         />
       </div>

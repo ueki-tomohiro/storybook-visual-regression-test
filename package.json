@@ -41,6 +41,7 @@
     "eslint-plugin-react": "latest",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-tailwindcss": "^3.12.0",
     "lerna": "^6.6.2",
     "prettier": "2.8.7",

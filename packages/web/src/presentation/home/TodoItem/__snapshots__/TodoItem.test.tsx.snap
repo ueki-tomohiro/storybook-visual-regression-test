@@ -23,7 +23,7 @@ exports[`views/TodoItem renders Default 1`] = `
           Bedfordshire
         </div>
         <div
-          class="text-xs text-tertiary"
+          class="text-tertiary text-xs"
         >
           2022-07-19 12:00:21
         </div>
