@@ -11,10 +11,12 @@
     "test": "jest --ci --updateSnapshot",
     "test-ci": "jest --ci",
     "typecheck": "tsc",
+    "a11y-check": "yarn playwright test snapshot/a11y.test.ts",
     "vrtest-regression": "yarn reg-suit run",
     "vrtest-setup": "storybook build --quiet --output-dir ./build",
     "vrtest-server": "http-server ./build -p 3001",
-    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:3001 'yarn playwright test --update-snapshots'"
+    "vrtest-a11y": "start-server-and-test vrtest-server http://127.0.0.1:3001 'yarn a11y-check'",
+    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:3001 'yarn playwright test snapshot/snapshot.test.ts --update-snapshots'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
