@@ -16,23 +16,34 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/a11y')
     steps:
-      - name: set up repository
+      - name: set up base repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+      - name: set base env
+        run: |
+          echo "EXPECTED_KEY=$KEY" >> $GITHUB_ENV
+        env:
+          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
+      - name: set up head repository
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-      - name: Set up node_modules
-        uses: ./.github/workflows/setup-node-modules
-        with:
-          cache_key: a11y
-      - name: Build storybook
-        run: yarn user vrtest-setup
+      - name: set head env
+        run: |
+          echo "ACTUAL_KEY=$KEY" >> $GITHUB_ENV
+        env:
+          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
+      - name: Set up
+        uses: ./.github/actions/setup-node
       - name: Set up playwright
         run: yarn playwright install
       - name: Run a11y test
         continue-on-error: true
         id: a11y_test
         run: |
-          yarn user a11y-check --reporter=list,playwright/reporter.ts,html
+          yarn web vrtest-setup
+          yarn web vrtest-a11y
       - name: Comment test results
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
