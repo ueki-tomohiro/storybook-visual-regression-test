@@ -10,7 +10,7 @@ const items = Object.values(data.stories);
 
 test.describe.configure({ mode: "parallel" });
 
-test.describe("a11y test (user)", () => {
+test.describe("a11y test (web)", () => {
   items.forEach(async (story: any) => {
     test(`${story.title}: ${story.name}`, async ({ page }) => {
       await page.goto(`http://127.0.0.1:3001/iframe.html?id=${story.id}&viewMode=story`, { waitUntil: "networkidle" });
