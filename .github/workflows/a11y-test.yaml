@@ -47,8 +47,7 @@ jobs:
       - name: Comment test results
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUMBER: ${{ github.event.issue.number }}
-        run: gh pr comment "$NUMBER" -F ./packages/user/playwright/a11y-report.txt --repo ${{ github.repository }}
+        run: gh pr comment ${{ github.event.issue.number }} -F ./packages/web/snapshot/a11y-report.txt --repo ${{ github.repository }}
       - name: Upload a11y test report artifact
         uses: actions/upload-artifact@v3
         with:
