@@ -1,10 +1,9 @@
 {
   "name": "@demo-libs/types",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Demo Types",
   "license": "MIT",
-  "dependencies": {},
   "engines": {
     "node": "^20",
     "yarn": ">=1"
