@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
 
   bump:
@@ -31,7 +31,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
       - name: bump up version
         run: |
@@ -49,6 +49,20 @@ jobs:
       - name: create pull request
         run: |
           gh pr create --base main --title "build: Bump version ${{ env.BUMP_VERSION }}" --body ""
+      - name: Check if pr exists
+        id: check_pr
+        run: |
+          git checkout -b ${{ github.ref_name }}
+          pr_title=${{ (github.ref_name == 'pre-release' && '"build: Pre-Release -> Release"') || '"build: main -> Pre-Release"' }}
+          base_branch=${{(github.ref_name == 'pre-release' && 'release') || 'pre-release' }}
+          head_branch=${{(github.ref_name == 'pre-release' && 'pre-release') || 'main'}}
+          echo "count=$(gh pr list -S "${pr_title}"' in:title' -B $base_branch -s open -H $head_branch | wc -l)" >> $GITHUB_OUTPUT
+          echo "pr_title="$pr_title"" >> $GITHUB_OUTPUT
+          echo "base_branch=$base_branch" >> $GITHUB_OUTPUT
+      - name: Create release pr
+        if: ${{ steps.check_pr.outputs.count == 0 }}
+        run: |
+          gh pr create -B ${{ steps.check_pr.outputs.base_branch }} -t "${{ steps.check_pr.outputs.pr_title }}" -F "$GITHUB_WORKSPACE/.github/AUTO_PR_BODY.md"
 
   update_release_draft:
     needs: bump
@@ -60,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
       - name: Release Drafter
         uses: release-drafter/release-drafter@v5.21.1
