@@ -17,7 +17,7 @@ jobs:
     if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/a11y')
     steps:
       - name: set up base repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.base.ref }}
       - name: set base env
@@ -26,7 +26,7 @@ jobs:
         env:
           KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
       - name: set up head repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: set head env
@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh pr comment ${{ github.event.issue.number }} -F ./packages/web/snapshot/a11y-report.txt --repo ${{ github.repository }}
       - name: Upload a11y test report artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: a11y-test-report-artifact
           path: packages/user/playwright-report/
