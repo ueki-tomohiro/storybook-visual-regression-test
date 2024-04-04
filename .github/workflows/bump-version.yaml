@@ -52,7 +52,7 @@ jobs:
       - name: Check if pr exists
         id: check_pr
         run: |
-          git checkout -b ${{ github.ref_name }}
+          git switch ${{ github.ref_name }}
           pr_title=${{ (github.ref_name == 'pre-release' && '"build: Pre-Release -> Release"') || '"build: main -> Pre-Release"' }}
           base_branch=${{(github.ref_name == 'pre-release' && 'release') || 'pre-release' }}
           head_branch=${{(github.ref_name == 'pre-release' && 'pre-release') || 'main'}}
