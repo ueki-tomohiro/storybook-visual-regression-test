@@ -1,0 +1,52 @@
+.divider {
+  align-items: center;
+  padding: 16px 0;
+  font-size: var(--font-size-xm);
+  white-space: nowrap;
+}
+
+.divider.noPadding {
+  padding: 0;
+}
+
+.divider.left {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.divider.center {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.divider.right {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.left .dividerText {
+  padding-inline-end: 8px;
+}
+
+.center .dividerText {
+  padding-inline-start: 8px;
+  padding-inline-end: 8px;
+}
+
+.right .dividerText {
+  padding-inline-start: 8px;
+}
+
+.dividerText svg {
+  display: inline;
+}
+
+.borderDotted {
+  border-bottom-style: dotted;
+  border-bottom-width: 1px;
+}
+
+.borderSolid {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}

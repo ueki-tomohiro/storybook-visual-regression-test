@@ -1,0 +1,774 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui/Divider "Basic" story renders without crashing 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="p-4"
+      >
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider border-border_weak borderSolid"
+          />
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider border-border_weak borderDotted"
+          />
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider center"
+          >
+            <div
+              class="border-border_weak borderSolid"
+            />
+            <div
+              class="dividerText text-center text-text_secondary text-xm font-bold"
+            >
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+              <br />
+              あれこれ動作確認するところ
+            </div>
+            <div
+              class="border-border_weak borderSolid"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider center"
+          >
+            <div
+              class="border-border_weak borderDotted"
+            />
+            <div
+              class="dividerText text-center text-text_secondary text-xm"
+            >
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+               
+              <br />
+              １２３４５６７８９０１２３４
+            </div>
+            <div
+              class="border-border_weak borderDotted"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider left"
+          >
+            <div
+              class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm font-bold"
+            >
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+              １２３４５６７８９０１２３４
+            </div>
+            <div
+              class="border-border_weak borderSolid"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider left"
+          >
+            <div
+              class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm"
+            >
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+              １２３４５６７８９０１２３４
+            </div>
+            <div
+              class="border-border_weak borderDotted"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider right"
+          >
+            <div
+              class="border-border_weak borderSolid"
+            />
+            <div
+              class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm font-bold"
+            >
+              １２３４５６７８９０１２３４
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider right"
+          >
+            <div
+              class="border-border_weak borderSolid"
+            />
+            <div
+              class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm font-bold"
+            >
+              １２３４５６７８９０１２３４
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider left"
+          >
+            <div
+              class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm font-bold"
+            >
+              最小幅でアイコン有無に関わらず
+              <br />
+              14文字以内って感じかな
+            </div>
+            <div
+              class="border-border_weak borderSolid"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider left"
+          >
+            <div
+              class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm"
+            >
+              2行にしてもいいが
+              <br />
+              改行位置は各自指定する
+            </div>
+            <div
+              class="border-border_weak borderDotted"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider right"
+          >
+            <div
+              class="border-border_weak borderSolid"
+            />
+            <div
+              class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm font-bold"
+            >
+              右寄せ使うのかな
+            </div>
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider right"
+          >
+            <div
+              class="border-border_weak borderDotted"
+            />
+            <div
+              class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm"
+            >
+              まだわからんな
+            </div>
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider center"
+          >
+            <div
+              class="border-border_weak borderSolid"
+            />
+            <div
+              class="dividerText text-center text-text_secondary text-xm font-bold"
+            >
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+               
+              <br />
+              １２３４５６７８９０１２３４
+            </div>
+            <div
+              class="border-border_weak borderSolid"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider center"
+          >
+            <div
+              class="border-border_weak borderDotted"
+            />
+            <div
+              class="dividerText text-center text-text_secondary text-xm"
+            >
+              <svg
+                aria-hidden="true"
+                class="iconSizeM"
+                fill="inherit"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+                />
+              </svg>
+               
+              <br />
+              １２３４５６７８９０１２３４
+            </div>
+            <div
+              class="border-border_weak borderDotted"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider center"
+          >
+            <div
+              class="border-border_weak borderSolid"
+            />
+            <div
+              class="dividerText text-center text-text_secondary text-xm font-bold"
+            >
+              2行にしてもいいが
+              <br />
+              改行位置は各自指定する
+            </div>
+            <div
+              class="border-border_weak borderSolid"
+            />
+          </div>
+        </div>
+        <div
+          class="pb-4"
+        >
+          <div
+            class="divider center"
+          >
+            <div
+              class="border-border_weak borderDotted"
+            />
+            <div
+              class="dividerText text-center text-text_secondary text-xm"
+            >
+              線が見えなくなるような
+              <br />
+              テキスト量は入れないこと
+            </div>
+            <div
+              class="border-border_weak borderDotted"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="p-4"
+    >
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider border-border_weak borderSolid"
+        />
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider border-border_weak borderDotted"
+        />
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider center"
+        >
+          <div
+            class="border-border_weak borderSolid"
+          />
+          <div
+            class="dividerText text-center text-text_secondary text-xm font-bold"
+          >
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+            <br />
+            あれこれ動作確認するところ
+          </div>
+          <div
+            class="border-border_weak borderSolid"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider center"
+        >
+          <div
+            class="border-border_weak borderDotted"
+          />
+          <div
+            class="dividerText text-center text-text_secondary text-xm"
+          >
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+             
+            <br />
+            １２３４５６７８９０１２３４
+          </div>
+          <div
+            class="border-border_weak borderDotted"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider left"
+        >
+          <div
+            class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm font-bold"
+          >
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+            １２３４５６７８９０１２３４
+          </div>
+          <div
+            class="border-border_weak borderSolid"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider left"
+        >
+          <div
+            class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm"
+          >
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+            １２３４５６７８９０１２３４
+          </div>
+          <div
+            class="border-border_weak borderDotted"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider right"
+        >
+          <div
+            class="border-border_weak borderSolid"
+          />
+          <div
+            class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm font-bold"
+          >
+            １２３４５６７８９０１２３４
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider right"
+        >
+          <div
+            class="border-border_weak borderSolid"
+          />
+          <div
+            class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm font-bold"
+          >
+            １２３４５６７８９０１２３４
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider left"
+        >
+          <div
+            class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm font-bold"
+          >
+            最小幅でアイコン有無に関わらず
+            <br />
+            14文字以内って感じかな
+          </div>
+          <div
+            class="border-border_weak borderSolid"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider left"
+        >
+          <div
+            class="dividerText inline-flex flex-row items-center justify-start text-text_secondary text-xm"
+          >
+            2行にしてもいいが
+            <br />
+            改行位置は各自指定する
+          </div>
+          <div
+            class="border-border_weak borderDotted"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider right"
+        >
+          <div
+            class="border-border_weak borderSolid"
+          />
+          <div
+            class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm font-bold"
+          >
+            右寄せ使うのかな
+          </div>
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider right"
+        >
+          <div
+            class="border-border_weak borderDotted"
+          />
+          <div
+            class="dividerText inline-flex flex-row items-center justify-end text-text_secondary text-xm"
+          >
+            まだわからんな
+          </div>
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider center"
+        >
+          <div
+            class="border-border_weak borderSolid"
+          />
+          <div
+            class="dividerText text-center text-text_secondary text-xm font-bold"
+          >
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+             
+            <br />
+            １２３４５６７８９０１２３４
+          </div>
+          <div
+            class="border-border_weak borderSolid"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider center"
+        >
+          <div
+            class="border-border_weak borderDotted"
+          />
+          <div
+            class="dividerText text-center text-text_secondary text-xm"
+          >
+            <svg
+              aria-hidden="true"
+              class="iconSizeM"
+              fill="inherit"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.7194 7.64835L16.3517 9.28059C17.2973 10.2262 17.5417 10.6675 17.7025 11.1981C17.8633 11.7287 17.8633 12.2713 17.7025 12.8019C17.5417 13.3325 17.2973 13.7738 16.3517 14.7194L14.7194 16.3517C13.7738 17.2973 13.3325 17.5417 12.8019 17.7025C12.2713 17.8633 11.7287 17.8633 11.1981 17.7025C10.6675 17.5417 10.2262 17.2973 9.28059 16.3517L7.64834 14.7194C6.70275 13.7738 6.45831 13.3325 6.29749 12.8019C6.13668 12.2713 6.13668 11.7287 6.29749 11.1981C6.45831 10.6675 6.70275 10.2262 7.64834 9.28059L9.28059 7.64835C10.2262 6.70275 10.6675 6.45831 11.1981 6.29749C11.7287 6.13668 12.2713 6.13668 12.8019 6.29749C13.3325 6.45831 13.7738 6.70275 14.7194 7.64835Z"
+              />
+            </svg>
+             
+            <br />
+            １２３４５６７８９０１２３４
+          </div>
+          <div
+            class="border-border_weak borderDotted"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider center"
+        >
+          <div
+            class="border-border_weak borderSolid"
+          />
+          <div
+            class="dividerText text-center text-text_secondary text-xm font-bold"
+          >
+            2行にしてもいいが
+            <br />
+            改行位置は各自指定する
+          </div>
+          <div
+            class="border-border_weak borderSolid"
+          />
+        </div>
+      </div>
+      <div
+        class="pb-4"
+      >
+        <div
+          class="divider center"
+        >
+          <div
+            class="border-border_weak borderDotted"
+          />
+          <div
+            class="dividerText text-center text-text_secondary text-xm"
+          >
+            線が見えなくなるような
+            <br />
+            テキスト量は入れないこと
+          </div>
+          <div
+            class="border-border_weak borderDotted"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
