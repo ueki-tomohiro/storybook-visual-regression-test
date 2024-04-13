@@ -5,6 +5,7 @@
   "description": "Demo Storybook",
   "license": "MIT",
   "devDependencies": {
+    "babel-loader": "^8.1.0",
     "@babel/helper-string-parser": "~7.19.4",
     "@etchteam/storybook-addon-css-variables-theme": "^2.0.6",
     "@popperjs/core": "^2.11.8",
