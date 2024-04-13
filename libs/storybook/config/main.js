@@ -1,6 +1,6 @@
 const path = require("path");
 
-/** @type { import('@storybook/types').StorybookConfig } */
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
 module.exports = {
   core: {
     builder: "@storybook/builder-webpack5",
