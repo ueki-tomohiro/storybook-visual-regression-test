@@ -10,7 +10,7 @@
     "test-ci": "jest --ci",
     "typecheck": "tsc",
     "vrtest-regression": "yarn reg-suit run",
-    "vrtest-setup": "storybook build --quiet --output-dir ./build",
+    "vrtest-setup": "storybook build --quiet --output-dir ./build --debug-webpack",
     "vrtest-server": "http-server ./build -p 4001",
     "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:4001 'yarn playwright test --update-snapshots'"
   },

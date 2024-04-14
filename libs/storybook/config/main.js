@@ -1,5 +1,3 @@
-const path = require("path");
-
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   core: {
@@ -19,7 +17,14 @@ const config = {
           {
             test: /\.css$/,
             exclude: /\.module\.css$/,
-            use: ["style-loader", "css-loader"],
+            use: [
+              "style-loader",
+              "css-loader",
+              {
+                loader: "postcss-loader",
+                options: { implementation: require.resolve("postcss") },
+              },
+            ],
           },
           {
             test: /\.module\.css$/,
@@ -36,7 +41,6 @@ const config = {
                     namedExport: true,
                     exportLocalsConvention: "as-is",
                     exportOnlyLocals: false,
-                    getJSON: ({ resourcePath, imports, exports, replacements }) => {},
                   },
                 },
               },
@@ -73,7 +77,7 @@ const config = {
       resolve: {
         ...config.resolve,
         mainFields: ["browser", "module", "main"],
-        extensions: [".ts", ".tsx", ".js"],
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
         fallback: {
           ...config.resolve?.fallback,
           os: require.resolve("os-browserify/browser"),
