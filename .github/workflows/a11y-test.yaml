@@ -1,20 +1,12 @@
 name: a11y storybook test
 
 on:
-  issue_comment:
-    types:
-      - created
-    paths:
-      - packages/ui/**
-      - packages/user/**
-    branches-ignore:
-      - qa
+  workflow_dispatch:
 
 jobs:
   a11y-test:
     name: a11y test
     runs-on: ubuntu-latest
-    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/a11y')
     steps:
       - name: set up base repository
         uses: actions/checkout@v4
@@ -44,13 +36,24 @@ jobs:
         run: |
           yarn web vrtest-setup
           yarn web vrtest-a11y
-      - name: Comment test results
+      - uses: 8398a7/action-slack@v3
+        if: always()
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr comment ${{ github.event.issue.number }} -F ./packages/web/snapshot/a11y-report.txt --repo ${{ github.repository }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_CI }}
+        with:
+          status: ${{ job.status }}
+          fields: repo,commit,ref,workflow,author,message
+          custom_payload: |
+            {
+              attachments: [{
+                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+                text: `cat ./packages/web/snapshot/a11y-comment.txt`,
+              }]
+            }
       - name: Upload a11y test report artifact
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: a11y-test-report-artifact
-          path: packages/user/playwright-report/
+          path: ./packages/web/snapshot/__report__
           retention-days: 1
