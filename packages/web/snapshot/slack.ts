@@ -2,19 +2,15 @@ import { FullConfig } from "@playwright/test";
 import { FullResult, Reporter, Suite, TestCase, TestResult } from "@playwright/test/reporter";
 import * as fs from "fs";
 
-export default class GithubSummaryReporter implements Reporter {
+export default class SlackReporter implements Reporter {
   outputFile?: fs.WriteStream;
   totalCount = 0;
   passedCount = 0;
   errorsCount = 0;
 
   onBegin(config: FullConfig, suite: Suite) {
-    this.outputFile = fs.createWriteStream(`${config.rootDir}/a11y-report.txt`, { flags: "a" });
+    this.outputFile = fs.createWriteStream(`${config.rootDir}/a11y-comment.txt`, { flags: "a" });
 
-    this.writeOut("## a11y Test (user)");
-    this.writeOut("### Target");
-    this.writeOut("- wcag2a");
-    this.writeOut("- wcag21a\n");
     this.writeOut("### Results");
     this.writeOut("<details>\n");
     this.writeOut("Case|Status|Error");

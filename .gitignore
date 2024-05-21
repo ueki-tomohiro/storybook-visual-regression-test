@@ -16,9 +16,11 @@
 **/snapshot/__output__/
 **/snapshot/__report__/
 **/snapshot/__snapshots__/
+playwright-report/
 *.log*
 .eslintcache
 .stylelintcache
+a11y-comment.txt
 
 # next.js
 **/.next/
