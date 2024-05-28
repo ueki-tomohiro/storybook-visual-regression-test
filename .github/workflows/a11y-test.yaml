@@ -31,29 +31,29 @@ jobs:
       - name: Set up playwright
         run: yarn playwright install
       - name: Run a11y test
-        continue-on-error: true
-        id: a11y_test
         run: |
           yarn web vrtest-setup
           yarn web vrtest-a11y
+      - name: Set a11y result
+        id: a11y_result
+        if: always()
+        run: |
+          delimiter="$(openssl rand -hex 8)"
+          echo "report<<${delimiter}" >> "${GITHUB_OUTPUT}"
+          echo "$(cat ./packages/web/snapshot/a11y-comment.json)" >> "${GITHUB_OUTPUT}"
+          echo "${delimiter}" >> "${GITHUB_OUTPUT}"
       - uses: 8398a7/action-slack@v3
         if: always()
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_CI }}
         with:
-          status: ${{ job.status }}
-          fields: repo,commit,ref,workflow,author,message
-          custom_payload: |
-            {
-              attachments: [{
-                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: `cat ./packages/web/snapshot/a11y-comment.txt`,
-              }]
-            }
+          status: custom
+          fields: workflow,job,commit,repo,ref,author,took
+          custom_payload: ${{ steps.a11y_result.outputs.report }}
       - name: Upload a11y test report artifact
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: a11y-test-report-artifact
-          path: ./packages/web/snapshot/__report__
+          path: ./packages/web/playwright-report
           retention-days: 1
