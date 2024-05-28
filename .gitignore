@@ -20,7 +20,7 @@ playwright-report/
 *.log*
 .eslintcache
 .stylelintcache
-a11y-comment.txt
+a11y-comment.json
 
 # next.js
 **/.next/

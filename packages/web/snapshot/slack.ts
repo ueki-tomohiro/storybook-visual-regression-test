@@ -9,17 +9,16 @@ export default class SlackReporter implements Reporter {
   errorsCount = 0;
 
   onBegin(config: FullConfig, suite: Suite) {
-    this.outputFile = fs.createWriteStream(`${config.rootDir}/a11y-comment.txt`, { flags: "a" });
+    this.outputFile = fs.createWriteStream(`${config.rootDir}/a11y-comment.json`, { flags: "w" });
 
-    this.writeOut("### Results");
-    this.writeOut("<details>\n");
-    this.writeOut("Case|Status|Error");
-    this.writeOut("----|------|-----");
+    this.writeOut(`{ "blocks": [`);
+    this.writeTitle("A11y Test Results");
+    this.writeDivider();
   }
 
   onTestEnd(test: TestCase, result: TestResult) {
     const status = result.status === "passed" ? ":white_check_mark:" : ":x:";
-    this.writeOut(`${test.title}|${status}|${result.error?.message || ""}`);
+    this.writeResult({ title: test.title, status, message: result.error?.message || "" });
 
     this.totalCount += 1;
     if (result.status === "passed") {
@@ -30,9 +29,13 @@ export default class SlackReporter implements Reporter {
   }
 
   onEnd(result: FullResult) {
-    this.writeOut(
-      `</details>\n\n### Summary\nAll|:white_check_mark: Passed|:x: errors\n----|----|----\n${this.totalCount}|${this.passedCount}|${this.errorsCount}\n`
-    );
+    this.writeDivider();
+    this.writeSummary({
+      totalCount: this.totalCount.toString(),
+      passedCount: this.passedCount.toString(),
+      errorsCount: this.errorsCount.toString(),
+    });
+    this.writeOut("]}");
 
     if (this.outputFile) {
       this.outputFile.end();
@@ -40,9 +43,79 @@ export default class SlackReporter implements Reporter {
     }
   }
 
+  private writeTitle(value: string) {
+    this.writeOut(` {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "${value}",
+        "emoji": true
+      }
+    },`);
+  }
+
+  private writeResult({ title, status, message }: { title: string; status: string; message: string }) {
+    this.writeOut(` {
+      "type": "context",
+      "elements": [
+				{
+					"type": "mrkdwn",
+					"text": "${title}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "${status}"
+				}`);
+    if (message) {
+      this.writeOut(`,{
+            "type": "mrkdwn",
+            "text": "${message}"
+          }`);
+    }
+    this.writeOut(` ] },`);
+  }
+
+  private writeSummary({
+    totalCount,
+    passedCount,
+    errorsCount,
+  }: {
+    totalCount: string;
+    passedCount: string;
+    errorsCount: string;
+  }) {
+    this.writeOut(` {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "*Summary*"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "${totalCount}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "${passedCount}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "${errorsCount}"
+      }
+    ]
+  },`);
+  }
+
+  private writeDivider() {
+    this.writeOut(`  {
+      "type": "divider"
+    },`);
+  }
+
   private writeOut(value: string) {
     if (this.outputFile) {
-      this.outputFile.write(value + "\n");
+      this.outputFile.write(value);
     } else {
       console.log(value);
     }
