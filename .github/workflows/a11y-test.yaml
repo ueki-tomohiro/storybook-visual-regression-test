@@ -1,31 +1,23 @@
 name: a11y storybook test
 
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      REF_BRANCH:
+        required: true
+        type: string
 
 jobs:
   a11y-test:
     name: a11y test
     runs-on: ubuntu-latest
+    outputs:
+      a11y_result: ${{ steps.a11y_result.outputs.report }}
     steps:
       - name: set up base repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.ref }}
-      - name: set base env
-        run: |
-          echo "EXPECTED_KEY=$KEY" >> $GITHUB_ENV
-        env:
-          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
-      - name: set up head repository
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-      - name: set head env
-        run: |
-          echo "ACTUAL_KEY=$KEY" >> $GITHUB_ENV
-        env:
-          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
+          ref: ${{ inputs.REF_BRANCH }}
       - name: Set up
         uses: ./.github/actions/setup-node
       - name: Set up playwright
@@ -42,14 +34,6 @@ jobs:
           echo "report<<${delimiter}" >> "${GITHUB_OUTPUT}"
           echo "$(cat ./packages/web/snapshot/a11y-comment.json)" >> "${GITHUB_OUTPUT}"
           echo "${delimiter}" >> "${GITHUB_OUTPUT}"
-      - uses: 8398a7/action-slack@v3
-        if: always()
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_CI }}
-        with:
-          status: custom
-          fields: workflow,job,commit,repo,ref,author,took
-          custom_payload: ${{ steps.a11y_result.outputs.report }}
       - name: Upload a11y test report artifact
         if: failure()
         uses: actions/upload-artifact@v4
