@@ -89,19 +89,15 @@ export default class SlackReporter implements Reporter {
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "*Summary*"
+        "text": "*Summary* ${totalCount}"
       },
       {
         "type": "mrkdwn",
-        "text": "${totalCount}"
+        "text": ":white_check_mark: : ${passedCount}"
       },
       {
         "type": "mrkdwn",
-        "text": "${passedCount}"
-      },
-      {
-        "type": "mrkdwn",
-        "text": "${errorsCount}"
+        "text": ":x: : ${errorsCount}"
       }
     ]
   },`);

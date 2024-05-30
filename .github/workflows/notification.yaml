@@ -7,7 +7,7 @@ jobs:
   a11y-test:
     uses: ./.github/workflows/a11y-test.yaml
     with:
-      REF_BRANCH: main
+      REF_BRANCH: ${{ github.event.pull_request.head.sha }}
 
   notification:
     needs: a11y-test
