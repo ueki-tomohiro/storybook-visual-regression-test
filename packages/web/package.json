@@ -12,6 +12,7 @@
     "test-ci": "vitest src --run",
     "typecheck": "tsc",
     "a11y-check": "yarn playwright test snapshot/a11y.test.ts",
+    "storybook-coverage": "start-server-and-test vrtest-server http://127.0.0.1:3001 'yarn test-storybook --url http://127.0.0.1:3001 --coverage'",
     "vrtest-regression": "yarn reg-suit run",
     "vrtest-setup": "storybook build --quiet --output-dir ./build",
     "vrtest-server": "http-server ./build -p 3001",
