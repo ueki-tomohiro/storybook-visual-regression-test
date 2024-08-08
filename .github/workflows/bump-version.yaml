@@ -76,5 +76,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
+      - name: set env
+        run: |
+          echo "BUMP_VERSION=$(node tools/bump/lerna-version.js)" >> $GITHUB_ENV
       - name: Release Drafter
         uses: release-drafter/release-drafter@v5.21.1
+        with:
+          tag: ${{ env.BUMP_VERSION }}
+          name: ${{ env.BUMP_VERSION }}
+          version: ${{ env.BUMP_VERSION }}
