@@ -60,6 +60,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v45
@@ -70,7 +73,6 @@ jobs:
       - name: Run Coverage
         id: coverage-report
         run: |
-          CHANGED_FILES=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep '\.ts$\|\.js$' | tr '\n' ' ')
-          yarn run $CHANGED_FILES --coverage
+          yarn vitest run --changed origin/${GITHUB_BASE_REF} --coverage --reporter=junit --coverage.reporter=json-summary --outputFile=./coverage/coverage-summary.json
       - name: Report coverage
         uses: davelosert/vitest-coverage-report-action@v2

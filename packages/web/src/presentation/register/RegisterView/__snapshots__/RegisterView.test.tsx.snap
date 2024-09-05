@@ -1,164 +1,160 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`views/RegisterView renders Default 1`] = `
-<body>
-  <div>
-    <form>
-      <div
-        class="relative w-full"
+exports[`views/RegisterView > views/RegisterView > "Default" story > renders without crashing 1`] = `
+<div>
+  <form>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
         >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
+          <label
+            class="flex text-xs"
           >
-            <label
-              class="flex text-xs"
-            >
-              詳細
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              data-testid="description"
-              name="description"
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
-          />
-        </fieldset>
-      </div>
-      <div
-        class="relative w-full"
-      >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+            詳細
+          </label>
+        </legend>
+        <div
+          class="absolute inset-0 flex items-centerpt-1.5"
         >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
-          >
-            <label
-              class="flex text-xs"
-            >
-              完了日
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              data-testid="end-date"
-              name="end_date"
-              type="date"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
+          <input
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            data-testid="description"
+            name="description"
+            type="text"
+            value=""
           />
-        </fieldset>
-      </div>
-      <button
-        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
-        data-testid="register-button"
-        type="submit"
+        </div>
+        <div
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        登録
-      </button>
-    </form>
-  </div>
-</body>
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
+        >
+          <label
+            class="flex text-xs"
+          >
+            完了日
+          </label>
+        </legend>
+        <div
+          class="absolute inset-0 flex items-centerpt-1.5"
+        >
+          <input
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            data-testid="end-date"
+            name="end_date"
+            type="date"
+            value=""
+          />
+        </div>
+        <div
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <button
+      class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+      data-testid="register-button"
+      type="submit"
+    >
+      登録
+    </button>
+  </form>
+</div>
 `;
 
-exports[`views/RegisterView renders Loading 1`] = `
-<body>
-  <div>
-    <form>
-      <div
-        class="relative w-full"
+exports[`views/RegisterView > views/RegisterView > "Loading" story > renders without crashing 1`] = `
+<div>
+  <form>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
         >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
+          <label
+            class="flex text-xs"
           >
-            <label
-              class="flex text-xs"
-            >
-              詳細
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              data-testid="description"
-              disabled=""
-              name="description"
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
+            詳細
+          </label>
+        </legend>
+        <div
+          class="absolute inset-0 flex items-centerpt-1.5"
+        >
+          <input
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            data-testid="description"
+            disabled=""
+            name="description"
+            type="text"
+            value=""
           />
-        </fieldset>
-      </div>
-      <div
-        class="relative w-full"
+        </div>
+        <div
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
         >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
+          <label
+            class="flex text-xs"
           >
-            <label
-              class="flex text-xs"
-            >
-              完了日
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              data-testid="end-date"
-              disabled=""
-              name="end_date"
-              type="date"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
+            完了日
+          </label>
+        </legend>
+        <div
+          class="absolute inset-0 flex items-centerpt-1.5"
+        >
+          <input
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            data-testid="end-date"
+            disabled=""
+            name="end_date"
+            type="date"
+            value=""
           />
-        </fieldset>
-      </div>
-      <button
-        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
-        data-testid="register-button"
-        disabled=""
-        type="submit"
+        </div>
+        <div
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <button
+      class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+      data-testid="register-button"
+      disabled=""
+      type="submit"
+    >
+      <span
+        class="material-symbols-outlined animate-rotate"
       >
-        <span
-          class="material-symbols-outlined animate-rotate"
-        >
-          refresh
-        </span>
-      </button>
-    </form>
-  </div>
-</body>
+        refresh
+      </span>
+    </button>
+  </form>
+</div>
 `;

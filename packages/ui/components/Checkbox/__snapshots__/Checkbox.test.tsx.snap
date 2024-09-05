@@ -1,25 +1,23 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`components/Checkbox renders Default 1`] = `
-<body>
-  <div>
-    <label
-      class="mb-4 flex"
+exports[`components/Checkbox > components/Checkbox > "Default" story > renders without crashing 1`] = `
+<div>
+  <label
+    class="mb-4 flex"
+  >
+    <div
+      class="mr-2 grow-0"
     >
-      <div
-        class="mr-2 grow-0"
-      >
-        <input
-          class="accent-primary mr-2 scale-150"
-          type="checkbox"
-        />
-      </div>
-      <div
-        class="grow font-bold"
-      >
-        ラベル
-      </div>
-    </label>
-  </div>
-</body>
+      <input
+        class="accent-primary mr-2 scale-150"
+        type="checkbox"
+      />
+    </div>
+    <div
+      class="grow font-bold"
+    >
+      ラベル
+    </div>
+  </label>
+</div>
 `;
