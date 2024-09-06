@@ -9,7 +9,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 const date = dayjs("2020-12-04T10:00:00+09:00").toDate();
 
-export const renderFromStories = (stories: Parameters<typeof composeStories<any>>[0]) => {
+export const renderFromStoriesTest = (stories: Parameters<typeof composeStories<any>>[0]) => {
   const componentTitle = stories.default.title as string;
   const defaultArgs = (stories.default && stories.default.args) || {};
 

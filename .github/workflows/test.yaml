@@ -62,17 +62,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-node
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v45
         with:
-          files: |
-            packages/**
-            libs/**
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-node
       - name: Run Coverage
-        id: coverage-report
         run: |
+          git -v
           yarn vitest run --changed origin/${GITHUB_BASE_REF} --coverage --reporter=junit --coverage.reporter=json-summary --outputFile=./coverage/coverage-summary.json
       - name: Report coverage
         uses: davelosert/vitest-coverage-report-action@v2
