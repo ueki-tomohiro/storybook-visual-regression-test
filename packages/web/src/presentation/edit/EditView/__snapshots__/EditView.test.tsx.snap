@@ -1,195 +1,191 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`views/EditView renders Default 1`] = `
-<body>
-  <div>
-    <form>
-      <div
-        class="relative w-full"
+exports[`views/EditView > views/EditView > "Default" story > renders without crashing 1`] = `
+<div>
+  <form>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
         >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
+          <label
+            class="flex text-xs"
           >
-            <label
-              class="flex text-xs"
-            >
-              詳細
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              name="description"
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
-          />
-        </fieldset>
-      </div>
-      <div
-        class="relative w-full"
-      >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
-        >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
-          >
-            <label
-              class="flex text-xs"
-            >
-              完了日
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              name="end_date"
-              type="date"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
-          />
-        </fieldset>
-      </div>
-      <label
-        class="mb-4 flex"
-      >
+            詳細
+          </label>
+        </legend>
         <div
-          class="mr-2 grow-0"
+          class="absolute inset-0 flex items-centerpt-1.5"
         >
           <input
-            class="accent-primary mr-2 scale-150"
-            name="completed"
-            type="checkbox"
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            name="description"
+            type="text"
+            value=""
           />
         </div>
         <div
-          class="grow font-bold"
-        >
-          完了
-        </div>
-      </label>
-      <button
-        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
-        type="submit"
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        登録
-      </button>
-    </form>
-  </div>
-</body>
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
+        >
+          <label
+            class="flex text-xs"
+          >
+            完了日
+          </label>
+        </legend>
+        <div
+          class="absolute inset-0 flex items-centerpt-1.5"
+        >
+          <input
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            name="end_date"
+            type="date"
+            value=""
+          />
+        </div>
+        <div
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <label
+      class="mb-4 flex"
+    >
+      <div
+        class="mr-2 grow-0"
+      >
+        <input
+          class="accent-primary mr-2 scale-150"
+          name="completed"
+          type="checkbox"
+        />
+      </div>
+      <div
+        class="grow font-bold"
+      >
+        完了
+      </div>
+    </label>
+    <button
+      class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+      type="submit"
+    >
+      登録
+    </button>
+  </form>
+</div>
 `;
 
-exports[`views/EditView renders Loading 1`] = `
-<body>
-  <div>
-    <form>
-      <div
-        class="relative w-full"
+exports[`views/EditView > views/EditView > "Loading" story > renders without crashing 1`] = `
+<div>
+  <form>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
         >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
+          <label
+            class="flex text-xs"
           >
-            <label
-              class="flex text-xs"
-            >
-              詳細
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              disabled=""
-              name="description"
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
-          />
-        </fieldset>
-      </div>
-      <div
-        class="relative w-full"
-      >
-        <fieldset
-          class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
-        >
-          <legend
-            class="min-h-3 ml-2 flex px-0.5"
-          >
-            <label
-              class="flex text-xs"
-            >
-              完了日
-            </label>
-          </legend>
-          <div
-            class="absolute inset-0 flex items-centerpt-1.5"
-          >
-            <input
-              class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-              disabled=""
-              name="end_date"
-              type="date"
-              value=""
-            />
-          </div>
-          <div
-            class="-z-1 absolute inset-0"
-          />
-        </fieldset>
-      </div>
-      <label
-        class="mb-4 flex"
-      >
+            詳細
+          </label>
+        </legend>
         <div
-          class="mr-2 grow-0"
+          class="absolute inset-0 flex items-centerpt-1.5"
         >
           <input
-            class="accent-primary mr-2 scale-150"
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
             disabled=""
-            name="completed"
-            type="checkbox"
+            name="description"
+            type="text"
+            value=""
           />
         </div>
         <div
-          class="grow font-bold"
-        >
-          完了
-        </div>
-      </label>
-      <button
-        class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
-        disabled=""
-        type="submit"
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <div
+      class="relative w-full"
+    >
+      <fieldset
+        class="w-full h-12 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
       >
-        <span
-          class="material-symbols-outlined animate-rotate"
+        <legend
+          class="min-h-3 ml-2 flex px-0.5"
         >
-          refresh
-        </span>
-      </button>
-    </form>
-  </div>
-</body>
+          <label
+            class="flex text-xs"
+          >
+            完了日
+          </label>
+        </legend>
+        <div
+          class="absolute inset-0 flex items-centerpt-1.5"
+        >
+          <input
+            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+            disabled=""
+            name="end_date"
+            type="date"
+            value=""
+          />
+        </div>
+        <div
+          class="-z-1 absolute inset-0"
+        />
+      </fieldset>
+    </div>
+    <label
+      class="mb-4 flex"
+    >
+      <div
+        class="mr-2 grow-0"
+      >
+        <input
+          class="accent-primary mr-2 scale-150"
+          disabled=""
+          name="completed"
+          type="checkbox"
+        />
+      </div>
+      <div
+        class="grow font-bold"
+      >
+        完了
+      </div>
+    </label>
+    <button
+      class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+      disabled=""
+      type="submit"
+    >
+      <span
+        class="material-symbols-outlined animate-rotate"
+      >
+        refresh
+      </span>
+    </button>
+  </form>
+</div>
 `;

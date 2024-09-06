@@ -1,13 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`components/Button renders Default 1`] = `
-<body>
-  <div>
-    <button
-      class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
-    >
-      Button
-    </button>
-  </div>
-</body>
+exports[`components/Button > components/Button > "Default" story > renders without crashing 1`] = `
+<div>
+  <button
+    class="mx-auto max-w-3xl text-white bg-primary disabled:bg-tertiary rounded px-4 py-2"
+  >
+    Button
+  </button>
+</div>
 `;

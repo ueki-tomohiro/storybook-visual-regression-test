@@ -1,56 +1,47 @@
 name: a11y storybook test
 
 on:
-  issue_comment:
-    types:
-      - created
-    paths:
-      - packages/ui/**
-      - packages/user/**
-    branches-ignore:
-      - qa
+  workflow_call:
+    inputs:
+      REF_BRANCH:
+        required: true
+        type: string
+    outputs:
+      a11y_result: 
+        description: "Test Result"
+        value: ${{ jobs.a11y_test.outputs.a11y_result }}
 
 jobs:
-  a11y-test:
+  a11y_test:
     name: a11y test
     runs-on: ubuntu-latest
-    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/a11y')
+    outputs:
+      a11y_result: ${{ steps.a11y_result.outputs.report }}
     steps:
       - name: set up base repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.ref }}
-      - name: set base env
-        run: |
-          echo "EXPECTED_KEY=$KEY" >> $GITHUB_ENV
-        env:
-          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
-      - name: set up head repository
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-      - name: set head env
-        run: |
-          echo "ACTUAL_KEY=$KEY" >> $GITHUB_ENV
-        env:
-          KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'packages/web/**', 'yarn.lock') }}
+          ref: ${{ inputs.REF_BRANCH }}
       - name: Set up
         uses: ./.github/actions/setup-node
       - name: Set up playwright
         run: yarn playwright install
       - name: Run a11y test
-        continue-on-error: true
-        id: a11y_test
         run: |
           yarn web vrtest-setup
           yarn web vrtest-a11y
-      - name: Comment test results
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr comment ${{ github.event.issue.number }} -F ./packages/web/snapshot/a11y-report.txt --repo ${{ github.repository }}
+      - name: Set a11y result
+        id: a11y_result
+        if: always()
+        run: |
+          delimiter="$(openssl rand -hex 8)"
+          echo "report<<${delimiter}" >> "${GITHUB_OUTPUT}"
+          echo "$(cat ./packages/web/snapshot/a11y-comment.json)" >> "${GITHUB_OUTPUT}"
+          echo "${delimiter}" >> "${GITHUB_OUTPUT}"
       - name: Upload a11y test report artifact
-        uses: actions/upload-artifact@v3
+        if: failure()
+        uses: actions/upload-artifact@v4
         with:
           name: a11y-test-report-artifact
-          path: packages/user/playwright-report/
+          path: ./packages/web/playwright-report
           retention-days: 1
