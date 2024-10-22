@@ -1,34 +1,32 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`views/TodoItem renders Default 1`] = `
-<body>
-  <div>
-    <a
-      class="w-full"
-      href="/todo/79208"
+exports[`views/TodoItem > views/TodoItem > "Default" story > renders without crashing 1`] = `
+<div>
+  <a
+    class="w-full"
+    href="/todo/79208"
+  >
+    <div
+      class="my-2 flex items-center border-2 p-2"
     >
-      <div
-        class="my-2 flex items-center border-2 p-2"
-      >
-        <div>
-          <span
-            class="material-symbols-outlined"
-          >
-            label_important
-          </span>
-        </div>
-        <div
-          class="mx-2 text-xl"
+      <div>
+        <span
+          class="material-symbols-outlined"
         >
-          Bedfordshire
-        </div>
-        <div
-          class="text-tertiary text-xs"
-        >
-          2022-07-19 12:00:21
-        </div>
+          label_important
+        </span>
       </div>
-    </a>
-  </div>
-</body>
+      <div
+        class="mx-2 text-xl"
+      >
+        Bedfordshire
+      </div>
+      <div
+        class="text-tertiary text-xs"
+      >
+        2022-07-19 12:00:21
+      </div>
+    </div>
+  </a>
+</div>
 `;

@@ -9,8 +9,8 @@
     "generate": "yarn generate-api && yarn lint && yarn format",
     "generate-api": "cd ../../tools/api-client-generator && yarn generate",
     "lint": "eslint . --ext .jsx,.js,.tsx,.ts --cache --fix",
-    "test": "jest src --updateSnapshot --passWithNoTests",
-    "test-ci": "jest src --ci --passWithNoTests",
+    "test": "vitest src --update --run --passWithNoTests",
+    "test-ci": "vitest src --run --passWithNoTests",
     "typecheck": "tsc"
   },
   "dependencies": {

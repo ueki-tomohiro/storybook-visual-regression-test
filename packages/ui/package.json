@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start-storybook": "storybook dev --port 4001 --quiet",
-    "test": "jest --ci --updateSnapshot",
-    "test-ci": "jest --ci",
+    "test": "vitest components --update --run",
+    "test-ci": "vitest components --run",
     "typecheck": "tsc",
     "vrtest-regression": "yarn reg-suit run",
     "vrtest-setup": "storybook build --quiet --output-dir ./build",

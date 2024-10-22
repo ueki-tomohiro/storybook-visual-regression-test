@@ -1,9 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`components/Meta renders Default 1`] = `
-<body>
-  <div>
-    Content
-  </div>
-</body>
+exports[`components/Meta > components/Meta > "Default" story > renders without crashing 1`] = `
+<div>
+  Content
+</div>
 `;

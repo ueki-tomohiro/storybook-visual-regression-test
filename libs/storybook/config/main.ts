@@ -4,7 +4,7 @@ import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   core: {
-    builder: "@storybook/builder-vite", // これを追加
+    builder: "@storybook/builder-vite",
   },
   stories: ["**/*.stories.tsx"],
   addons: [
