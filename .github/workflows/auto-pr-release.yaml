@@ -1,6 +1,7 @@
 name: Create a pull request for release
 
 on:
+  workflow_dispatch:
   push:
     branches: [release, pre-release]
 
@@ -8,9 +9,8 @@ jobs:
   create_pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: Check for existing PR
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         id: check_pr
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
