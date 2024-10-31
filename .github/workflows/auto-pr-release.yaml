@@ -18,24 +18,24 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
-              base: 'master',
+              base: 'main',
               head: context.payload.pull_request.base.repo.full_name + ':' + context.payload.pull_request.base.ref,
             });
             if (pullRequests.length > 0) {
               core.setOutput('pr_exists', 'true');
-              console.log('An existing PR from the same branch to master already exists.');
+              console.log('An existing PR from the same branch to main already exists.');
             } else {
               core.setOutput('pr_exists', 'false');
               console.log('No existing PR found.');
             }
-      - name: Create PR to master
+      - name: Create PR to main
         if: steps.check_pr.outputs.pr_exists == 'false'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          base: master
+          base: main
           head: ${{ github.event.pull_request.base.ref }}
-          title: 'build "${{ github.event.pull_request.head.ref }}" -> master'
-          commit-message: 'Merge ${{ github.event.pull_request.head.ref }} into master'
+          title: 'build "${{ github.event.pull_request.head.ref }}" -> main'
+          commit-message: 'Merge ${{ github.event.pull_request.head.ref }} into main'
           body: |
-            自動生成された PR です。`${{ github.event.pull_request.head.ref }}` ブランチの変更を `master` ブランチに反映します。
+            自動生成された PR です。`${{ github.event.pull_request.head.ref }}` ブランチの変更を `main` ブランチに反映します。
