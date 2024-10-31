@@ -1,0 +1,41 @@
+name: Create a pull request for release
+
+on:
+  push:
+    branches: [release, pre-release]
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for existing PR
+        uses: actions/github-script@v6
+        id: check_pr
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              base: 'main',
+              head: context.payload.pull_request.base.repo.full_name + ':' + context.payload.pull_request.base.ref,
+            });
+            if (pullRequests.length > 0) {
+              core.setOutput('pr_exists', 'true');
+              console.log('An existing PR from the same branch to main already exists.');
+            } else {
+              core.setOutput('pr_exists', 'false');
+              console.log('No existing PR found.');
+            }
+      - name: Create PR to main
+        if: steps.check_pr.outputs.pr_exists == 'false'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          head: ${{ github.event.pull_request.base.ref }}
+          title: 'build "${{ github.event.pull_request.head.ref }}" -> main'
+          commit-message: 'Merge ${{ github.event.pull_request.head.ref }} into main'
+          body: |
+            自動生成された PR です。`${{ github.event.pull_request.head.ref }}` ブランチの変更を `main` ブランチに反映します。
