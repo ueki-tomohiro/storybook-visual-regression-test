@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: set up base repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.base.ref }}
       - name: set base env
@@ -34,7 +34,7 @@ jobs:
         env:
           KEY: ${{ hashFiles('libs/**', 'package.json', 'packages/ui/**', 'yarn.lock') }}
       - name: set up head repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: set head env

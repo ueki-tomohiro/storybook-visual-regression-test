@@ -1,28 +1,26 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`components/InputField renders Default 1`] = `
-<body>
-  <div>
-    <div
-      class="relative w-full"
+exports[`components/InputField > components/InputField > "Default" story > renders without crashing 1`] = `
+<div>
+  <div
+    class="relative w-full"
+  >
+    <fieldset
+      class="w-full mt-1 h-11 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
     >
-      <fieldset
-        class="w-full mt-1 h-11 mb-6 rounded border border-solid border-tertiary focus-within:border-secondary [&_label]:[&:not(:focus-within)]:text-tertiary [&_label]:focus-within:text-secondary"
+      <div
+        class="absolute inset-0 flex items-centerundefined"
       >
-        <div
-          class="absolute inset-0 flex items-centerundefined"
-        >
-          <input
-            class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
-            type="text"
-            value=""
-          />
-        </div>
-        <div
-          class="-z-1 absolute inset-0"
+        <input
+          class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
+          type="text"
+          value=""
         />
-      </fieldset>
-    </div>
+      </div>
+      <div
+        class="-z-1 absolute inset-0"
+      />
+    </fieldset>
   </div>
-</body>
+</div>
 `;
