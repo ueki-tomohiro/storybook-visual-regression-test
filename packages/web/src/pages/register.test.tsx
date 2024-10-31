@@ -1,25 +1,26 @@
 import { getRegisterTodoMock } from "@demo/api/lib/demo/todo/todo.msw";
-import { createQueryWrapper } from "@demo-libs/jest";
+import { createQueryWrapper } from "@demo-libs/vitest/helpers";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import React from "react";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test, vi } from "vitest";
 
 import { server } from "../mocks/server";
 import Register from "./register";
 
-jest.mock("next/router", () => ({
+vi.mock("next/router", () => ({
   useRouter() {
     return {
       asPath: "/",
-      replace: jest.fn(),
+      replace: vi.fn(),
     };
   },
 }));
 
 describe("Register Todo", () => {
-  const mockFn = jest.fn();
-  const { queryClient, queryWrapper } = createQueryWrapper();
+  const mockFn = vi.fn();
+  const { queryClient, QueryWrapper } = createQueryWrapper();
 
   beforeAll(() => server.listen());
   beforeEach(() => {
@@ -37,9 +38,9 @@ describe("Register Todo", () => {
   });
   afterAll(() => server.close());
 
-  it("Post", async () => {
+  test("Post", async () => {
     const user = userEvent.setup();
-    render(<Register />, { wrapper: queryWrapper });
+    render(<Register />, { wrapper: QueryWrapper });
     const description = await screen.getByTestId("description");
     const text = "テスト登録";
 

@@ -2,6 +2,12 @@ name: Test
 
 on:
   pull_request:
+    paths:
+      - libs/**
+      - package.json
+      - packages/**
+      - types/**
+      - yarn.lock
 
 jobs:
   setup:
@@ -9,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
 
   formatcheck:
@@ -18,7 +24,7 @@ jobs:
     needs: setup
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
       - name: Run format check
         run: yarn formatcheck
@@ -29,7 +35,7 @@ jobs:
     needs: setup
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
       - name: Run lint
         run: yarn lint
@@ -40,7 +46,7 @@ jobs:
     needs: setup
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
       - name: Run type check
         run: yarn typecheck
@@ -51,7 +57,23 @@ jobs:
     needs: setup
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
       - name: Run unit test
         run: yarn test-ci
+
+  coverage-report:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-node
+      - name: Run Coverage
+        run: |
+          git -v
+          yarn vitest run --changed origin/${GITHUB_BASE_REF} --coverage --reporter=junit --coverage.reporter=json-summary --outputFile=./coverage/coverage-summary.json
+      - name: Report coverage
+        uses: davelosert/vitest-coverage-report-action@v2
