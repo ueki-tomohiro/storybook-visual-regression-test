@@ -18,14 +18,13 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            console.log("contextオブジェクト:", context);
-            console.log("githubオブジェクト:", github);
+            console.log("payloadオブジェクト:", context.payload);
             const { data: pullRequests } = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
               base: 'main',
-              head: context.payload.pull_request.base.repo.full_name + ':' + context.payload.pull_request.base.ref,
+              head: context.payload.repository.full_name + ':' + context.payload.ref,
             });
             if (pullRequests.length > 0) {
               core.setOutput('pr_exists', 'true');
