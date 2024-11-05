@@ -9,6 +9,9 @@ jobs:
   create_pr:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Check for existing PR
         uses: actions/github-script@v7
         id: check_pr
