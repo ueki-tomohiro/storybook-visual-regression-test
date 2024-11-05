@@ -27,7 +27,6 @@ jobs:
               head: context.payload.repository.full_name + ':' + context.payload.ref,
             });
             const refs =  context.payload.ref.split('/');
-            console.log("refs:", refs);
             core.setOutput('ref', refs[refs.length - 1]);
             if (pullRequests.length > 0) {
               core.setOutput('pr_exists', 'true');
@@ -41,8 +40,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          base: main
-          head: ${{ steps.check_pr.outputs.ref }}
+          base: 'main'
+          branch: ${{ steps.check_pr.outputs.ref }}
           title: 'build "${{ steps.check_pr.outputs.ref}}" -> main'
           commit-message: 'Merge ${{ steps.check_pr.outputs.ref }} into main'
           body: |
