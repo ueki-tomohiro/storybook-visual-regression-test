@@ -23,8 +23,10 @@ jobs:
               repo: context.repo.repo,
               state: 'open',
               base: 'main',
-              head: context.payload.pull_request.base.repo.full_name + ':' + context.payload.pull_request.base.ref,
+              head: context.payload.repository.full_name + ':' + context.payload.ref,
             });
+            const refs =  context.payload.ref.split('/');
+            core.setOutput('ref', refs[refs.length - 1]);
             if (pullRequests.length > 0) {
               core.setOutput('pr_exists', 'true');
               console.log('An existing PR from the same branch to main already exists.');
@@ -34,12 +36,8 @@ jobs:
             }
       - name: Create PR to main
         if: steps.check_pr.outputs.pr_exists == 'false'
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: main
-          head: ${{ github.event.pull_request.base.ref }}
-          title: 'build "${{ github.event.pull_request.head.ref }}" -> main'
-          commit-message: 'Merge ${{ github.event.pull_request.head.ref }} into main'
-          body: |
-            自動生成された PR です。`${{ github.event.pull_request.head.ref }}` ブランチの変更を `main` ブランチに反映します。
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create -B "main" -H "${{ steps.check_pr.outputs.ref }}" -t "build: ${{ steps.check_pr.outputs.ref}} -> main" -b "自動生成された PR です。${{ steps.check_pr.outputs.ref }} ブランチの変更を main ブランチに反映します。"
+            
