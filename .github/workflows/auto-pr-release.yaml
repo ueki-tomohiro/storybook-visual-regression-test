@@ -40,5 +40,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create -H main -B ${{ steps.check_pr.outputs.ref }} -t "build: "${{ steps.check_pr.outputs.ref}}" -> main" -b "自動生成された PR です。`${{ steps.check_pr.outputs.ref }}` ブランチの変更を `main` ブランチに反映します。"
+          gh pr create -H main -B ${{ steps.check_pr.outputs.ref }} -t "build: ${{ steps.check_pr.outputs.ref}} -> main" -b "自動生成された PR です。`${{ steps.check_pr.outputs.ref }}` ブランチの変更を `main` ブランチに反映します。"
             
