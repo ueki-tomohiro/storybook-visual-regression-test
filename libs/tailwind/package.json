@@ -1,6 +1,6 @@
 {
   "name": "@demo-libs/tailwind",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "private": true,
   "description": "Demo Tailwind",
   "license": "MIT",
