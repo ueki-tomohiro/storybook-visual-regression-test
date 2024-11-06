@@ -19,20 +19,25 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const head = context.payload.ref.replace('refs/heads/', '');
-            const { data: pullRequests } = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              base: 'main',
-              head: head,
-            });
-            if (pullRequests.length > 0) {
-              core.setOutput('pr_exists', 'true');
-              core.setOutput('head', head);
-              console.log('An existing PR from the same branch to main already exists.');
+            core.setOutput('head', head);
+            if (head != 'main'') {
+              const { data: pullRequests } = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                base: 'main',
+                head: head,
+              });
+              if (pullRequests.length > 0) {
+                core.setOutput('pr_exists', 'true');
+                console.log('An existing PR from the same branch to main already exists.');
+              } else {
+                core.setOutput('pr_exists', 'false');
+                console.log('No existing PR found.');
+              }
             } else {
               core.setOutput('pr_exists', 'false');
-              console.log('No existing PR found.');
+              console.log('merge from main');
             }
       - name: Create PR to main
         if: steps.check_pr.outputs.pr_exists == 'false'
