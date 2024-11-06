@@ -25,8 +25,7 @@ jobs:
               base: 'main',
               head: context.payload.repository.full_name + ':' + context.payload.ref,
             });
-            const refs =  context.payload.ref.split('/');
-            core.setOutput('ref', refs[refs.length - 1]);
+            core.setOutput('ref', context.payload.ref.replace('refs/heads/', ''));
             if (pullRequests.length > 0) {
               core.setOutput('pr_exists', 'true');
               console.log('An existing PR from the same branch to main already exists.');
@@ -40,4 +39,3 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create -B "main" -H "${{ steps.check_pr.outputs.ref }}" -t "build: ${{ steps.check_pr.outputs.ref}} -> main" -b "自動生成された PR です。${{ steps.check_pr.outputs.ref }} ブランチの変更を main ブランチに反映します。"
-            
