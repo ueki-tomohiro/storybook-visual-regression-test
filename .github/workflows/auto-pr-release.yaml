@@ -18,16 +18,17 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const head = context.payload.ref.replace('refs/heads/', '');
             const { data: pullRequests } = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
               base: 'main',
-              head: context.payload.repository.full_name + ':' + context.payload.ref,
+              head: head,
             });
-            core.setOutput('ref', context.payload.ref.replace('refs/heads/', ''));
             if (pullRequests.length > 0) {
               core.setOutput('pr_exists', 'true');
+              core.setOutput('head', head);
               console.log('An existing PR from the same branch to main already exists.');
             } else {
               core.setOutput('pr_exists', 'false');
@@ -38,4 +39,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create -B "main" -H "${{ steps.check_pr.outputs.ref }}" -t "build: ${{ steps.check_pr.outputs.ref}} -> main" -b "自動生成された PR です。${{ steps.check_pr.outputs.ref }} ブランチの変更を main ブランチに反映します。"
+          gh pr create -B "main" -H "${{ steps.check_pr.outputs.head }}" -t "build: ${{ steps.check_pr.outputs.head}} -> main" -b "自動生成された PR です。${{ steps.check_pr.outputs.head }} ブランチの変更を main ブランチに反映します。"
