@@ -69,3 +69,9 @@ $ yarn lint
 ```shell script
 $ yarn format
 ```
+
+## Bump
+
+```shell script
+$ yarn new-version
+```
