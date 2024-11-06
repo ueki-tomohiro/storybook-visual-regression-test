@@ -1,6 +1,6 @@
 {
   "name": "@demo-libs/dayjs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "description": "Demo dayjs",
   "license": "MIT",
