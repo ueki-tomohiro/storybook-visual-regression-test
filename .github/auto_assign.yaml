@@ -1,0 +1,11 @@
+reviewers:
+  - ueki-tomohiro
+  - tomohiro-ueki-mgdx
+
+addReviewers: true
+addAssignees: author
+numberOfReviewers: 1
+useReviewGroups: true
+useAssigneeGroups: false
+skipKeywords:
+  - wip

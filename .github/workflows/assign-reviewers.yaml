@@ -1,0 +1,32 @@
+name: Assign Reviewers
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - ready_for_review
+
+jobs:
+  assign_reviewers:
+    runs-on: ubuntu-latest
+    if: ((github.event.action == 'labeled') && (github.event.label.name == 'Ready for Human Review'))
+    steps:
+      - name: Assign Reviewers
+        uses: kentaro-m/auto-assign-action@v2.0.0
+        with:
+          configuration-path: ".github/auto_assign.yaml"
+
+  assign_reviewers_for_review:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'ready_for_review'
+    steps:
+      - name: labeled Ready for Human Review
+        if: ${{ toJSON(github.event.pull_request.assignees) == '[]' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr edit ${{ github.event.pull_request.number }} --add-label "Ready for Human Review"
+      - name: Assign Reviewers
+        if: ${{ toJSON(github.event.pull_request.assignees) == '[]' }}
+        uses: kentaro-m/auto-assign-action@v2.0.0
+        with:
+          configuration-path: ".github/auto_assign.yaml"
