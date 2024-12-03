@@ -4,8 +4,8 @@ reviewers:
 
 addReviewers: true
 addAssignees: author
-numberOfReviewers: 1
-useReviewGroups: true
+numberOfReviewers: 0
+useReviewGroups: false
 useAssigneeGroups: false
 skipKeywords:
   - wip
