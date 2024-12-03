@@ -13,6 +13,8 @@ jobs:
   setup:
     name: Set up
     runs-on: ubuntu-latest
+    if: |
+      ${{ !startsWith(github.event.pull_request.title, 'build:') && !startsWith(github.event.pull_request.title, 'bump') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -87,3 +89,19 @@ jobs:
           yarn vitest run --changed origin/${GITHUB_BASE_REF} --coverage --reporter=junit --coverage.reporter=json-summary --outputFile=./coverage/coverage-summary.json
       - name: Report coverage
         uses: davelosert/vitest-coverage-report-action@v2
+
+  skip-visual-regression-test:
+    name: skip test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == false && ${{ toJSON(github.event.pull_request.assignees) == '[]' }} && ( ${{ startsWith(github.event.pull_request.title, 'build:') || startsWith(github.event.pull_request.title, 'bump') }} )
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v4
+      - name: labeled Ready for Human Review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr edit ${{ github.event.pull_request.number }} --add-label "Ready for Human Review"
+      - name: Assign Reviewers
+        uses: kentaro-m/auto-assign-action@v2.0.0
+        with:
+          configuration-path: ".github/auto_assign.yaml"
