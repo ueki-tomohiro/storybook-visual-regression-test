@@ -62,11 +62,11 @@
     "@types/react": "^18"
   },
   "engines": {
-    "node": "^20",
+    "node": "^23",
     "yarn": ">=1"
   },
   "volta": {
-    "node": "20.0.0",
+    "node": "23.0.0",
     "yarn": "1.22.19"
   }
 }
