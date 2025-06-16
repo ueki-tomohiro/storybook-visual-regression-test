@@ -46,5 +46,4 @@ jobs:
           #   API_URL: https://api.example.com
           # Optional: limit the number of conversation turns
           # max_turns: "5
-          allowed_tools: "Bash(yarn install),Bash(yarn add),Bash(yarn *),Bash(yarn audit),Bash(yarn outdated),Bash(yarn typecheck)"
-          custom_instructions: "依存関係の互換性確認、テスト、lintの実行が可能です。利用可能なコマンド: yarn * test (パッケージ別テスト実行), yarn test (テスト実行), yarn lint (lint実行), yarn lintfix (lint自動修正), yarn format (フォーマット), yarn formatcheck (フォーマットチェック), yarn typecheck (型チェック), yarn audit (脆弱性チェック), yarn outdated (古い依存関係チェック), yarn typecheck (依存関係の整合性チェック)。変更後は必ずテストとリントを実行してください。"
+          allowed_tools: "Bash(yarn:*)"
