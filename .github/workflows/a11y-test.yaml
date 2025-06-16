@@ -7,7 +7,7 @@ on:
         required: true
         type: string
     outputs:
-      a11y_result: 
+      a11y_result:
         description: "Test Result"
         value: ${{ jobs.a11y_test.outputs.a11y_result }}
 

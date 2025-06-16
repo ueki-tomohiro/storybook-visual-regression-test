@@ -35,7 +35,7 @@ jobs:
       - uses: ./.github/actions/setup-node
       - name: bump up version
         run: |
-          yarn new-version ${{ github.event.inputs.bump }} --yes --no-push --no-git-tag-version 
+          yarn new-version ${{ github.event.inputs.bump }} --yes --no-push --no-git-tag-version
       - name: set env
         run: |
           echo "BUMP_VERSION=$(node scripts/lerna-version.js)" >> $GITHUB_ENV
