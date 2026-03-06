@@ -15,11 +15,13 @@
     "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:4001 'pnpm exec playwright test --update-snapshots --pass-with-no-tests'"
   },
   "devDependencies": {
+    "@demo-libs/vitest": "workspace:*",
     "http-server": "^14.1.1",
     "reg-notify-github-plugin": "^0.12.1",
     "reg-simple-keygen-plugin": "0.12.1",
     "reg-suit": "0.12.1",
-    "start-server-and-test": "^2.0.0"
+    "start-server-and-test": "^2.0.0",
+    "vitest": "^2.0.5"
   },
   "engines": {
     "node": "^22",
