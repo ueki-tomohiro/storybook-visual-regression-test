@@ -6,7 +6,7 @@ exports[`views/HomeView > views/HomeView > "Default" story > renders without cra
     class="mx-auto max-w-3xl text-white bg-primary rounded px-4 py-2"
     href="/register"
   >
-    登録
+    新規登録
   </a>
   <div
     class="mt-4"

@@ -6,6 +6,6 @@ export default defineConfig({
   test: {
     ...baseConfig.test,
     include: ["packages/**/*.{test,spec}.?(c|m)[jt]s?(x)"],
-    exclude: ["**/snapshot/*"],
+    exclude: ["**/node_modules/**", "**/snapshot/*"],
   },
 });

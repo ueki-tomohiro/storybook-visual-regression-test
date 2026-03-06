@@ -16,7 +16,7 @@ export const HomeView = ({ isLoading, todos }: HomeViewProps) => {
   return (
     <>
       <LinkButton href="/register" variant="primary">
-        登録
+        新規登録
       </LinkButton>
       <div className="mt-4">
         {todos?.map((todo) => (
