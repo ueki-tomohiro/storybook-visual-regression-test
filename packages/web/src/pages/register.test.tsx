@@ -1,8 +1,8 @@
-import { getRegisterTodoMock } from "@demo/api/lib/demo/todo/todo.msw";
+import { getRegisterTodoResponseMock } from "@demo/api/lib/demo/todo/todo.msw";
 import { createQueryWrapper } from "@demo-libs/vitest/helpers";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
 import React from "react";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test, vi } from "vitest";
 
@@ -25,10 +25,10 @@ describe("Register Todo", () => {
   beforeAll(() => server.listen());
   beforeEach(() => {
     server.use(
-      rest.post("*/todo", async (req, res, ctx) => {
-        const post = await req.json();
+      http.post("*/todo", async ({ request }) => {
+        const post = (await request.json()) as { description?: string };
         mockFn(post.description);
-        return res(ctx.json(getRegisterTodoMock()));
+        return HttpResponse.json(getRegisterTodoResponseMock(), { status: 201 });
       })
     );
   });

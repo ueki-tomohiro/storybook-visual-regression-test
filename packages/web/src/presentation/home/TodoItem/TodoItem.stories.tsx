@@ -1,4 +1,4 @@
-import { getGetTodoMock } from "@demo/api/lib/demo/todo/todo.msw";
+import { getGetTodoResponseMock } from "@demo/api/lib/demo/todo/todo.msw";
 
 import { TodoItem, TodoItemProps } from "./TodoItem";
 
@@ -15,6 +15,6 @@ export const Default = { args: defaultArgs };
 
 export const Fake = {
   args: {
-    todo: getGetTodoMock(),
+    todo: getGetTodoResponseMock(),
   },
 };

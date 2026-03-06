@@ -1,4 +1,4 @@
-import { getGetTodosMock } from "@demo/api/lib/demo/todo/todo.msw";
+import { getGetTodosResponseMock } from "@demo/api/lib/demo/todo/todo.msw";
 
 import { HomeView, HomeViewProps } from "./HomeView";
 
@@ -38,6 +38,6 @@ export const Loading = { args: { isLoading: true } };
 export const Fake = {
   args: {
     ...defaultArgs,
-    todos: getGetTodosMock(),
+    todos: getGetTodosResponseMock(),
   },
 };
