@@ -4,6 +4,7 @@ const VRT_PACKAGES = ["ui", "web"];
 
 // changed file prefix -> affected packages
 const PACKAGE_DEPS = {
+  "packages/api": ["web"],
   "packages/ui": ["ui", "web"],
   "packages/web": ["web"],
 };

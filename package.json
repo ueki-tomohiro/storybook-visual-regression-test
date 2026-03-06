@@ -48,7 +48,6 @@
     "prettier": "2.8.7",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "reg-notify-github-plugin": "^0.12.1",
-    "reg-publish-s3-plugin": "^0.12.1",
     "reg-suit": "0.12.1",
     "rimraf": "^5.0.0",
     "rome": "^12.0.0",

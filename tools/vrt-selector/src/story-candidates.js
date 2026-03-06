@@ -42,7 +42,13 @@ function getAffectedPackages(changedFiles) {
   for (const rawFile of changedFiles) {
     const file = normalizePath(rawFile);
 
-    if (file === "package.json" || file === "yarn.lock" || file.startsWith("libs/")) {
+    if (
+      file === "package.json" ||
+      file === "yarn.lock" ||
+      file.startsWith("libs/") ||
+      file.startsWith("tools/vrt-selector/") ||
+      file.match(/^packages\/(ui|web)\/regconfig\.json$/)
+    ) {
       VRT_PACKAGES.forEach((pkg) => affectedPackages.add(pkg));
       continue;
     }
@@ -93,12 +99,16 @@ function buildReverseGraph(allFiles, readFile = (filePath) => fs.readFileSync(fi
         if (!importPath.startsWith(".")) continue;
 
         const stem = getStem(importPath);
-        if (!stem || stem === "index") continue;
+        if (!stem) continue;
 
-        if (!reverseGraph.has(stem)) {
-          reverseGraph.set(stem, new Set());
+        // index はディレクトリ名をキーとして扱う
+        const key = stem === "index" ? path.basename(path.dirname(importPath)) : stem;
+        if (!key || key === "." || key === "..") continue;
+
+        if (!reverseGraph.has(key)) {
+          reverseGraph.set(key, new Set());
         }
-        reverseGraph.get(stem).add(file);
+        reverseGraph.get(key).add(file);
       }
     } catch {
       // skip unreadable files
@@ -116,9 +126,13 @@ function findAffectedFiles(changedFiles, reverseGraph) {
   while (queueIndex < queue.length) {
     const current = queue[queueIndex++];
     const stem = getStem(current);
-    if (!stem || stem === "index" || stem === "styles" || stem === "common") continue;
+    if (!stem || stem === "styles" || stem === "common") continue;
 
-    const dependents = reverseGraph.get(stem) ?? new Set();
+    // index ファイルはディレクトリ名をキーとして逆グラフを検索
+    const key = stem === "index" ? path.basename(path.dirname(current)) : stem;
+    if (!key || key === "." || key === "..") continue;
+
+    const dependents = reverseGraph.get(key) ?? new Set();
     for (const dependent of dependents) {
       const normalizedDependent = normalizePath(dependent);
       if (affected.has(normalizedDependent)) continue;

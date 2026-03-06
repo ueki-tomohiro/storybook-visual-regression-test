@@ -8,13 +8,14 @@ on:
       - .github/workflows/visual-regression-test.yaml
       - libs/**
       - package.json
+      - packages/api/**
       - packages/ui/**
       - packages/web/**
       - tools/vrt-selector/**
       - yarn.lock
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: visual-regression-test-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -39,9 +40,9 @@ jobs:
       - name: Collect changed files
         id: collect
         run: |
-          CHANGED_FILES=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}" | grep -E '(^package\.json$|^yarn\.lock$|\.(ts|tsx|css)$)' || true)
+          CHANGED_FILES=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}" | grep -E '(^package\.json$|^yarn\.lock$|^packages/(ui|web)/regconfig\.json$|\.(ts|tsx|css)$)' || true)
           if [ -z "$CHANGED_FILES" ]; then
-            echo "No ts/tsx/css/package.json/yarn.lock changes."
+            echo "No ts/tsx/css/package.json/yarn.lock/regconfig.json changes."
             echo "has-changes=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -50,6 +51,9 @@ jobs:
           echo "changed-files<<${DELIMITER}" >> "$GITHUB_OUTPUT"
           echo "$CHANGED_FILES" >> "$GITHUB_OUTPUT"
           echo "${DELIMITER}" >> "$GITHUB_OUTPUT"
+
+      - name: Test vrt-selector
+        run: node --test tools/vrt-selector/src/story-candidates.test.js
 
       - name: Select stories with script
         id: select
@@ -248,7 +252,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: screenshots-${{ matrix.service }}-pr
-          path: artifacts/${{ matrix.service }}/
+          path: artifacts/
           retention-days: 1
 
   screenshot-base:
@@ -301,7 +305,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: screenshots-${{ matrix.service }}-base
-          path: artifacts/${{ matrix.service }}/
+          path: artifacts/
           retention-days: 1
 
   visual-regression-test:
