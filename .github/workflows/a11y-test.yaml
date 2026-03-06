@@ -19,7 +19,7 @@ jobs:
       a11y_result: ${{ steps.a11y_result.outputs.report }}
     steps:
       - name: set up base repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ inputs.REF_BRANCH }}
       - name: Set up
