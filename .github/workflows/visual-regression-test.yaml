@@ -25,7 +25,8 @@ jobs:
     outputs:
       packages: ${{ steps.select.outputs.packages || steps.empty.outputs.packages }}
       services-json: ${{ steps.select.outputs.services-json || steps.empty.outputs.services-json }}
-      story-files: ${{ steps.select.outputs.story-files || steps.empty.outputs.story-files }}
+      story-files-pr: ${{ steps.select.outputs.story-files-pr || steps.empty.outputs.story-files-pr }}
+      story-files-base: ${{ steps.select.outputs.story-files-base || steps.empty.outputs.story-files-base }}
       reason: ${{ steps.select.outputs.reason || steps.empty.outputs.reason }}
     steps:
       - name: set up repository
@@ -80,9 +81,15 @@ jobs:
             SERVICES_JSON=$(echo "$NORMALIZED_PACKAGES" | tr ',' '\n' | jq -R . | jq -cs .)
           fi
 
+          # base ブランチに存在するファイルのみに絞り込む
+          STORY_FILES_BASE=$(echo "$STORY_FILES" | tr ',' '\n' | while read -r f; do
+            git cat-file -e "${{ github.event.pull_request.base.sha }}:$f" 2>/dev/null && echo "$f"
+          done | paste -sd, - || true)
+
           echo "packages=$NORMALIZED_PACKAGES" >> "$GITHUB_OUTPUT"
           echo "services-json=$SERVICES_JSON" >> "$GITHUB_OUTPUT"
-          echo "story-files=$STORY_FILES" >> "$GITHUB_OUTPUT"
+          echo "story-files-pr=$STORY_FILES" >> "$GITHUB_OUTPUT"
+          echo "story-files-base=$STORY_FILES_BASE" >> "$GITHUB_OUTPUT"
           echo "reason=$REASON" >> "$GITHUB_OUTPUT"
 
       - name: Set empty outputs
@@ -91,7 +98,8 @@ jobs:
         run: |
           echo "packages=" >> "$GITHUB_OUTPUT"
           echo "services-json=[]" >> "$GITHUB_OUTPUT"
-          echo "story-files=" >> "$GITHUB_OUTPUT"
+          echo "story-files-pr=" >> "$GITHUB_OUTPUT"
+          echo "story-files-base=" >> "$GITHUB_OUTPUT"
           echo "reason=no-changes" >> "$GITHUB_OUTPUT"
 
   storybook-build-pr:
@@ -121,7 +129,7 @@ jobs:
         id: files
         env:
           SERVICE: ${{ matrix.service }}
-          STORY_FILES: ${{ needs.story-selector.outputs.story-files }}
+          STORY_FILES: ${{ needs.story-selector.outputs.story-files-pr }}
         run: |
           SERVICE_FILES=$(echo "$STORY_FILES" | tr ',' '\n' | grep -E "^packages/${SERVICE}/.+\.stories\.tsx$" | paste -sd, - || true)
           if [ -z "$SERVICE_FILES" ]; then
@@ -175,16 +183,18 @@ jobs:
         id: files
         env:
           SERVICE: ${{ matrix.service }}
-          STORY_FILES: ${{ needs.story-selector.outputs.story-files }}
+          STORY_FILES: ${{ needs.story-selector.outputs.story-files-base }}
         run: |
           SERVICE_FILES=$(echo "$STORY_FILES" | tr ',' '\n' | grep -E "^packages/${SERVICE}/.+\.stories\.tsx$" | paste -sd, - || true)
           if [ -z "$SERVICE_FILES" ]; then
-            echo "No stories selected for $SERVICE." >&2
-            exit 1
+            echo "No stories exist for $SERVICE in base branch, skipping." >&2
+            echo "story-files=" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
           echo "story-files=$SERVICE_FILES" >> "$GITHUB_OUTPUT"
 
       - name: Build storybook (base branch)
+        if: steps.files.outputs.story-files != ''
         env:
           SERVICE: ${{ matrix.service }}
           STORYBOOK_ONLY_STORY_FILES: ${{ steps.files.outputs.story-files }}
@@ -196,6 +206,7 @@ jobs:
           fi
 
       - name: Upload storybook artifact (base)
+        if: steps.files.outputs.story-files != ''
         uses: actions/upload-artifact@v4
         with:
           name: storybook-${{ matrix.service }}-base
