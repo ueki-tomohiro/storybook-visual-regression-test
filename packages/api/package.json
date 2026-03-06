@@ -21,7 +21,7 @@
     "msw": "^1.2.1",
     "promise-retry": "^2.0.1",
     "ts-custom-error": "^3.3.1",
-    "typescript": "*"
+    "typescript": "5.9.3"
   },
   "engines": {
     "node": "^22",
