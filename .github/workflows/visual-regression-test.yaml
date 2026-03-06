@@ -166,13 +166,19 @@ jobs:
       matrix:
         service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
     steps:
-      - name: set up repository
+      - name: set up repository (head SHA for setup-node)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up node_modules
         uses: ./.github/actions/setup-node
+
+      - name: Checkout base branch source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          clean: false
 
       - name: Japanese Font Install
         run: sudo apt install fonts-noto-cjk
@@ -276,13 +282,19 @@ jobs:
       matrix:
         service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
     steps:
-      - name: set up repository
+      - name: set up repository (head SHA for setup-node)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up node_modules
         uses: ./.github/actions/setup-node
+
+      - name: Checkout base branch source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          clean: false
 
       - name: Japanese Font Install
         run: sudo apt install fonts-noto-cjk
