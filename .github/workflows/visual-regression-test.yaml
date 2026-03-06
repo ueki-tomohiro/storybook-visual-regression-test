@@ -388,7 +388,7 @@ jobs:
 
       - name: Set up reg-suit expected and actual directories
         run: |
-          mkdir -p __screenshots__ __expected__
+          mkdir -p __screenshots__ .reg/expected
           if [ -d artifacts-pr/ui/__snapshots__ ]; then
             cp -R artifacts-pr/ui/__snapshots__ __screenshots__/ui
           fi
@@ -396,10 +396,10 @@ jobs:
             cp -R artifacts-pr/web/__snapshots__ __screenshots__/web
           fi
           if [ -d artifacts-base/ui/__snapshots__ ]; then
-            cp -R artifacts-base/ui/__snapshots__ __expected__/ui
+            cp -R artifacts-base/ui/__snapshots__ .reg/expected/ui
           fi
           if [ -d artifacts-base/web/__snapshots__ ]; then
-            cp -R artifacts-base/web/__snapshots__ __expected__/web
+            cp -R artifacts-base/web/__snapshots__ .reg/expected/web
           fi
 
       - name: run reg-suit
