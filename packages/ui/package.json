@@ -23,11 +23,7 @@
     "start-server-and-test": "^2.0.0"
   },
   "engines": {
-    "node": "^20",
+    "node": "^22",
     "yarn": ">=1"
-  },
-  "volta": {
-    "node": "20.0.0",
-    "yarn": "1.22.19"
   }
 }

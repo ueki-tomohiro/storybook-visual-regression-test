@@ -9,11 +9,7 @@
     "tailwindcss": "3.3.1"
   },
   "engines": {
-    "node": "^20",
+    "node": "^22",
     "yarn": ">=1"
-  },
-  "volta": {
-    "node": "20.0.0",
-    "yarn": "1.22.19"
   }
 }

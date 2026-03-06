@@ -21,14 +21,10 @@
     "msw": "^1.2.1",
     "promise-retry": "^2.0.1",
     "ts-custom-error": "^3.3.1",
-    "typescript": "*"
+    "typescript": "5.9.3"
   },
   "engines": {
-    "node": "^20",
+    "node": "^22",
     "yarn": ">=1"
-  },
-  "volta": {
-    "node": "20.0.0",
-    "yarn": "1.22.19"
   }
 }
