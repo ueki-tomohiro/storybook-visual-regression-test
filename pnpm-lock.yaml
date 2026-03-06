@@ -205,13 +205,10 @@ importers:
   libs/types: {}
 
   libs/vitest:
-    dependencies:
+    devDependencies:
       '@juggle/resize-observer':
         specifier: ^3.4.0
         version: 3.4.0
-      '@testing-library/jest-dom':
-        specifier: ^6.0.0
-        version: 6.5.0
       '@testing-library/react':
         specifier: ^16.0.1
         version: 16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@18.0.11)(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -233,12 +230,6 @@ importers:
       jsdom:
         specifier: ^25.0.0
         version: 25.0.1(canvas@2.11.2(encoding@0.1.13))
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.3.1(react@18.3.1)
       vite-tsconfig-paths:
         specifier: ^5.0.1
         version: 5.1.4(typescript@5.9.3)(vite@5.4.21(@types/node@18.19.130)(less@4.5.1)(terser@5.46.0))
@@ -275,9 +266,6 @@ importers:
 
   packages/ui:
     devDependencies:
-      '@demo-libs/vitest':
-        specifier: workspace:*
-        version: link:../../libs/vitest
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
@@ -293,9 +281,6 @@ importers:
       start-server-and-test:
         specifier: ^2.0.0
         version: 2.1.5
-      vitest:
-        specifier: ^2.0.5
-        version: 2.1.9(@types/node@18.19.130)(jsdom@25.0.1(canvas@2.11.2(encoding@0.1.13)))(less@4.5.1)(terser@5.46.0)
 
   packages/web:
     dependencies:
@@ -339,9 +324,6 @@ importers:
         specifier: ^1.1.1
         version: 1.7.1
     devDependencies:
-      '@demo-libs/vitest':
-        specifier: workspace:*
-        version: link:../../libs/vitest
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
@@ -357,9 +339,6 @@ importers:
       start-server-and-test:
         specifier: ^2.0.0
         version: 2.1.5
-      vitest:
-        specifier: ^2.0.5
-        version: 2.1.9(@types/node@18.19.130)(jsdom@25.0.1(canvas@2.11.2(encoding@0.1.13)))(less@4.5.1)(terser@5.46.0)
 
   tools/api-client-generator:
     dependencies:

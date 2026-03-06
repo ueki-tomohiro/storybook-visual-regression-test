@@ -40,12 +40,10 @@
     "pnpm": ">=10"
   },
   "devDependencies": {
-    "@demo-libs/vitest": "workspace:*",
     "http-server": "^14.1.1",
     "reg-notify-github-plugin": "^0.12.1",
     "reg-simple-keygen-plugin": "0.12.1",
     "reg-suit": "0.12.1",
-    "start-server-and-test": "^2.0.0",
-    "vitest": "^2.0.5"
+    "start-server-and-test": "^2.0.0"
   }
 }
