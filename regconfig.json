@@ -13,6 +13,7 @@
       "expectedKey": "expected",
       "actualKey": "actual"
     },
+    "reg-local-publisher-plugin": {},
     "reg-notify-github-plugin": {
       "clientId": "${REG_NOTICE_CLIENT_ID}",
       "prComment": true,

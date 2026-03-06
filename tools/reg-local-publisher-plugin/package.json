@@ -1,0 +1,8 @@
+{
+  "name": "reg-local-publisher-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A reg-suit publisher plugin that uses pre-placed local files instead of remote storage",
+  "main": "src/index.js",
+  "license": "MIT"
+}
