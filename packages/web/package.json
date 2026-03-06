@@ -36,11 +36,11 @@
     "yup": "^1.1.1"
   },
   "engines": {
-    "node": "^20",
+    "node": "^22",
     "yarn": ">=1"
   },
   "volta": {
-    "node": "20.0.0",
+    "node": "22.0.0",
     "yarn": "1.22.19"
   },
   "devDependencies": {
