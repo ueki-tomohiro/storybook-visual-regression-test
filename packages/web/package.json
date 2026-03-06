@@ -39,10 +39,6 @@
     "node": "^22",
     "yarn": ">=1"
   },
-  "volta": {
-    "node": "22.0.0",
-    "yarn": "1.22.19"
-  },
   "devDependencies": {
     "http-server": "^14.1.1",
     "reg-notify-github-plugin": "^0.12.1",
