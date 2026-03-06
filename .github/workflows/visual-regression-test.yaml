@@ -367,7 +367,7 @@ jobs:
       - name: set up repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up node_modules
         uses: ./.github/actions/setup-node

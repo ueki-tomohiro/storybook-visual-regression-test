@@ -1,7 +1,7 @@
 {
   "core": {
     "actualDir": "./__screenshots__",
-    "expectedDir": "./__expected__",
+    "expectedDir": "./.reg/expected",
     "thresholdRate": 0,
     "addIgnore": false,
     "ximgdiff": {

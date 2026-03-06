@@ -1,5 +1,7 @@
 "use strict";
 
+const fs = require("node:fs");
+
 /**
  * reg-local-publisher-plugin
  *
@@ -31,7 +33,13 @@ class LocalPublisherPlugin {
    * so nothing to do.
    */
   fetch(_key) {
-    this._logger.info(`[reg-local-publisher-plugin] Using pre-placed files in ${this._workingDirs.expectedDir}`);
+    const { expectedDir } = this._workingDirs;
+    if (!fs.existsSync(expectedDir)) {
+      return Promise.reject(
+        new Error(`[reg-local-publisher-plugin] expectedDir was not found: ${expectedDir}`),
+      );
+    }
+    this._logger.info(`[reg-local-publisher-plugin] Using pre-placed files in ${expectedDir}`);
     return Promise.resolve();
   }
 
