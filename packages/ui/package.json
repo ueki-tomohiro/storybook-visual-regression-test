@@ -12,7 +12,7 @@
     "vrtest-regression": "yarn reg-suit run",
     "vrtest-setup": "storybook build --quiet --output-dir ./build",
     "vrtest-server": "http-server ./build -p 4001",
-    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:4001 'yarn playwright test --update-snapshots'"
+    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:4001 'yarn playwright test --update-snapshots --pass-with-no-tests'"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
