@@ -1,6 +1,7 @@
 .cache
 __generated__
 build
+**/build/**
 coverage
 node_modules
 public
