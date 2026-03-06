@@ -11,6 +11,7 @@
   "scripts": {
     "api": "pnpm --filter @demo/api",
     "format": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --write",
+    "prepare": "lefthook install",
     "formatcheck": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --check",
     "generate-api": "pnpm api generate",
     "lint": "pnpm lint-es && pnpm lint-css",
