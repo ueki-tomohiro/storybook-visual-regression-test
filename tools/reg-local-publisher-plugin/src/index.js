@@ -22,6 +22,8 @@ class LocalPublisherPlugin {
     this._logger = config.logger;
     this._workingDirs = config.workingDirs;
     this._noEmit = config.noEmit;
+    // reportUrl can be set via plugin option or REPORT_URL env var
+    this._reportUrl = (config.options && config.options.reportUrl) || process.env.REPORT_URL || "";
   }
 
   /**
@@ -34,11 +36,16 @@ class LocalPublisherPlugin {
   }
 
   /**
-   * publish: no remote storage to push to, skip.
+   * publish: no remote storage to push to.
+   * Returns the GitHub Pages report URL so reg-notify-github-plugin
+   * can include it in the PR comment and commit status.
    */
   publish(_key) {
     this._logger.info("[reg-local-publisher-plugin] Skipped publishing (local-only mode)");
-    return Promise.resolve({ reportUrl: "" });
+    if (this._reportUrl) {
+      this._logger.info(`[reg-local-publisher-plugin] Report URL: ${this._reportUrl}`);
+    }
+    return Promise.resolve({ reportUrl: this._reportUrl });
   }
 }
 
