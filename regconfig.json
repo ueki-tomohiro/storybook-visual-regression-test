@@ -9,6 +9,10 @@
     }
   },
   "plugins": {
+    "reg-simple-keygen-plugin": {
+      "expectedKey": "expected",
+      "actualKey": "actual"
+    },
     "reg-notify-github-plugin": {
       "clientId": "${REG_NOTICE_CLIENT_ID}",
       "prComment": true,
