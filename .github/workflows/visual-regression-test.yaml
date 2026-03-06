@@ -308,6 +308,9 @@ jobs:
     name: visual regression test
     needs: [story-selector, screenshot-pr, screenshot-base]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     if: |
       always()
       && needs.story-selector.outputs.packages != ''
@@ -356,6 +359,12 @@ jobs:
         run: yarn vrtest-regression
         env:
           REG_NOTICE_CLIENT_ID: ${{ secrets.REG_NOTICE_CLIENT_ID }}
-          REG_S3_BUCKET_NAME: ${{ secrets.REG_S3_BUCKET_NAME }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/
+
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.reg
+          destination_dir: pr-${{ github.event.pull_request.number }}
+          keep_files: true
