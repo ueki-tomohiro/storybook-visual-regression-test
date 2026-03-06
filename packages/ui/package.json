@@ -9,10 +9,10 @@
     "test": "vitest components --update --run",
     "test-ci": "vitest components --run",
     "typecheck": "tsc",
-    "vrtest-regression": "yarn reg-suit run",
+    "vrtest-regression": "pnpm exec reg-suit run",
     "vrtest-setup": "storybook build --quiet --output-dir ./build",
     "vrtest-server": "http-server ./build -p 4001",
-    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:4001 'yarn playwright test --update-snapshots --pass-with-no-tests'"
+    "vrtest-snapshot": "start-server-and-test vrtest-server http://127.0.0.1:4001 'pnpm exec playwright test --update-snapshots --pass-with-no-tests'"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
@@ -23,6 +23,6 @@
   },
   "engines": {
     "node": "^22",
-    "yarn": ">=1"
+    "pnpm": ">=10"
   }
 }

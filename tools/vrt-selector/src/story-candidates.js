@@ -44,7 +44,7 @@ function getAffectedPackages(changedFiles) {
 
     if (
       file === "package.json" ||
-      file === "yarn.lock" ||
+      file === "pnpm-lock.yaml" ||
       file.startsWith("libs/") ||
       file.startsWith("tools/vrt-selector/") ||
       file.match(/^packages\/(ui|web)\/regconfig\.json$/)
@@ -68,7 +68,7 @@ function getFullScopePackages(changedFiles) {
 
   for (const rawFile of changedFiles) {
     const file = normalizePath(rawFile);
-    if (file === "package.json" || file === "yarn.lock" || file.startsWith("libs/")) {
+    if (file === "package.json" || file === "pnpm-lock.yaml" || file.startsWith("libs/")) {
       VRT_PACKAGES.forEach((pkg) => fullScopePackages.add(pkg));
       continue;
     }

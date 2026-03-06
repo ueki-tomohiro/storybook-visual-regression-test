@@ -46,4 +46,4 @@ jobs:
           #   API_URL: https://api.example.com
           # Optional: limit the number of conversation turns
           # max_turns: "5
-          allowed_tools: "Bash(yarn:*)"
+          allowed_tools: "Bash(pnpm:*)"

@@ -29,7 +29,7 @@ test("getAffectedPackages: lock/package変更はuiとweb", () => {
   const packageJsonResult = getAffectedPackages(["package.json"]);
   assert.deepEqual(packageJsonResult.sort(), ["ui", "web"]);
 
-  const lockResult = getAffectedPackages(["yarn.lock"]);
+  const lockResult = getAffectedPackages(["pnpm-lock.yaml"]);
   assert.deepEqual(lockResult.sort(), ["ui", "web"]);
 });
 

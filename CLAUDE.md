@@ -17,34 +17,34 @@
 
 ### コア開発
 
-- `yarn web start` - Next.js Web アプリケーションを開始
-- `yarn web build` - Web アプリケーションをビルド
-- `yarn start-storybook` - Storybook を開始（複数ポートで実行：Web は 3001、UI は 4001）
-- `yarn test` - 全パッケージでテストを実行
-- `yarn test-ci` - CI 用テストを実行（ウォッチモードなし）
+- `pnpm web start` - Next.js Web アプリケーションを開始
+- `pnpm web build` - Web アプリケーションをビルド
+- `pnpm start-storybook` - Storybook を開始（複数ポートで実行：Web は 3001、UI は 4001）
+- `pnpm test` - 全パッケージでテストを実行
+- `pnpm test-ci` - CI 用テストを実行（ウォッチモードなし）
 
 ### コード品質
 
-- `yarn lint` - ESLint と Stylelint を実行
-- `yarn lintfix` - リンティングの問題を自動修正
-- `yarn format` - Prettier でコードをフォーマット
-- `yarn formatcheck` - コードのフォーマットをチェック
-- `yarn typecheck` - 全パッケージで TypeScript 型チェックを実行
+- `pnpm lint` - ESLint と Stylelint を実行
+- `pnpm lintfix` - リンティングの問題を自動修正
+- `pnpm format` - Prettier でコードをフォーマット
+- `pnpm formatcheck` - コードのフォーマットをチェック
+- `pnpm typecheck` - 全パッケージで TypeScript 型チェックを実行
 
 ### ビジュアル回帰テスト
 
-- `yarn web vrtest-snapshot` - ビジュアル回帰スナップショットを更新（web パッケージ）
-- `yarn web vrtest-regression` - reg-suit を使用してビジュアル回帰テストを実行
-- `yarn ui vrtest-snapshot` - ビジュアル回帰スナップショットを更新（ui パッケージ）
-- `yarn ui vrtest-regression` - UI コンポーネントのビジュアル回帰テストを実行
+- `pnpm web vrtest-snapshot` - ビジュアル回帰スナップショットを更新（web パッケージ）
+- `pnpm web vrtest-regression` - reg-suit を使用してビジュアル回帰テストを実行
+- `pnpm ui vrtest-snapshot` - ビジュアル回帰スナップショットを更新（ui パッケージ）
+- `pnpm ui vrtest-regression` - UI コンポーネントのビジュアル回帰テストを実行
 
 ### API 生成
 
-- `yarn generate-api` - Orval を使用して OpenAPI 仕様から API クライアントコードを生成
+- `pnpm generate-api` - Orval を使用して OpenAPI 仕様から API クライアントコードを生成
 
 ## アーキテクチャ概要
 
-これは Lerna と Yarn workspaces を使用するモノレポで、以下の構造を持ちます：
+これは Lerna と pnpm workspaces を使用するモノレポで、以下の構造を持ちます：
 
 ### コアパッケージ
 

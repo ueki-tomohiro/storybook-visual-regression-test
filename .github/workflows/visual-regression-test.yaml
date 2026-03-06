@@ -12,7 +12,7 @@ on:
       - packages/ui/**
       - packages/web/**
       - tools/vrt-selector/**
-      - yarn.lock
+      - pnpm-lock.yaml
 
 concurrency:
   group: visual-regression-test-${{ github.event.pull_request.number || github.ref }}
@@ -41,9 +41,9 @@ jobs:
       - name: Collect changed files
         id: collect
         run: |
-          CHANGED_FILES=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}" | grep -E '(^package\.json$|^yarn\.lock$|^packages/(ui|web)/regconfig\.json$|\.(ts|tsx|css)$)' || true)
+          CHANGED_FILES=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}" | grep -E '(^package\.json$|^pnpm-lock\.yaml$|^packages/(ui|web)/regconfig\.json$|\.(ts|tsx|css)$)' || true)
           if [ -z "$CHANGED_FILES" ]; then
-            echo "No ts/tsx/css/package.json/yarn.lock/regconfig.json changes."
+            echo "No ts/tsx/css/package.json/pnpm-lock.yaml/regconfig.json changes."
             echo "has-changes=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -123,7 +123,7 @@ jobs:
         run: sudo apt install fonts-noto-cjk
 
       - name: Set up playwright
-        run: yarn playwright install
+        run: pnpm exec playwright install
 
       - name: Select story files for service
         id: files
@@ -144,9 +144,9 @@ jobs:
           STORYBOOK_ONLY_STORY_FILES: ${{ steps.files.outputs.story-files }}
         run: |
           if [ "$SERVICE" = "ui" ]; then
-            yarn ui vrtest-setup
+            pnpm ui vrtest-setup
           else
-            yarn web vrtest-setup
+            pnpm web vrtest-setup
           fi
 
       - name: Upload storybook artifact (PR)
@@ -177,7 +177,7 @@ jobs:
         run: sudo apt install fonts-noto-cjk
 
       - name: Set up playwright
-        run: yarn playwright install
+        run: pnpm exec playwright install
 
       - name: Select story files for service
         id: files
@@ -200,9 +200,9 @@ jobs:
           STORYBOOK_ONLY_STORY_FILES: ${{ steps.files.outputs.story-files }}
         run: |
           if [ "$SERVICE" = "ui" ]; then
-            yarn ui vrtest-setup
+            pnpm ui vrtest-setup
           else
-            yarn web vrtest-setup
+            pnpm web vrtest-setup
           fi
 
       - name: Upload storybook artifact (base)
@@ -234,7 +234,7 @@ jobs:
         run: sudo apt install fonts-noto-cjk
 
       - name: Set up playwright
-        run: yarn playwright install
+        run: pnpm exec playwright install
 
       - name: Download storybook artifact (PR)
         uses: actions/download-artifact@v4
@@ -247,9 +247,9 @@ jobs:
           SERVICE: ${{ matrix.service }}
         run: |
           if [ "$SERVICE" = "ui" ]; then
-            yarn ui vrtest-snapshot
+            pnpm ui vrtest-snapshot
           else
-            yarn web vrtest-snapshot
+            pnpm web vrtest-snapshot
           fi
 
       - name: Prepare screenshots artifact (PR)
@@ -287,7 +287,7 @@ jobs:
         run: sudo apt install fonts-noto-cjk
 
       - name: Set up playwright
-        run: yarn playwright install
+        run: pnpm exec playwright install
 
       - name: Download storybook artifact (base)
         uses: actions/download-artifact@v4
@@ -300,9 +300,9 @@ jobs:
           SERVICE: ${{ matrix.service }}
         run: |
           if [ "$SERVICE" = "ui" ]; then
-            yarn ui vrtest-snapshot
+            pnpm ui vrtest-snapshot
           else
-            yarn web vrtest-snapshot
+            pnpm web vrtest-snapshot
           fi
 
       - name: Prepare screenshots artifact (base)
@@ -371,7 +371,12 @@ jobs:
           fi
 
       - name: run reg-suit
-        run: yarn vrtest-regression
+        run: |
+          if [ -z "$REG_NOTICE_CLIENT_ID" ]; then
+            echo "REG_NOTICE_CLIENT_ID is not set, skipping reg-suit."
+            exit 0
+          fi
+          pnpm vrtest-regression
         env:
           REG_NOTICE_CLIENT_ID: ${{ secrets.REG_NOTICE_CLIENT_ID }}
           REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/

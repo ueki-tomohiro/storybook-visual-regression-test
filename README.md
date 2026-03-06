@@ -37,35 +37,35 @@
 ## 起動
 
 ```shell script
-$ yarn web start
+$ pnpm web start
 ```
 
 ## ビルド
 
 ```shell script
-$ yarn web build
+$ pnpm web build
 ```
 
 ## Storybook
 
 ```shell script
-$ yarn start-storybook
+$ pnpm start-storybook
 ```
 
 ## Test
 
 ```shell script
-$ yarn test
+$ pnpm test
 ```
 
 ## Lint
 
 ```shell script
-$ yarn lint
+$ pnpm lint
 ```
 
 ## Format
 
 ```shell script
-$ yarn format
+$ pnpm format
 ```
