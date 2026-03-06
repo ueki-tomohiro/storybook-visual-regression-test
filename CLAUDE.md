@@ -73,7 +73,7 @@ web パッケージは`src/presentation/`でフィーチャーベースアーキ
 - ビジュアル回帰テストに reg-suit を使用
 - スナップショットは`snapshot/__snapshots__/`ディレクトリに保存
 - web と UI パッケージで個別の設定（`regconfig.json`）
-- 回帰テスト結果の保存に S3 との統合
+- レポートは GitHub Pages（`gh-pages` ブランチ）にホスティング（`pr-{番号}/` パスで公開）
 - ビジュアル差分コメント用の GitHub PR 統合
 
 ### API クライアント生成

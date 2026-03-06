@@ -76,6 +76,9 @@ function getFullScopePackages(changedFiles) {
       fullScopePackages.add("ui");
       fullScopePackages.add("web");
     }
+    if (file.startsWith("packages/api/")) {
+      fullScopePackages.add("web");
+    }
   }
 
   return fullScopePackages;
@@ -88,10 +91,13 @@ function buildReverseGraph(allFiles, readFile = (filePath) => fs.readFileSync(fi
     try {
       const content = readFile(file);
       const importPaths = new Set();
-      for (const match of content.matchAll(/from\s+['"]([^'"]+)['"]/g)) {
+      for (const match of content.matchAll(/(?:import|export)[^'"]*from\s+['"]([^'"]+)['"]/g)) {
         importPaths.add(match[1]);
       }
       for (const match of content.matchAll(/import\s+['"]([^'"]+)['"]/g)) {
+        importPaths.add(match[1]);
+      }
+      for (const match of content.matchAll(/export\s+\*\s+from\s+['"]([^'"]+)['"]/g)) {
         importPaths.add(match[1]);
       }
 
