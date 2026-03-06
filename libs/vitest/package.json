@@ -8,15 +8,16 @@
   "main": "index.js",
   "devDependencies": {
     "@juggle/resize-observer": "^3.4.0",
+    "@storybook/types": "8.6.17",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@vitejs/plugin-react": "^4.3.1",
-    "@vitejs/plugin-react-swc": "^3.7.0",
-    "@vitest/coverage-v8": "^2.0.5",
-    "canvas": "^2.11.2",
-    "jsdom": "^25.0.0",
-    "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "^2.0.5"
+    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react-swc": "^3.11.0",
+    "@vitest/coverage-v8": "^2.1.9",
+    "canvas": "^3.2.1",
+    "jsdom": "^25.0.1",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.9"
   },
   "engines": {
     "node": "^22",

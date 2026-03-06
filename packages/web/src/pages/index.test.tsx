@@ -1,7 +1,7 @@
-import { getGetTodosMock } from "@demo/api/lib/demo/todo/todo.msw";
+import { getGetTodosResponseMock } from "@demo/api/lib/demo/todo/todo.msw";
 import { createQueryWrapper } from "@demo-libs/vitest/helpers";
 import { render, waitFor } from "@testing-library/react";
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
 import React from "react";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test, vi } from "vitest";
 
@@ -15,9 +15,9 @@ describe("Home", () => {
   beforeAll(() => server.listen());
   beforeEach(() => {
     server.use(
-      rest.get("*/todos", async (req, res, ctx) => {
+      http.get("*/todos", () => {
         mockFn();
-        return res(ctx.json(getGetTodosMock()));
+        return HttpResponse.json(getGetTodosResponseMock());
       })
     );
   });

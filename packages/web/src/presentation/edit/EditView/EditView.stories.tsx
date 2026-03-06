@@ -1,4 +1,4 @@
-import { getGetTodoMock } from "@demo/api/lib/demo/todo/todo.msw";
+import { getGetTodoResponseMock } from "@demo/api/lib/demo/todo/todo.msw";
 import { action } from "@storybook/addon-actions";
 
 import { EditView, EditViewProps } from "./EditView";
@@ -26,6 +26,6 @@ export const Loading = { args: { ...defaultArgs, isLoading: true } };
 export const Fake = {
   args: {
     ...defaultArgs,
-    todo: getGetTodoMock(),
+    todo: getGetTodoResponseMock(),
   },
 };

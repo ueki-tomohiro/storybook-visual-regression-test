@@ -10,6 +10,7 @@ import type {
   QueryFunction,
   QueryKey,
   UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from "@tanstack/react-query";
@@ -23,17 +24,18 @@ type AwaitedInput<T> = PromiseLike<T> | T;
 
 type Awaited<O> = O extends AwaitedInput<infer T> ? T : never;
 
-// eslint-disable-next-line
-type SecondParameter<T extends (...args: any) => any> = T extends (config: any, args: infer P) => any ? P : never;
+type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 /**
  * get todos
  */
 export const getTodos = (options?: SecondParameter<typeof demoHttpClient>, signal?: AbortSignal) => {
-  return demoHttpClient<Todo[]>({ url: `/todos`, method: "get", signal }, options);
+  return demoHttpClient<Todo[]>({ url: `/todos`, method: "GET", signal }, options);
 };
 
-export const getGetTodosQueryKey = () => [`/todos`] as const;
+export const getGetTodosQueryKey = () => {
+  return [`/todos`] as const;
+};
 
 export const getGetTodosQueryOptions = <
   TData = Awaited<ReturnType<typeof getTodos>>,
@@ -41,23 +43,27 @@ export const getGetTodosQueryOptions = <
 >(options?: {
   query?: UseQueryOptions<Awaited<ReturnType<typeof getTodos>>, TError, TData>;
   request?: SecondParameter<typeof demoHttpClient>;
-}): UseQueryOptions<Awaited<ReturnType<typeof getTodos>>, TError, TData> & { queryKey: QueryKey } => {
+}) => {
   const { query: queryOptions, request: requestOptions } = options ?? {};
 
   const queryKey = queryOptions?.queryKey ?? getGetTodosQueryKey();
 
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getTodos>>> = ({ signal }) => getTodos(requestOptions, signal);
 
-  return { queryKey, queryFn, ...queryOptions };
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getTodos>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
 };
 
 export type GetTodosQueryResult = NonNullable<Awaited<ReturnType<typeof getTodos>>>;
 export type GetTodosQueryError = ErrorType<Error>;
 
-export const useGetTodos = <TData = Awaited<ReturnType<typeof getTodos>>, TError = ErrorType<Error>>(options?: {
+export function useGetTodos<TData = Awaited<ReturnType<typeof getTodos>>, TError = ErrorType<Error>>(options?: {
   query?: UseQueryOptions<Awaited<ReturnType<typeof getTodos>>, TError, TData>;
   request?: SecondParameter<typeof demoHttpClient>;
-}): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetTodosQueryOptions(options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
@@ -65,14 +71,18 @@ export const useGetTodos = <TData = Awaited<ReturnType<typeof getTodos>>, TError
   query.queryKey = queryOptions.queryKey;
 
   return query;
-};
+}
 
 /**
  * register todo
  */
-export const registerTodo = (todoRegisterble: TodoRegisterble, options?: SecondParameter<typeof demoHttpClient>) => {
+export const registerTodo = (
+  todoRegisterble: TodoRegisterble,
+  options?: SecondParameter<typeof demoHttpClient>,
+  signal?: AbortSignal
+) => {
   return demoHttpClient<Todo>(
-    { url: `/todo`, method: "post", headers: { "Content-Type": "application/json" }, data: todoRegisterble },
+    { url: `/todo`, method: "POST", headers: { "Content-Type": "application/json" }, data: todoRegisterble, signal },
     options
   );
 };
@@ -81,7 +91,12 @@ export const getRegisterTodoMutationOptions = <TError = ErrorType<Error>, TConte
   mutation?: UseMutationOptions<Awaited<ReturnType<typeof registerTodo>>, TError, { data: TodoRegisterble }, TContext>;
   request?: SecondParameter<typeof demoHttpClient>;
 }): UseMutationOptions<Awaited<ReturnType<typeof registerTodo>>, TError, { data: TodoRegisterble }, TContext> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {};
+  const mutationKey = ["registerTodo"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && "mutationKey" in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
   const mutationFn: MutationFunction<Awaited<ReturnType<typeof registerTodo>>, { data: TodoRegisterble }> = (props) => {
     const { data } = props ?? {};
@@ -99,7 +114,7 @@ export type RegisterTodoMutationError = ErrorType<Error>;
 export const useRegisterTodo = <TError = ErrorType<Error>, TContext = unknown>(options?: {
   mutation?: UseMutationOptions<Awaited<ReturnType<typeof registerTodo>>, TError, { data: TodoRegisterble }, TContext>;
   request?: SecondParameter<typeof demoHttpClient>;
-}) => {
+}): UseMutationResult<Awaited<ReturnType<typeof registerTodo>>, TError, { data: TodoRegisterble }, TContext> => {
   const mutationOptions = getRegisterTodoMutationOptions(options);
 
   return useMutation(mutationOptions);
@@ -108,10 +123,12 @@ export const useRegisterTodo = <TError = ErrorType<Error>, TContext = unknown>(o
  * get todo
  */
 export const getTodo = (todoId: number, options?: SecondParameter<typeof demoHttpClient>, signal?: AbortSignal) => {
-  return demoHttpClient<Todo>({ url: `/todo/${todoId}`, method: "get", signal }, options);
+  return demoHttpClient<Todo>({ url: `/todo/${todoId}`, method: "GET", signal }, options);
 };
 
-export const getGetTodoQueryKey = (todoId: number) => [`/todo/${todoId}`] as const;
+export const getGetTodoQueryKey = (todoId?: number) => {
+  return [`/todo/${todoId}`] as const;
+};
 
 export const getGetTodoQueryOptions = <TData = Awaited<ReturnType<typeof getTodo>>, TError = ErrorType<Error>>(
   todoId: number,
@@ -119,7 +136,7 @@ export const getGetTodoQueryOptions = <TData = Awaited<ReturnType<typeof getTodo
     query?: UseQueryOptions<Awaited<ReturnType<typeof getTodo>>, TError, TData>;
     request?: SecondParameter<typeof demoHttpClient>;
   }
-): UseQueryOptions<Awaited<ReturnType<typeof getTodo>>, TError, TData> & { queryKey: QueryKey } => {
+) => {
   const { query: queryOptions, request: requestOptions } = options ?? {};
 
   const queryKey = queryOptions?.queryKey ?? getGetTodoQueryKey(todoId);
@@ -127,19 +144,23 @@ export const getGetTodoQueryOptions = <TData = Awaited<ReturnType<typeof getTodo
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getTodo>>> = ({ signal }) =>
     getTodo(todoId, requestOptions, signal);
 
-  return { queryKey, queryFn, enabled: !!todoId, ...queryOptions };
+  return { queryKey, queryFn, enabled: !!todoId, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getTodo>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
 };
 
 export type GetTodoQueryResult = NonNullable<Awaited<ReturnType<typeof getTodo>>>;
 export type GetTodoQueryError = ErrorType<Error>;
 
-export const useGetTodo = <TData = Awaited<ReturnType<typeof getTodo>>, TError = ErrorType<Error>>(
+export function useGetTodo<TData = Awaited<ReturnType<typeof getTodo>>, TError = ErrorType<Error>>(
   todoId: number,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getTodo>>, TError, TData>;
     request?: SecondParameter<typeof demoHttpClient>;
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetTodoQueryOptions(todoId, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
@@ -147,7 +168,7 @@ export const useGetTodo = <TData = Awaited<ReturnType<typeof getTodo>>, TError =
   query.queryKey = queryOptions.queryKey;
 
   return query;
-};
+}
 
 /**
  * update todo
@@ -158,7 +179,7 @@ export const updateTodo = (
   options?: SecondParameter<typeof demoHttpClient>
 ) => {
   return demoHttpClient<Todo>(
-    { url: `/todo/${todoId}`, method: "put", headers: { "Content-Type": "application/json" }, data: todoUpdatable },
+    { url: `/todo/${todoId}`, method: "PUT", headers: { "Content-Type": "application/json" }, data: todoUpdatable },
     options
   );
 };
@@ -177,7 +198,12 @@ export const getUpdateTodoMutationOptions = <TError = ErrorType<Error>, TContext
   { todoId: number; data: TodoUpdatable },
   TContext
 > => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {};
+  const mutationKey = ["updateTodo"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && "mutationKey" in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof updateTodo>>,
@@ -203,7 +229,12 @@ export const useUpdateTodo = <TError = ErrorType<Error>, TContext = unknown>(opt
     TContext
   >;
   request?: SecondParameter<typeof demoHttpClient>;
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof updateTodo>>,
+  TError,
+  { todoId: number; data: TodoUpdatable },
+  TContext
+> => {
   const mutationOptions = getUpdateTodoMutationOptions(options);
 
   return useMutation(mutationOptions);
@@ -212,14 +243,19 @@ export const useUpdateTodo = <TError = ErrorType<Error>, TContext = unknown>(opt
  * delete todo
  */
 export const deleteTodo = (todoId: number, options?: SecondParameter<typeof demoHttpClient>) => {
-  return demoHttpClient<void>({ url: `/todo/${todoId}`, method: "delete" }, options);
+  return demoHttpClient<void>({ url: `/todo/${todoId}`, method: "DELETE" }, options);
 };
 
 export const getDeleteTodoMutationOptions = <TError = ErrorType<Error>, TContext = unknown>(options?: {
   mutation?: UseMutationOptions<Awaited<ReturnType<typeof deleteTodo>>, TError, { todoId: number }, TContext>;
   request?: SecondParameter<typeof demoHttpClient>;
 }): UseMutationOptions<Awaited<ReturnType<typeof deleteTodo>>, TError, { todoId: number }, TContext> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {};
+  const mutationKey = ["deleteTodo"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && "mutationKey" in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
   const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteTodo>>, { todoId: number }> = (props) => {
     const { todoId } = props ?? {};
@@ -237,7 +273,7 @@ export type DeleteTodoMutationError = ErrorType<Error>;
 export const useDeleteTodo = <TError = ErrorType<Error>, TContext = unknown>(options?: {
   mutation?: UseMutationOptions<Awaited<ReturnType<typeof deleteTodo>>, TError, { todoId: number }, TContext>;
   request?: SecondParameter<typeof demoHttpClient>;
-}) => {
+}): UseMutationResult<Awaited<ReturnType<typeof deleteTodo>>, TError, { todoId: number }, TContext> => {
   const mutationOptions = getDeleteTodoMutationOptions(options);
 
   return useMutation(mutationOptions);

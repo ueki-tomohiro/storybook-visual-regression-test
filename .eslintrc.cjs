@@ -10,7 +10,7 @@ module.exports = {
     "next/core-web-vitals",
     "plugin:storybook/recommended"
   ],
-  ignorePatterns: ["*.config.js", "config.js", ".eslintrc.cjs", "env.*.js"],
+  ignorePatterns: ["*.config.js", "config.js", ".eslintrc.cjs", "env.*.js", "**/build/**"],
   overrides: [
     {
       files: [       
