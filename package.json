@@ -22,6 +22,7 @@
     "test": "lerna run test --stream",
     "test-ci": "lerna run test-ci --stream",
     "typecheck": "lerna run typecheck --no-bail --stream",
+    "vrtest-regression": "reg-suit run",
     "ui": "yarn workspace @demo/ui",
     "web": "yarn workspace @demo/web"
   },
@@ -46,6 +47,9 @@
     "lerna": "^6.6.2",
     "prettier": "2.8.7",
     "prettier-plugin-tailwindcss": "^0.3.0",
+    "reg-notify-github-plugin": "^0.12.1",
+    "reg-publish-s3-plugin": "^0.12.1",
+    "reg-suit": "0.12.1",
     "rimraf": "^5.0.0",
     "rome": "^12.0.0",
     "stylelint": "^15.5.0",

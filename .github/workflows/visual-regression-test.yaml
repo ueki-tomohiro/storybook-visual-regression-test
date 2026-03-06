@@ -1,0 +1,361 @@
+name: visual regression test
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/visual-regression-test.yaml
+      - libs/**
+      - package.json
+      - packages/ui/**
+      - packages/web/**
+      - tools/vrt-selector/**
+      - yarn.lock
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  story-selector:
+    name: story selector
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.select.outputs.packages || steps.empty.outputs.packages }}
+      services-json: ${{ steps.select.outputs.services-json || steps.empty.outputs.services-json }}
+      story-files: ${{ steps.select.outputs.story-files || steps.empty.outputs.story-files }}
+      reason: ${{ steps.select.outputs.reason || steps.empty.outputs.reason }}
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Set up node_modules
+        uses: ./.github/actions/setup-node
+
+      - name: Collect changed files
+        id: collect
+        run: |
+          CHANGED_FILES=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}" | grep -E '(^package\.json$|^yarn\.lock$|\.(ts|tsx|css)$)' || true)
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No ts/tsx/css/package.json/yarn.lock changes."
+            echo "has-changes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "has-changes=true" >> "$GITHUB_OUTPUT"
+          DELIMITER="$(openssl rand -hex 16)"
+          echo "changed-files<<${DELIMITER}" >> "$GITHUB_OUTPUT"
+          echo "$CHANGED_FILES" >> "$GITHUB_OUTPUT"
+          echo "${DELIMITER}" >> "$GITHUB_OUTPUT"
+
+      - name: Select stories with script
+        id: select
+        if: steps.collect.outputs.has-changes == 'true'
+        env:
+          CHANGED_FILES: ${{ steps.collect.outputs.changed-files }}
+        run: |
+          RESULT=$(node tools/vrt-selector/src/story-candidates.js)
+          echo "$RESULT"
+
+          PACKAGES=$(echo "$RESULT" | jq -r '.packages // ""')
+          STORY_FILES=$(echo "$RESULT" | jq -r '.storyFiles // [] | join(",")')
+          REASON=$(echo "$RESULT" | jq -r '.reason // ""')
+
+          NORMALIZED_PACKAGES=$(echo "$PACKAGES" | tr ',' '\n' | grep -E '^(ui|web)$' | sort -u | paste -sd, - || true)
+          if [ -z "$NORMALIZED_PACKAGES" ] || [ -z "$STORY_FILES" ]; then
+            NORMALIZED_PACKAGES=""
+            STORY_FILES=""
+          fi
+
+          if [ -z "$NORMALIZED_PACKAGES" ]; then
+            SERVICES_JSON='[]'
+          else
+            SERVICES_JSON=$(echo "$NORMALIZED_PACKAGES" | tr ',' '\n' | jq -R . | jq -cs .)
+          fi
+
+          echo "packages=$NORMALIZED_PACKAGES" >> "$GITHUB_OUTPUT"
+          echo "services-json=$SERVICES_JSON" >> "$GITHUB_OUTPUT"
+          echo "story-files=$STORY_FILES" >> "$GITHUB_OUTPUT"
+          echo "reason=$REASON" >> "$GITHUB_OUTPUT"
+
+      - name: Set empty outputs
+        id: empty
+        if: steps.collect.outputs.has-changes != 'true'
+        run: |
+          echo "packages=" >> "$GITHUB_OUTPUT"
+          echo "services-json=[]" >> "$GITHUB_OUTPUT"
+          echo "story-files=" >> "$GITHUB_OUTPUT"
+          echo "reason=no-changes" >> "$GITHUB_OUTPUT"
+
+  storybook-build-pr:
+    name: storybook build (PR branch)
+    needs: story-selector
+    runs-on: ubuntu-latest
+    if: needs.story-selector.outputs.packages != ''
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up node_modules
+        uses: ./.github/actions/setup-node
+
+      - name: Japanese Font Install
+        run: sudo apt install fonts-noto-cjk
+
+      - name: Set up playwright
+        run: yarn playwright install
+
+      - name: Select story files for service
+        id: files
+        env:
+          SERVICE: ${{ matrix.service }}
+          STORY_FILES: ${{ needs.story-selector.outputs.story-files }}
+        run: |
+          SERVICE_FILES=$(echo "$STORY_FILES" | tr ',' '\n' | grep -E "^packages/${SERVICE}/.+\.stories\.tsx$" | paste -sd, - || true)
+          if [ -z "$SERVICE_FILES" ]; then
+            echo "No stories selected for $SERVICE." >&2
+            exit 1
+          fi
+          echo "story-files=$SERVICE_FILES" >> "$GITHUB_OUTPUT"
+
+      - name: Build storybook (PR branch)
+        env:
+          SERVICE: ${{ matrix.service }}
+          STORYBOOK_ONLY_STORY_FILES: ${{ steps.files.outputs.story-files }}
+        run: |
+          if [ "$SERVICE" = "ui" ]; then
+            yarn ui vrtest-setup
+          else
+            yarn web vrtest-setup
+          fi
+
+      - name: Upload storybook artifact (PR)
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-${{ matrix.service }}-pr
+          path: packages/${{ matrix.service }}/build/
+          retention-days: 1
+
+  storybook-build-base:
+    name: storybook build (base branch)
+    needs: story-selector
+    runs-on: ubuntu-latest
+    if: needs.story-selector.outputs.packages != ''
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Set up node_modules
+        uses: ./.github/actions/setup-node
+
+      - name: Japanese Font Install
+        run: sudo apt install fonts-noto-cjk
+
+      - name: Set up playwright
+        run: yarn playwright install
+
+      - name: Select story files for service
+        id: files
+        env:
+          SERVICE: ${{ matrix.service }}
+          STORY_FILES: ${{ needs.story-selector.outputs.story-files }}
+        run: |
+          SERVICE_FILES=$(echo "$STORY_FILES" | tr ',' '\n' | grep -E "^packages/${SERVICE}/.+\.stories\.tsx$" | paste -sd, - || true)
+          if [ -z "$SERVICE_FILES" ]; then
+            echo "No stories selected for $SERVICE." >&2
+            exit 1
+          fi
+          echo "story-files=$SERVICE_FILES" >> "$GITHUB_OUTPUT"
+
+      - name: Build storybook (base branch)
+        env:
+          SERVICE: ${{ matrix.service }}
+          STORYBOOK_ONLY_STORY_FILES: ${{ steps.files.outputs.story-files }}
+        run: |
+          if [ "$SERVICE" = "ui" ]; then
+            yarn ui vrtest-setup
+          else
+            yarn web vrtest-setup
+          fi
+
+      - name: Upload storybook artifact (base)
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-${{ matrix.service }}-base
+          path: packages/${{ matrix.service }}/build/
+          retention-days: 1
+
+  screenshot-pr:
+    name: storybook screenshot (PR branch)
+    needs: [story-selector, storybook-build-pr]
+    runs-on: ubuntu-latest
+    if: needs.story-selector.outputs.packages != ''
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up node_modules
+        uses: ./.github/actions/setup-node
+
+      - name: Japanese Font Install
+        run: sudo apt install fonts-noto-cjk
+
+      - name: Set up playwright
+        run: yarn playwright install
+
+      - name: Download storybook artifact (PR)
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-${{ matrix.service }}-pr
+          path: packages/${{ matrix.service }}/build/
+
+      - name: Capture snapshots (PR branch)
+        env:
+          SERVICE: ${{ matrix.service }}
+        run: |
+          if [ "$SERVICE" = "ui" ]; then
+            yarn ui vrtest-snapshot
+          else
+            yarn web vrtest-snapshot
+          fi
+
+      - name: Prepare screenshots artifact (PR)
+        env:
+          SERVICE: ${{ matrix.service }}
+        run: |
+          mkdir -p "artifacts/${SERVICE}"
+          cp -R "packages/${SERVICE}/snapshot/__snapshots__" "artifacts/${SERVICE}/"
+
+      - name: Upload screenshots artifact (PR)
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.service }}-pr
+          path: artifacts/${{ matrix.service }}/
+          retention-days: 1
+
+  screenshot-base:
+    name: storybook screenshot (base branch)
+    needs: [story-selector, storybook-build-base]
+    runs-on: ubuntu-latest
+    if: needs.story-selector.outputs.packages != ''
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Set up node_modules
+        uses: ./.github/actions/setup-node
+
+      - name: Japanese Font Install
+        run: sudo apt install fonts-noto-cjk
+
+      - name: Set up playwright
+        run: yarn playwright install
+
+      - name: Download storybook artifact (base)
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-${{ matrix.service }}-base
+          path: packages/${{ matrix.service }}/build/
+
+      - name: Capture snapshots (base branch)
+        env:
+          SERVICE: ${{ matrix.service }}
+        run: |
+          if [ "$SERVICE" = "ui" ]; then
+            yarn ui vrtest-snapshot
+          else
+            yarn web vrtest-snapshot
+          fi
+
+      - name: Prepare screenshots artifact (base)
+        env:
+          SERVICE: ${{ matrix.service }}
+        run: |
+          mkdir -p "artifacts/${SERVICE}"
+          cp -R "packages/${SERVICE}/snapshot/__snapshots__" "artifacts/${SERVICE}/"
+
+      - name: Upload screenshots artifact (base)
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.service }}-base
+          path: artifacts/${{ matrix.service }}/
+          retention-days: 1
+
+  visual-regression-test:
+    name: visual regression test
+    needs: [story-selector, screenshot-pr, screenshot-base]
+    runs-on: ubuntu-latest
+    if: |
+      always()
+      && needs.story-selector.outputs.packages != ''
+      && needs.screenshot-pr.result == 'success'
+      && needs.screenshot-base.result == 'success'
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up node_modules
+        uses: ./.github/actions/setup-node
+
+      - name: Download PR screenshots
+        uses: actions/download-artifact@v4
+        with:
+          pattern: screenshots-*-pr
+          merge-multiple: true
+          path: artifacts-pr/
+
+      - name: Download base screenshots
+        uses: actions/download-artifact@v4
+        with:
+          pattern: screenshots-*-base
+          merge-multiple: true
+          path: artifacts-base/
+
+      - name: Set up reg-suit expected and actual directories
+        run: |
+          mkdir -p __screenshots__ __expected__
+          if [ -d artifacts-pr/ui/__snapshots__ ]; then
+            cp -R artifacts-pr/ui/__snapshots__ __screenshots__/ui
+          fi
+          if [ -d artifacts-pr/web/__snapshots__ ]; then
+            cp -R artifacts-pr/web/__snapshots__ __screenshots__/web
+          fi
+          if [ -d artifacts-base/ui/__snapshots__ ]; then
+            cp -R artifacts-base/ui/__snapshots__ __expected__/ui
+          fi
+          if [ -d artifacts-base/web/__snapshots__ ]; then
+            cp -R artifacts-base/web/__snapshots__ __expected__/web
+          fi
+
+      - name: run reg-suit
+        run: yarn vrtest-regression
+        env:
+          REG_NOTICE_CLIENT_ID: ${{ secrets.REG_NOTICE_CLIENT_ID }}
+          REG_S3_BUCKET_NAME: ${{ secrets.REG_S3_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
