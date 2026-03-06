@@ -7,6 +7,6 @@
   "dependencies": {},
   "engines": {
     "node": "^22",
-    "yarn": ">=1"
+    "pnpm": ">=10"
   }
 }

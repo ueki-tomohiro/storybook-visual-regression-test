@@ -20,5 +20,6 @@
     "../ui/**/*.ts",
     "../../libs/**/*.ts",
     ".next/types/**/*.ts"
-  ]
+  ],
+  "exclude": ["node_modules", "build", "snapshot", "../ui/snapshot"]
 }

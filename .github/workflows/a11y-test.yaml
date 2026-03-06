@@ -25,11 +25,11 @@ jobs:
       - name: Set up
         uses: ./.github/actions/setup-node
       - name: Set up playwright
-        run: yarn playwright install
+        run: pnpm exec playwright install
       - name: Run a11y test
         run: |
-          yarn web vrtest-setup
-          yarn web vrtest-a11y
+          pnpm web vrtest-setup
+          pnpm web vrtest-a11y
       - name: Set a11y result
         id: a11y_result
         if: always()

@@ -1,36 +1,24 @@
-name: Set up node_modules
-description: setup node_modules
+name: Set up dependencies
+description: setup dependencies
 runs:
   using: composite
   steps:
+    - name: Set up pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version-file: ./.node-version
-        cache: yarn
+        cache: pnpm
 
     - name: Install canvas dependencies
       if: runner.os == 'Linux'
       shell: bash
       run: sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
-    - name: Cache node_modules
-      id: cache-yarn
-      uses: actions/cache@v4
-      with:
-        path: |
-          **/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-          ${{ runner.os }}-
-
-    - name: List the state of node modules
-      if: ${{ steps.cache-yarn.outputs.cache-hit != 'true' }}
-      shell: bash
-      run: yarn list
-      continue-on-error: true
-
     - name: Install dependencies
       shell: bash
-      run: yarn install --frozen-lockfile
+      run: pnpm install --frozen-lockfile

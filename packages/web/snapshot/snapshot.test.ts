@@ -1,9 +1,16 @@
 import { expect, test } from "@playwright/test";
-import { readFileSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import { resolve } from "path";
 
 const storybookDir = resolve(__dirname, "..", "build");
-const data: any = JSON.parse(readFileSync(resolve(storybookDir, "stories.json")).toString());
+
+// Storybook v8 uses index.json, older versions use stories.json
+const indexPath = resolve(storybookDir, "index.json");
+const storiesPath = resolve(storybookDir, "stories.json");
+const manifestPath = existsSync(indexPath) ? indexPath : storiesPath;
+const rawData: any = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath).toString()) : {};
+// Storybook v8 uses `entries`, older versions use `stories`
+const data = { stories: rawData.stories ?? rawData.entries ?? {} };
 
 test.describe.configure({ mode: "parallel" });
 

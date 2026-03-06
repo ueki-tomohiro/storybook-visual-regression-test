@@ -9,21 +9,22 @@
     "tools/*"
   ],
   "scripts": {
-    "api": "yarn workspace @demo/api",
+    "api": "pnpm --filter @demo/api",
     "format": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --write",
-    "formatcheck": "yarn format --check",
-    "generate-api": "yarn api generate",
-    "lint": "yarn lint-es && yarn lint-css",
+    "formatcheck": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --check",
+    "generate-api": "pnpm api generate",
+    "lint": "pnpm lint-es && pnpm lint-css",
     "lint-css": "stylelint '**/*.css' --cache",
     "lint-es": "eslint . --ext .jsx,.js,.tsx,.ts --cache",
-    "lintfix": "yarn lint-es --fix && yarn lint-css --fix",
+    "lintfix": "pnpm lint-es --fix && pnpm lint-css --fix",
     "new-version": "lerna version",
     "start-storybook": "lerna run start-storybook --stream",
     "test": "lerna run test --stream",
     "test-ci": "lerna run test-ci --stream",
     "typecheck": "lerna run typecheck --no-bail --stream",
-    "ui": "yarn workspace @demo/ui",
-    "web": "yarn workspace @demo/web"
+    "vrtest-regression": "reg-suit run",
+    "ui": "pnpm --filter @demo/ui",
+    "web": "pnpm --filter @demo/web"
   },
   "devDependencies": {
     "@playwright/test": "^1.32.3",
@@ -46,6 +47,8 @@
     "lerna": "^6.6.2",
     "prettier": "2.8.7",
     "prettier-plugin-tailwindcss": "^0.3.0",
+    "reg-notify-github-plugin": "^0.12.1",
+    "reg-suit": "0.12.1",
     "rimraf": "^5.0.0",
     "rome": "^12.0.0",
     "stylelint": "^15.5.0",
@@ -58,12 +61,14 @@
     "typescript": "*",
     "vite": "^5.4.3"
   },
-  "resolutions": {
-    "@types/react": "^18",
-    "typescript": "5.9.3"
+  "pnpm": {
+    "overrides": {
+      "@types/react": "^18",
+      "typescript": "5.9.3"
+    }
   },
   "engines": {
     "node": "^22",
-    "yarn": ">=1"
+    "pnpm": ">=10"
   }
 }

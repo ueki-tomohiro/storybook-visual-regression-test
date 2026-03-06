@@ -1,6 +1,7 @@
 {
   "core": {
-    "actualDir": "./snapshot/__snapshots__",
+    "actualDir": "./__screenshots__",
+    "expectedDir": "./__expected__",
     "thresholdRate": 0,
     "addIgnore": false,
     "ximgdiff": {
@@ -8,16 +9,13 @@
     }
   },
   "plugins": {
-    "reg-simple-keygen-plugin": {
-      "expectedKey": "${EXPECTED_KEY}",
-      "actualKey": "${ACTUAL_KEY}"
-    },
     "reg-notify-github-plugin": {
       "clientId": "${REG_NOTICE_CLIENT_ID}",
       "prComment": true,
       "prCommentBehavior": "new",
       "setCommitStatus": true,
-      "shortDescription": true
+      "shortDescription": true,
+      "detailPageUrl": "${REPORT_URL}"
     }
   }
 }

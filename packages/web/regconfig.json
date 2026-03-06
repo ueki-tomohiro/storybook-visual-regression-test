@@ -18,10 +18,6 @@
       "prCommentBehavior": "new",
       "setCommitStatus": true,
       "shortDescription": true
-    },
-    "reg-publish-s3-plugin": {
-      "bucketName": "${REG_S3_BUCKET_NAME}",
-      "pathPrefix": "web"
     }
   }
 }

@@ -2,7 +2,7 @@
 **/.cache/
 **/.firebase/
 **/.idea/
-.yarn/**
+.pnpm-store/**
 .swc
 
 # dependencies
@@ -31,8 +31,7 @@ build
 
 # debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
 
 # local env files
 **/.env.*.local

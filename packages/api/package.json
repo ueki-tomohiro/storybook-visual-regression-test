@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier 'lib/**/*.ts' --write",
-    "generate": "yarn generate-api && yarn lint && yarn format",
-    "generate-api": "cd ../../tools/api-client-generator && yarn generate",
+    "generate": "pnpm generate-api && pnpm lint && pnpm format",
+    "generate-api": "cd ../../tools/api-client-generator && pnpm generate",
     "lint": "eslint . --ext .jsx,.js,.tsx,.ts --cache --fix",
     "test": "vitest src --update --run --passWithNoTests",
     "test-ci": "vitest src --run --passWithNoTests",
@@ -25,6 +25,6 @@
   },
   "engines": {
     "node": "^22",
-    "yarn": ">=1"
+    "pnpm": ">=10"
   }
 }
