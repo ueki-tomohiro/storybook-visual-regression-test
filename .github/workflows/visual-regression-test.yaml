@@ -251,7 +251,7 @@ jobs:
         run: pnpm exec playwright install
 
       - name: Download storybook artifact (PR)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: storybook-${{ matrix.service }}-pr
           path: packages/${{ matrix.service }}/build/
@@ -319,7 +319,7 @@ jobs:
       - name: Download storybook artifact (base)
         id: download-base
         continue-on-error: true
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: storybook-${{ matrix.service }}-base
           path: packages/${{ matrix.service }}/build/
@@ -373,14 +373,14 @@ jobs:
         uses: ./.github/actions/setup-node
 
       - name: Download PR screenshots
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: screenshots-*-pr
           merge-multiple: true
           path: artifacts-pr/
 
       - name: Download base screenshots
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: screenshots-*-base
           merge-multiple: true
