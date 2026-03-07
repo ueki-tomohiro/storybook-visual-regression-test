@@ -70,7 +70,7 @@ jobs:
         run: gh pr edit ${{ github.event.pull_request.number }} --add-label "Ready for Human Review"
       - name: Assign Reviewers
         if: github.event.pull_request.draft == false && ${{ toJSON(github.event.pull_request.assignees) == '[]' }}
-        uses: kentaro-m/auto-assign-action@v2.0.0
+        uses: kentaro-m/auto-assign-action@v2.0.1
         with:
           configuration-path: ".github/auto_assign.yaml"
 
@@ -102,6 +102,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh pr edit ${{ github.event.pull_request.number }} --add-label "Ready for Human Review"
       - name: Assign Reviewers
-        uses: kentaro-m/auto-assign-action@v2.0.0
+        uses: kentaro-m/auto-assign-action@v2.0.1
         with:
           configuration-path: ".github/auto_assign.yaml"
