@@ -40,7 +40,7 @@ jobs:
           echo "${delimiter}" >> "${GITHUB_OUTPUT}"
       - name: Upload a11y test report artifact
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: a11y-test-report-artifact
           path: ./packages/web/playwright-report
