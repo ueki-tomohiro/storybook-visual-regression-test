@@ -5,7 +5,7 @@
   "dependencies": {
     "@playwright/test": "^1.23.0",
     "axe-core": "^4",
-    "axe-playwright": "^1.2.3",
+    "axe-playwright": "^2.2.2",
     "typescript": "5.9.3"
   }
 }
