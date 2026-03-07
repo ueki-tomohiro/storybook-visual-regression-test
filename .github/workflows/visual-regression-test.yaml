@@ -31,7 +31,7 @@ jobs:
       reason: ${{ steps.select.outputs.reason || steps.empty.outputs.reason }}
     steps:
       - name: set up repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
@@ -113,7 +113,7 @@ jobs:
         service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
     steps:
       - name: set up repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
@@ -167,7 +167,7 @@ jobs:
         service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
     steps:
       - name: set up repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.base.sha }}
 
@@ -237,7 +237,7 @@ jobs:
         service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
     steps:
       - name: set up repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
@@ -290,7 +290,7 @@ jobs:
         service: ${{ fromJson(needs.story-selector.outputs.services-json) }}
     steps:
       - name: set up repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.base.sha }}
 
@@ -365,7 +365,7 @@ jobs:
       && needs.screenshot-base.result == 'success'
     steps:
       - name: set up repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
