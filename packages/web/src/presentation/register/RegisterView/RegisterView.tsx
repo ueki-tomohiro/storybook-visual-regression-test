@@ -16,7 +16,7 @@ export const RegisterView = ({ regisiterTodo, isLoading }: RegisterViewProps) =>
     Yup.object().shape({
       description: Yup.string().required("詳細を入力してください"),
       end_date: Yup.string().typeError("完了日を入力してください").required("完了日を入力してください"),
-    })
+    }),
   );
   const {
     handleSubmit,

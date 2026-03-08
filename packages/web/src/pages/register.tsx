@@ -7,7 +7,7 @@ import { RegisterView } from "../presentation/register/RegisterView";
 
 export default function Register() {
   const router = useRouter();
-  const { mutate: registerTodo, isLoading, data } = useRegisterTodo();
+  const { mutate: registerTodo, isPending: isLoading, data } = useRegisterTodo();
 
   useEffect(() => {
     if (!data) return;

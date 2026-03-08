@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "jsx-a11y", "import"],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "settings": {
+    "react": { "version": "18" }
+  },
+  "rules": {
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "none",
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-anonymous-default-export": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/components/**/*.tsx", "**/src/presentation/**/*.tsx", "**/src/pages/**/*.tsx", "*.stories.tsx"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["**/*.config.js", "**/config.js", "**/env.*.js", "**/build/**", "**/node_modules/**"]
+}

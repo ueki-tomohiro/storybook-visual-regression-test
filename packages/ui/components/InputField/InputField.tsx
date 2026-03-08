@@ -37,6 +37,6 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
         {error && <div className="text-caution ml-2 mt-2 text-sm">{error}</div>}
       </>
     );
-  }
+  },
 );
 InputField.displayName = "InputField";

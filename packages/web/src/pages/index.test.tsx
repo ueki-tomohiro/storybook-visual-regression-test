@@ -18,7 +18,7 @@ describe("Home", () => {
       http.get("*/todos", () => {
         mockFn();
         return HttpResponse.json(getGetTodosResponseMock());
-      })
+      }),
     );
   });
   afterEach(() => {

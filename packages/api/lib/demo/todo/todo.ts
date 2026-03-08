@@ -39,7 +39,7 @@ export const getGetTodosQueryKey = () => {
 
 export const getGetTodosQueryOptions = <
   TData = Awaited<ReturnType<typeof getTodos>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(options?: {
   query?: UseQueryOptions<Awaited<ReturnType<typeof getTodos>>, TError, TData>;
   request?: SecondParameter<typeof demoHttpClient>;
@@ -79,11 +79,11 @@ export function useGetTodos<TData = Awaited<ReturnType<typeof getTodos>>, TError
 export const registerTodo = (
   todoRegisterble: TodoRegisterble,
   options?: SecondParameter<typeof demoHttpClient>,
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ) => {
   return demoHttpClient<Todo>(
     { url: `/todo`, method: "POST", headers: { "Content-Type": "application/json" }, data: todoRegisterble, signal },
-    options
+    options,
   );
 };
 
@@ -135,7 +135,7 @@ export const getGetTodoQueryOptions = <TData = Awaited<ReturnType<typeof getTodo
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getTodo>>, TError, TData>;
     request?: SecondParameter<typeof demoHttpClient>;
-  }
+  },
 ) => {
   const { query: queryOptions, request: requestOptions } = options ?? {};
 
@@ -159,7 +159,7 @@ export function useGetTodo<TData = Awaited<ReturnType<typeof getTodo>>, TError =
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getTodo>>, TError, TData>;
     request?: SecondParameter<typeof demoHttpClient>;
-  }
+  },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetTodoQueryOptions(todoId, options);
 
@@ -176,11 +176,11 @@ export function useGetTodo<TData = Awaited<ReturnType<typeof getTodo>>, TError =
 export const updateTodo = (
   todoId: number,
   todoUpdatable: TodoUpdatable,
-  options?: SecondParameter<typeof demoHttpClient>
+  options?: SecondParameter<typeof demoHttpClient>,
 ) => {
   return demoHttpClient<Todo>(
     { url: `/todo/${todoId}`, method: "PUT", headers: { "Content-Type": "application/json" }, data: todoUpdatable },
-    options
+    options,
   );
 };
 

@@ -10,14 +10,14 @@
   ],
   "scripts": {
     "api": "pnpm --filter @demo/api",
-    "format": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --write",
+    "format": "oxfmt --write .",
     "prepare": "lefthook install",
-    "formatcheck": "prettier '**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}' --check",
+    "formatcheck": "oxfmt --check .",
     "generate-api": "pnpm api generate",
     "lint": "pnpm lint-es && pnpm lint-css",
     "lint-css": "stylelint '**/*.css' --cache",
-    "lint-es": "eslint . --ext .jsx,.js,.tsx,.ts --cache",
-    "lintfix": "pnpm lint-es --fix && pnpm lint-css --fix",
+    "lint-es": "oxlint .",
+    "lintfix": "oxlint --fix . && pnpm lint-css --fix",
     "new-version": "lerna version",
     "start-storybook": "lerna run start-storybook --stream",
     "test": "lerna run test --stream",
@@ -29,31 +29,14 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.32.3",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.58.0",
-    "eslint": "^8.39.0",
-    "eslint-config-next": "^13.4.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-config-standard-with-typescript": "latest",
-    "eslint-plugin-flowtype": "^8.0.3",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-n": "^15.7.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "latest",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-storybook": "^0.6.15",
-    "eslint-plugin-tailwindcss": "^3.12.0",
     "lefthook": "^2.1.2",
     "lerna": "^9.0.5",
-    "prettier": "2.8.7",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "oxfmt": "^0.36.0",
+    "oxlint": "^1.51.0",
     "reg-local-publisher-plugin": "workspace:*",
     "reg-notify-github-plugin": "^0.14.5",
     "reg-suit": "0.14.5",
     "rimraf": "^5.0.0",
-    "rome": "^12.0.0",
     "stylelint": "^15.5.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recess-order": "^4.0.0",
@@ -63,6 +46,10 @@
     "tailwindcss": "3.3.1",
     "typescript": "*",
     "vite": "^6.4.1"
+  },
+  "engines": {
+    "node": "^22",
+    "pnpm": ">=10"
   },
   "pnpm": {
     "overrides": {
@@ -76,9 +63,5 @@
       "typescript": "5.9.3",
       "vite": "6.4.1"
     }
-  },
-  "engines": {
-    "node": "^22",
-    "pnpm": ">=10"
   }
 }

@@ -45,7 +45,7 @@ export const getUpdateTodoResponseMock = (overrideResponse: Partial<Todo> = {}):
 
 export const getGetTodosMockHandler = (
   overrideResponse?: Todo[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Todo[]> | Todo[]),
-  options?: RequestHandlerOptions
+  options?: RequestHandlerOptions,
 ) => {
   return http.get(
     "*/todos",
@@ -58,18 +58,18 @@ export const getGetTodosMockHandler = (
             ? typeof overrideResponse === "function"
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetTodosResponseMock()
+            : getGetTodosResponseMock(),
         ),
-        { status: 200, headers: { "Content-Type": "application/json" } }
+        { status: 200, headers: { "Content-Type": "application/json" } },
       );
     },
-    options
+    options,
   );
 };
 
 export const getRegisterTodoMockHandler = (
   overrideResponse?: Todo | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<Todo> | Todo),
-  options?: RequestHandlerOptions
+  options?: RequestHandlerOptions,
 ) => {
   return http.post(
     "*/todo",
@@ -82,18 +82,18 @@ export const getRegisterTodoMockHandler = (
             ? typeof overrideResponse === "function"
               ? await overrideResponse(info)
               : overrideResponse
-            : getRegisterTodoResponseMock()
+            : getRegisterTodoResponseMock(),
         ),
-        { status: 201, headers: { "Content-Type": "application/json" } }
+        { status: 201, headers: { "Content-Type": "application/json" } },
       );
     },
-    options
+    options,
   );
 };
 
 export const getGetTodoMockHandler = (
   overrideResponse?: Todo | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Todo> | Todo),
-  options?: RequestHandlerOptions
+  options?: RequestHandlerOptions,
 ) => {
   return http.get(
     "*/todo/:todoId",
@@ -106,18 +106,18 @@ export const getGetTodoMockHandler = (
             ? typeof overrideResponse === "function"
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetTodoResponseMock()
+            : getGetTodoResponseMock(),
         ),
-        { status: 200, headers: { "Content-Type": "application/json" } }
+        { status: 200, headers: { "Content-Type": "application/json" } },
       );
     },
-    options
+    options,
   );
 };
 
 export const getUpdateTodoMockHandler = (
   overrideResponse?: Todo | ((info: Parameters<Parameters<typeof http.put>[1]>[0]) => Promise<Todo> | Todo),
-  options?: RequestHandlerOptions
+  options?: RequestHandlerOptions,
 ) => {
   return http.put(
     "*/todo/:todoId",
@@ -130,18 +130,18 @@ export const getUpdateTodoMockHandler = (
             ? typeof overrideResponse === "function"
               ? await overrideResponse(info)
               : overrideResponse
-            : getUpdateTodoResponseMock()
+            : getUpdateTodoResponseMock(),
         ),
-        { status: 200, headers: { "Content-Type": "application/json" } }
+        { status: 200, headers: { "Content-Type": "application/json" } },
       );
     },
-    options
+    options,
   );
 };
 
 export const getDeleteTodoMockHandler = (
   overrideResponse?: void | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<void> | void),
-  options?: RequestHandlerOptions
+  options?: RequestHandlerOptions,
 ) => {
   return http.delete(
     "*/todo/:todoId",
@@ -152,7 +152,7 @@ export const getDeleteTodoMockHandler = (
       }
       return new HttpResponse(null, { status: 204 });
     },
-    options
+    options,
   );
 };
 export const getTodoMock = () => [
