@@ -2,7 +2,7 @@ pre-commit:
   commands:
     lint:
       glob: "**/*.{js,jsx,ts,tsx}"
-      run: pnpm exec oxlint {staged_files}
+      run: pnpm exec oxlint --fix {staged_files}
       stage_fixed: true
     format:
       glob: "**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}"
