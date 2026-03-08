@@ -12,7 +12,7 @@ export default function Detail() {
   const params = (router.query.params as string[]) || [""];
   const todoId = toInteger(params[0]);
   const { data: todo } = useGetTodo(todoId);
-  const { mutate: updateTodo, data, isLoading: isUpdateLoading } = useUpdateTodo();
+  const { mutate: updateTodo, data, isPending: isUpdateLoading } = useUpdateTodo();
 
   useEffect(() => {
     if (!data) return;
