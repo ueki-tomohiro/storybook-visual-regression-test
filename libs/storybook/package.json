@@ -5,7 +5,7 @@
   "description": "Demo Storybook",
   "license": "MIT",
   "devDependencies": {
-    "@storybook/addon-coverage": "^1.0.1",
+    "@storybook/addon-coverage": "^3.0.0",
     "@storybook/addon-essentials": "^8.0.9",
     "@storybook/addon-interactions": "^8.0.9",
     "@storybook/addon-links": "^8.0.9",
