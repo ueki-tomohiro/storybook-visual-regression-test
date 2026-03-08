@@ -11,7 +11,7 @@ const axiosInstance = Axios.create({
 
 export const demoHttpClient = <T>(
   config: AxiosRequestConfig & { signal?: AbortSignal },
-  options?: AxiosRequestConfig
+  options?: AxiosRequestConfig,
 ): Promise<T> => {
   const token = getAccessToken();
 
@@ -40,7 +40,7 @@ export const demoHttpClient = <T>(
           retry(error);
         }
         throw error;
-      })
+      }),
   );
 
   return promise;

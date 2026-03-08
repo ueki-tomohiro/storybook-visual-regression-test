@@ -35,15 +35,15 @@
     "typescript": "5.9.3",
     "yup": "^1.1.1"
   },
-  "engines": {
-    "node": "^22",
-    "pnpm": ">=10"
-  },
   "devDependencies": {
     "http-server": "^14.1.1",
     "reg-notify-github-plugin": "^0.14.5",
     "reg-simple-keygen-plugin": "0.14.2",
     "reg-suit": "0.14.5",
     "start-server-and-test": "^2.0.0"
+  },
+  "engines": {
+    "node": "^22",
+    "pnpm": ">=10"
   }
 }

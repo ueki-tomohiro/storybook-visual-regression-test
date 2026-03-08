@@ -153,7 +153,7 @@ function findAffectedFiles(changedFiles, reverseGraph) {
 function extractStoryCandidates(
   changedFiles,
   listFiles = (dir) => listSourceFiles(dir),
-  readFile = (filePath) => fs.readFileSync(filePath, "utf8")
+  readFile = (filePath) => fs.readFileSync(filePath, "utf8"),
 ) {
   const normalizedChangedFiles = changedFiles.map(normalizePath);
   const packages = getAffectedPackages(normalizedChangedFiles);

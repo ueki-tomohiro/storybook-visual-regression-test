@@ -5,10 +5,10 @@
   "description": "Demo API Library",
   "license": "MIT",
   "scripts": {
-    "format": "prettier 'lib/**/*.ts' --write",
+    "format": "oxfmt --write 'lib/**/*.ts'",
     "generate": "pnpm generate-api && pnpm lint && pnpm format",
     "generate-api": "cd ../../tools/api-client-generator && pnpm generate",
-    "lint": "eslint . --ext .jsx,.js,.tsx,.ts --cache --fix",
+    "lint": "oxlint --fix .",
     "test": "vitest src --update --run --passWithNoTests",
     "test-ci": "vitest src --run --passWithNoTests",
     "typecheck": "tsc"

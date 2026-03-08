@@ -29,7 +29,7 @@ describe("Register Todo", () => {
         const post = (await request.json()) as { description?: string };
         mockFn(post.description);
         return HttpResponse.json(getRegisterTodoResponseMock(), { status: 201 });
-      })
+      }),
     );
   });
   afterEach(() => {

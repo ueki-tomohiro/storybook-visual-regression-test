@@ -2,9 +2,9 @@ pre-commit:
   commands:
     lint:
       glob: "**/*.{js,jsx,ts,tsx}"
-      run: pnpm exec eslint --fix {staged_files}
+      run: pnpm exec oxlint {staged_files}
       stage_fixed: true
     format:
       glob: "**/*.{js,jsx,ts,tsx,md,html,json,yaml,yml}"
-      run: pnpm exec prettier --write {staged_files}
+      run: pnpm exec oxfmt --write {staged_files}
       stage_fixed: true
