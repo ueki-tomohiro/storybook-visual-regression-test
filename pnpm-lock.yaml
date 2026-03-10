@@ -205,8 +205,8 @@ importers:
         specifier: ^1.1.3
         version: 1.1.6
       http-status:
-        specifier: ^1.6.2
-        version: 1.8.1
+        specifier: ^2.1.0
+        version: 2.1.0
       msw:
         specifier: ^2.12.10
         version: 2.12.10(@types/node@25.3.5)(typescript@5.9.3)
@@ -4309,8 +4309,8 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  http-status@1.8.1:
-    resolution: {integrity: sha512-YQF7j8Qf/Rlby0IbRPiWfNZt6aeUv3K0Pi0x3crbMZN+7F8dPn5k4b3n897vpM1Vk8Mg2fhOYc9fktKEQWMy/Q==}
+  http-status@2.1.0:
+    resolution: {integrity: sha512-O5kPr7AW7wYd/BBiOezTwnVAnmSNFY+J7hlZD2X5IOxVBetjcHAiTXhzj0gMrnojQlwy+UT1/Y3H3vJ3UlmvLA==}
     engines: {node: '>= 0.4.0'}
 
   http2-client@1.3.5:
@@ -11919,7 +11919,7 @@ snapshots:
       - debug
       - supports-color
 
-  http-status@1.8.1: {}
+  http-status@2.1.0: {}
 
   http2-client@1.3.5: {}
 
