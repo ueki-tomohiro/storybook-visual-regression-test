@@ -163,8 +163,8 @@ importers:
         specifier: ^3.4.0
         version: 3.4.0
       '@storybook/types':
-        specifier: 8.6.17
-        version: 8.6.17(storybook@8.6.17(prettier@2.8.7))
+        specifier: 8.6.18
+        version: 8.6.18(storybook@8.6.17(prettier@2.8.7))
       '@testing-library/react':
         specifier: ^16.0.1
         version: 16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@18.0.11)(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2280,8 +2280,8 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@storybook/types@8.6.17':
-    resolution: {integrity: sha512-nNlbGulqqk2XzroD5jxcsw+13nWlGxBD9XRAht4Peh71Z4OcdBJCnc9UmHkTgUakmRJ/T6p7xabURDG3KpayIQ==}
+  '@storybook/types@8.6.18':
+    resolution: {integrity: sha512-PcMhEaWu/fa16DTnTrqaTF/ci/CGXa7U/Gyaq781iWwpmpBEp9yjyR+GMxO4CN+uiC7b3Wku5RZnKHXkeJmJkg==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
@@ -9745,7 +9745,7 @@ snapshots:
     dependencies:
       storybook: 8.6.17(prettier@2.8.7)
 
-  '@storybook/types@8.6.17(storybook@8.6.17(prettier@2.8.7))':
+  '@storybook/types@8.6.18(storybook@8.6.17(prettier@2.8.7))':
     dependencies:
       storybook: 8.6.17(prettier@2.8.7)
 
