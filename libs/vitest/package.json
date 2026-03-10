@@ -16,7 +16,7 @@
     "@vitest/coverage-v8": "^2.1.9",
     "canvas": "^3.2.1",
     "jsdom": "^25.0.1",
-    "vite-tsconfig-paths": "^5.1.4",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.0.18"
   },
   "engines": {
