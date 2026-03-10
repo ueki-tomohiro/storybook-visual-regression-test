@@ -1,5 +1,5 @@
 import { getGetTodoResponseMock } from "@demo/api/lib/demo/todo/todo.msw";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 import { EditView, EditViewProps } from "./EditView";
 

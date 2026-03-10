@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import baseConfig from "@demo-libs/storybook/config/main";
+import baseConfig from "../../../libs/storybook/config/main.ts";
 
 const selectedStories = (process.env.STORYBOOK_ONLY_STORY_FILES || "")
   .split(",")

@@ -1,20 +1,25 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
+import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
-import path from "path";
+import path, { dirname } from "path";
 import { mergeConfig } from "vite";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+function getAbsolutePath(value: string): string {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}
+
 const config: StorybookConfig = {
-  core: {
-    builder: "@storybook/builder-vite",
-  },
   stories: ["**/*.stories.tsx"],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-coverage",
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-coverage"),
+    getAbsolutePath("@storybook/addon-docs"),
   ],
   framework: {
-    name: "@storybook/react-vite",
+    name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
   viteFinal: async (config) => {

@@ -1,8 +1,11 @@
 import { test } from "@playwright/test";
-import { StoryIndex } from "@storybook/types";
 import { checkA11y, injectAxe } from "axe-playwright";
 import { readFileSync } from "fs";
 import { resolve } from "path";
+
+type StoryIndex = {
+  entries: Record<string, { id: string; title: string; name: string }>;
+};
 
 const storybookDir = resolve(__dirname, "..", "build");
 const data: StoryIndex = JSON.parse(readFileSync(resolve(storybookDir, "stories.json")).toString());

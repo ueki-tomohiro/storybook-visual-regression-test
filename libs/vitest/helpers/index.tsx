@@ -1,5 +1,4 @@
-import { composeStories, composeStory } from "@storybook/react";
-import type { Args } from "@storybook/types";
+import { composeStories, composeStory, type Args } from "@storybook/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render } from "@testing-library/react";
 import dayjs from "dayjs";
