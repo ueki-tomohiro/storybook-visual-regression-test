@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["stylelint-config-recommended", "stylelint-config-recess-order", "stylelint-prettier/recommended"],
+  extends: ["stylelint-config-recommended", "stylelint-config-recess-order"],
   ignoreFiles: [
     ".cache/**/*.css",
     ".cache/**/*.html",
@@ -13,6 +13,7 @@ module.exports = {
     "storybook-static/**/*.css",
     "storybook-static/**/*.html",
   ],
+  plugins: [require.resolve("stylelint-prettier")],
   rules: {
     "property-no-unknown": [
       true,
@@ -32,5 +33,6 @@ module.exports = {
         ignoreFunctions: ["theme", "screen"],
       },
     ],
+    "prettier/prettier": true,
   },
 };
