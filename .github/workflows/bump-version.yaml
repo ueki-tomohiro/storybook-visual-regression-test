@@ -80,7 +80,7 @@ jobs:
         run: |
           echo "BUMP_VERSION=$(node tools/bump/lerna-version.js)" >> $GITHUB_ENV
       - name: Release Drafter
-        uses: release-drafter/release-drafter@v6.4.0
+        uses: release-drafter/release-drafter@v7.1.1
         with:
           tag: ${{ env.BUMP_VERSION }}
           name: ${{ env.BUMP_VERSION }}
