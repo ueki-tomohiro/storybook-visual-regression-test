@@ -172,7 +172,7 @@ jobs:
           ref: ${{ github.event.pull_request.base.sha }}
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           version: 10
 
@@ -295,7 +295,7 @@ jobs:
           ref: ${{ github.event.pull_request.base.sha }}
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           version: 10
 
