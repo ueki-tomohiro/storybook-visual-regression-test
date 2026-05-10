@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v6
       - uses: ./.github/actions/setup-node
       - name: Labeler from web
-        uses: actions/labeler@v6.0.1
+        uses: actions/labeler@v6.1.0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Labeler from title
