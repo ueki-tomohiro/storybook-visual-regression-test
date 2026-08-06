@@ -14,7 +14,6 @@ exports[`components/InputField > components/InputField > "Default" story > rende
         <input
           class="bg-reset text-tertiary focus:text-secondary h-11 w-full px-2 focus:outline-none"
           type="text"
-          value=""
         />
       </div>
       <div

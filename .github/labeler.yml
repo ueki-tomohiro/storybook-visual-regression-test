@@ -1,8 +1,12 @@
 web:
-  - packages/web/**/*
+  - changed-files:
+      - any-glob-to-any-file: packages/web/**/*
 api:
-  - packages/api/**/*
+  - changed-files:
+      - any-glob-to-any-file: packages/api/**/*
 chore:
-  - libs/**/*
-  - tools/**/*
-  - .github/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - libs/**/*
+          - tools/**/*
+          - .github/**/*
