@@ -5,19 +5,19 @@
   "description": "Demo Storybook",
   "license": "MIT",
   "devDependencies": {
-    "@storybook/addon-coverage": "^3.0.0",
+    "@storybook/addon-coverage": "^3.0.2",
     "@storybook/addon-docs": "^10.5.9",
-    "@storybook/addon-links": "^10.2.17",
-    "@storybook/builder-vite": "^10.2.17",
-    "@storybook/react": "^10.2.17",
-    "@storybook/react-vite": "^10.2.17",
-    "@storybook/test-runner": "^0.24.2",
+    "@storybook/addon-links": "^10.5.9",
+    "@storybook/builder-vite": "^10.5.9",
+    "@storybook/react": "^10.5.9",
+    "@storybook/react-vite": "^10.5.9",
+    "@storybook/test-runner": "^0.24.4",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "prop-types": "^15.8.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "storybook": "^10.2.17"
+    "storybook": "^10.5.9"
   },
   "engines": {
     "node": "^22",
