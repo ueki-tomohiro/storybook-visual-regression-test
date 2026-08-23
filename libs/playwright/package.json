@@ -6,6 +6,6 @@
     "@playwright/test": "^1.23.0",
     "axe-core": "^4.13.0",
     "axe-playwright": "^2.2.2",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   }
 }
