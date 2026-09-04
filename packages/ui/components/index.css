@@ -12,6 +12,14 @@
 }
 
 @theme {
+  /* Tailwind v4 dropped `ui-sans-serif, system-ui` from the front of its default
+     sans stack, which changes the rendered font on Linux. Pin v3.3.1's stack so
+     the upgrade does not restyle every screen. */
+  /* prettier-ignore */
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   --color-*: initial;
   --color-primary: var(--green);
   --color-secondary: var(--blue);
