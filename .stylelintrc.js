@@ -24,7 +24,17 @@ module.exports = {
     "at-rule-no-unknown": [
       true,
       {
-        ignoreAtRules: ["tailwind", "layer", "apply"],
+        ignoreAtRules: [
+          "tailwind",
+          "layer",
+          "apply",
+          "config",
+          "custom-variant",
+          "source",
+          "theme",
+          "utility",
+          "variant",
+        ],
       },
     ],
     "function-no-unknown": [

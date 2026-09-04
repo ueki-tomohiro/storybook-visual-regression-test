@@ -1,3 +1,8 @@
+@import "tailwindcss";
+
+@source "../../ui/components";
+@source "../../web/src";
+
 :root {
   --green: #00796b;
   --blue: #0277bd;
@@ -6,9 +11,14 @@
   --white: #ffffff;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-*: initial;
+  --color-primary: var(--green);
+  --color-secondary: var(--blue);
+  --color-tertiary: var(--gray);
+  --color-caution: var(--red);
+  --color-white: var(--white);
+}
 
 @layer utilities {
   .bg-reset {
