@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@playwright/test": "^1.23.0",
+    "@playwright/test": "^1.62.1",
     "axe-core": "^4.13.0",
     "axe-playwright": "^2.2.2",
     "typescript": "5.9.3"

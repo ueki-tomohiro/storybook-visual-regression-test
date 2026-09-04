@@ -17,7 +17,9 @@ runs:
     - name: Install canvas dependencies
       if: runner.os == 'Linux'
       shell: bash
-      run: sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
     - name: Install dependencies
       shell: bash

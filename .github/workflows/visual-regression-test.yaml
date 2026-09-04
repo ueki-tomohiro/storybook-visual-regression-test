@@ -182,7 +182,9 @@ jobs:
           node-version-file: ./.node-version
 
       - name: Install canvas dependencies
-        run: sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -305,7 +307,9 @@ jobs:
           node-version-file: ./.node-version
 
       - name: Install canvas dependencies
-        run: sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
