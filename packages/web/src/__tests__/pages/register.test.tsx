@@ -6,8 +6,8 @@ import { http, HttpResponse } from "msw";
 import React from "react";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test, vi } from "vitest";
 
-import { server } from "../mocks/server";
-import Register from "./register";
+import { server } from "../../mocks/server";
+import Register from "../../pages/register";
 
 vi.mock("next/router", () => ({
   useRouter() {

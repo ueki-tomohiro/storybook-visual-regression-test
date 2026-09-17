@@ -5,8 +5,8 @@ import { http, HttpResponse } from "msw";
 import React from "react";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test, vi } from "vitest";
 
-import { server } from "../mocks/server";
-import Home from "./index";
+import { server } from "../../mocks/server";
+import Home from "../../pages/index";
 
 describe("Home", () => {
   const mockFn = vi.fn();
