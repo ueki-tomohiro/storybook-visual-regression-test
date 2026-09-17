@@ -8,7 +8,7 @@
     "generate": "orval --config ./orval.config.js"
   },
   "dependencies": {
-    "openapi3-ts": "^4.5.0",
+    "openapi3-ts": "^4.6.1",
     "orval": "^8.22.0"
   },
   "engines": {
