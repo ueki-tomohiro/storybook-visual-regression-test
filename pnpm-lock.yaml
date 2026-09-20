@@ -283,14 +283,14 @@ importers:
         specifier: 10.5.4
         version: 10.5.4(postcss@8.5.28)
       jotai:
-        specifier: ^2.5.1
-        version: 2.18.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.14)(react@19.2.4)
+        specifier: ^3.0.0
+        version: 3.0.0(@types/react@19.2.14)(react@19.2.4)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       next:
         specifier: ^16.3.5
-        version: 16.3.5(@babel/core@7.29.7)(@playwright/test@1.62.1)(@types/node@25.3.5)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 16.3.5(@playwright/test@1.62.1)(@types/node@25.3.5)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -5301,19 +5301,13 @@ packages:
     resolution: {integrity: sha512-2mD929bUVKUhOLQQEVhlf6EZ0Mlo0DeRb5MO7cViR9AXLtBauuccEtB1py9Ocxpo/P7ucnh442iY/iOwrh3IQw==}
     engines: {node: '>= 20'}
 
-  jotai@2.18.0:
-    resolution: {integrity: sha512-XI38kGWAvtxAZ+cwHcTgJsd+kJOJGf3OfL4XYaXWZMZ7IIY8e53abpIHvtVn1eAgJ5dlgwlGFnP4psrZ/vZbtA==}
-    engines: {node: '>=12.20.0'}
+  jotai@3.0.0:
+    resolution: {integrity: sha512-KxhbmsJUp/tmrv6aZgO+nzB3H9K8C0xmk5i3aGkwy/EANg73DVBkggv3zVHaAi5PlNlQgTgP4uiVepo+JC+wSA==}
+    engines: {node: '>=22.12.0'}
     peerDependencies:
-      '@babel/core': ^7.29.7
-      '@babel/template': '>=7.0.0'
       '@types/react': 19.2.14
-      react: '>=17.0.0'
+      react: '>=18.0.0'
     peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      '@babel/template':
-        optional: true
       '@types/react':
         optional: true
       react:
@@ -6486,8 +6480,8 @@ packages:
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
-  react-is@19.2.8:
-    resolution: {integrity: sha512-s5un28nYxKJw5gvUHyW5PCC28CvBqLu9r3cWgzHT4Vo/5fqqkFcdRYsGcKf50WMPpjjFZS5d76fn3YCo2njKwQ==}
+  react-is@19.3.0:
+    resolution: {integrity: sha512-UpMYezM4v5/18F28aC66AEsjXIgE02kyEMH6yLdgLXu/UTfa1Ntwck/nNLrbqJsEXW7gPb0coNO9FQse9WTovA==}
 
   react-refresh@0.18.0:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
@@ -12813,10 +12807,8 @@ snapshots:
       '@hapi/topo': 6.0.2
       '@standard-schema/spec': 1.1.0
 
-  jotai@2.18.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.14)(react@19.2.4):
+  jotai@3.0.0(@types/react@19.2.14)(react@19.2.4):
     optionalDependencies:
-      '@babel/core': 7.29.7
-      '@babel/template': 7.29.7
       '@types/react': 19.2.14
       react: 19.2.4
 
@@ -13430,7 +13422,7 @@ snapshots:
 
   nested-error-stacks@2.1.1: {}
 
-  next@16.3.5(@babel/core@7.29.7)(@playwright/test@1.62.1)(@types/node@25.3.5)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  next@16.3.5(@playwright/test@1.62.1)(@types/node@25.3.5)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
       '@next/env': 16.3.5
       '@swc/helpers': 0.5.23
@@ -13439,7 +13431,7 @@ snapshots:
       postcss: 8.5.28
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
-      styled-jsx: 5.1.6(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(react@19.2.4)
+      styled-jsx: 5.1.6(babel-plugin-macros@3.1.0)(react@19.2.4)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.3.5
       '@next/swc-darwin-x64': 16.3.5
@@ -14227,7 +14219,7 @@ snapshots:
       '@jest/schemas': 30.4.1
       ansi-styles: 5.2.0
       react-is-18: react-is@18.3.1
-      react-is-19: react-is@19.2.8
+      react-is-19: react-is@19.3.0
 
   pretty-ms@9.3.0:
     dependencies:
@@ -14343,7 +14335,7 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-is@19.2.8: {}
+  react-is@19.3.0: {}
 
   react-refresh@0.18.0: {}
 
@@ -15001,12 +14993,11 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  styled-jsx@5.1.6(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(react@19.2.4):
+  styled-jsx@5.1.6(babel-plugin-macros@3.1.0)(react@19.2.4):
     dependencies:
       client-only: 0.0.1
       react: 19.2.4
     optionalDependencies:
-      '@babel/core': 7.29.7
       babel-plugin-macros: 3.1.0
 
   stylelint-config-prettier@9.0.5(stylelint@17.14.1(typescript@5.9.3)):
