@@ -5,7 +5,7 @@
   "description": "Demo dayjs",
   "license": "MIT",
   "dependencies": {
-    "dayjs": "^1.11.8"
+    "dayjs": "^1.11.23"
   },
   "engines": {
     "node": "^22",

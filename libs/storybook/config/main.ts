@@ -29,6 +29,10 @@ const config: StorybookConfig = {
           "@": path.resolve(__dirname, "../"),
         },
       },
+      // tsconfig.base.json の jsx: "preserve" は Next.js 向け。Vite 8 の Oxc はこれを尊重して JSX を残すため明示的に変換する
+      oxc: {
+        jsx: { runtime: "automatic" },
+      },
       define: {
         "process.env": {},
       },
