@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "@tailwindcss/postcss": "4.3.3",
-    "postcss": "8.5.28",
+    "postcss": "8.5.29",
     "tailwindcss": "4.3.3"
   },
   "engines": {
