@@ -14,7 +14,7 @@ overrides:
   brace-expansion@<2: ^1.1.21
   brace-expansion@>=3 <6: ^5.0.12
   browserslist@<5: ^4.28.7
-  cookie: 0.7.0
+  cookie@<0.7.0: 0.7.0
   esbuild@>=0.27.3 <0.28.1: 0.28.2
   fast-uri@<4: ^3.1.8
   follow-redirects@<2: ^1.16.0
@@ -3823,9 +3823,13 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
-  cookie@0.7.0:
-    resolution: {integrity: sha512-qCf+V4dtlNhSRXGAZatc1TasyFO6GjohcOul807YOb5ik3+kQSnb4d7iajeCL8QHaJ4uZEjCgiCJerKXwdRVlQ==}
-    engines: {node: '>= 0.6'}
+  cookie@1.1.1:
+    resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
+    engines: {node: '>=18'}
+
+  cookie@2.0.1:
+    resolution: {integrity: sha512-yuToqVvRrj6pfDXREyQAAv8SkAEk/8GS3jQRTiUMm66TVtBYmqQeoEjL2Lmq8Rpo6271vH76InTChTitEAm65w==}
+    engines: {node: '>=22'}
 
   copy-anything@2.0.6:
     resolution: {integrity: sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw==}
@@ -6657,9 +6661,6 @@ packages:
   retry@0.13.1:
     resolution: {integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==}
     engines: {node: '>= 4'}
-
-  rettime@0.11.11:
-    resolution: {integrity: sha512-ILJRqVWBCTlg9r42fFgwVZx1gnFAcQF8mRoMkbgQfIrjEDf9nbBFDFx00oloOa+Q869FUtaYDXZvEfnecQSCoQ==}
 
   rettime@0.11.12:
     resolution: {integrity: sha512-5ExtR1ppiDBQkVoPw5NAqdbfH4Iq2VOmQKHMtUoaFxA9bo2krzFYBtyq6K40xxbYp+2w/YOr6D+1ToF6tTN53A==}
@@ -11026,7 +11027,10 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-  cookie@0.7.0: {}
+  cookie@1.1.1:
+    optional: true
+
+  cookie@2.0.1: {}
 
   copy-anything@2.0.6:
     dependencies:
@@ -13369,14 +13373,14 @@ snapshots:
       '@mswjs/interceptors': 0.41.9
       '@open-draft/deferred-promise': 3.0.0
       '@types/statuses': 2.0.6
-      cookie: 0.7.0
+      cookie: 1.1.1
       graphql: 16.14.2
       headers-polyfill: 5.0.1
       is-node-process: 1.2.0
       outvariant: 1.4.3
       path-to-regexp: 6.3.0
       picocolors: 1.1.1
-      rettime: 0.11.11
+      rettime: 0.11.12
       statuses: 2.0.2
       strict-event-emitter: 0.5.1
       tough-cookie: 6.0.2
@@ -13394,7 +13398,7 @@ snapshots:
       '@inquirer/confirm': 6.1.1(@types/node@26.1.2)
       '@msw/url': 0.1.2
       '@mswjs/interceptors': 0.45.7
-      cookie: 0.7.0
+      cookie: 2.0.1
       headers-polyfill: 5.0.1
       is-node-process: 1.2.0
       outvariant: 1.4.3
@@ -14517,9 +14521,6 @@ snapshots:
   retry@0.12.0: {}
 
   retry@0.13.1: {}
-
-  rettime@0.11.11:
-    optional: true
 
   rettime@0.11.12: {}
 
