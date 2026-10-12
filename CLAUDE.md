@@ -1,101 +1,51 @@
 # CLAUDE.md
 
-このファイルは、このリポジトリのコードを扱う際に Claude Code (claude.ai/code) にガイダンスを提供します。
+## 作業方針
 
-# 重要な指示の注意点
+- 会話・コメント・PR 説明は日本語で書く。コード識別子や技術用語は原文のまま。
+- 依頼された範囲だけを変更する。リファクタや依存更新など、範囲外で気づいたことは実施せず報告にとどめる（レビュー差分を小さく保つため）。
+- 新規ファイルより既存ファイルの編集を優先する。ドキュメント（\*.md / README）は明示的に頼まれた場合のみ作成する。
 
-求められたことを実行する。それ以上でもそれ以下でもない。
-目標達成に絶対に必要でない限り、ファイルを作成しないこと。
-新しいファイルを作成するよりも、既存のファイルを編集することを常に優先すること。
-積極的にドキュメントファイル（\*.md）や README ファイルを作成しないこと。ユーザーから明示的に要求された場合にのみドキュメントファイルを作成すること。
+## コマンド
 
-## Conversation Guidelines
+ルートから `pnpm web <script>` / `pnpm ui <script>` / `pnpm api <script>` で各パッケージのスクリプトを実行できる。
 
-- 常に日本語で会話する
+| 目的                                 | コマンド                           |
+| ------------------------------------ | ---------------------------------- |
+| Web 開発サーバー (Next.js)           | `pnpm web start`                   |
+| Storybook (web:3001 / ui:4001)       | `pnpm start-storybook`             |
+| ユニットテスト（検証用）             | `pnpm test-ci`                     |
+| 型チェック                           | `pnpm typecheck`                   |
+| lint (oxlint + stylelint) / 自動修正 | `pnpm lint` / `pnpm lintfix`       |
+| format (oxfmt) / チェック            | `pnpm format` / `pnpm formatcheck` |
+| API クライアント再生成               | `pnpm generate-api`                |
 
-## 開発コマンド
+注意点:
 
-### コア開発
+- `pnpm test` は `vitest --update` で、スナップショットを黙って書き換える。変更の検証には `pnpm test-ci` を使い、スナップショット更新が目的のときだけ `pnpm test` を使う。
+- CI（`.github/workflows/test.yaml`）は formatcheck → lint → typecheck → test-ci の順に実行する。作業の完了前に同じ順でローカル確認する。
+- pre-commit（lefthook）で `oxlint --fix` と `oxfmt --write` が自動で走り、修正分が stage される。
 
-- `pnpm web start` - Next.js Web アプリケーションを開始
-- `pnpm web build` - Web アプリケーションをビルド
-- `pnpm start-storybook` - Storybook を開始（複数ポートで実行：Web は 3001、UI は 4001）
-- `pnpm test` - 全パッケージでテストを実行
-- `pnpm test-ci` - CI 用テストを実行（ウォッチモードなし）
+## アーキテクチャ
 
-### コード品質
+pnpm workspaces + Lerna のモノレポ。
 
-- `pnpm lint` - ESLint と Stylelint を実行
-- `pnpm lintfix` - リンティングの問題を自動修正
-- `pnpm format` - Prettier でコードをフォーマット
-- `pnpm formatcheck` - コードのフォーマットをチェック
-- `pnpm typecheck` - 全パッケージで TypeScript 型チェックを実行
+- `packages/web`: Next.js 16（**pages router**）。画面は `src/presentation/<feature>/`（home, detail, edit, register）に置き、各コンポーネントの横に `.stories.tsx`・`.test.tsx`・`__snapshots__/` を置く。MSW サーバーは `src/mocks/`。
+- `packages/ui`: 共有 UI コンポーネント（`components/`、`src/` は無い）。
+- `packages/api`: orval が生成する React Query フック・型・MSW モック。
+- `libs/*`: storybook / vitest / playwright / tailwind / types / dayjs の共有設定。
+- `tools/*`: api-client-generator（orval 設定）、reg-local-publisher-plugin、vrt-selector（VRT 対象ストーリーの選定）。
 
-### ビジュアル回帰テスト
+主要バージョン: React 19 / Next 16 / TypeScript 5.9 / Storybook 10 / Vitest 5 / Playwright / Tailwind 4 / Jotai 3 / Node 22 / pnpm 10。
 
-- `pnpm web vrtest-snapshot` - ビジュアル回帰スナップショットを更新（web パッケージ）
-- `pnpm web vrtest-regression` - reg-suit を使用してビジュアル回帰テストを実行
-- `pnpm ui vrtest-snapshot` - ビジュアル回帰スナップショットを更新（ui パッケージ）
-- `pnpm ui vrtest-regression` - UI コンポーネントのビジュアル回帰テストを実行
+## API クライアント生成
 
-### API 生成
+- 仕様: `document/api/services/demo/openapi.yaml`
+- 設定: `tools/api-client-generator/orval.config.js`
+- 出力: `packages/api/lib/demo/`。`clean: true` で毎回作り直されるため手で編集しない。HTTP クライアントのカスタマイズは `packages/api/lib/demoHttpClient.ts`（mutator）で行う。
 
-- `pnpm generate-api` - Orval を使用して OpenAPI 仕様から API クライアントコードを生成
+## ビジュアル回帰テスト (VRT)
 
-## アーキテクチャ概要
-
-これは Lerna と pnpm workspaces を使用するモノレポで、以下の構造を持ちます：
-
-### コアパッケージ
-
-- **`packages/web`** - React ページとプレゼンテーションレイヤーを持つ Next.js アプリケーション
-- **`packages/ui`** - Storybook ストーリーを持つ共有 UI コンポーネントライブラリ
-- **`packages/api`** - OpenAPI 仕様から生成された API クライアントコード
-
-### 共有ライブラリ（`libs/`）
-
-- **`libs/storybook`** - 共有 Storybook 設定
-- **`libs/vitest`** - 共有 Vitest テスト設定
-- **`libs/playwright`** - Playwright テストユーティリティ
-- **`libs/tailwind`** - Tailwind CSS 設定
-- **`libs/types`** - 共有 TypeScript 型定義
-
-### プレゼンテーションレイヤーパターン
-
-web パッケージは`src/presentation/`でフィーチャーベースアーキテクチャに従います：
-
-- 各フィーチャーは独自のディレクトリを持ちます（例：`home/`、`detail/`、`edit/`、`register/`）
-- コンポーネントには`.stories.tsx`、`.test.tsx`、スナップショットテストが含まれます
-- 状態管理は`src/atoms/`で Jotai アトムを使用
-
-### VRT セットアップ
-
-- ビジュアル回帰テストに reg-suit を使用
-- スナップショットは`snapshot/__snapshots__/`ディレクトリに保存
-- web と UI パッケージで個別の設定（`regconfig.json`）
-- レポートは GitHub Pages（`gh-pages` ブランチ）にホスティング（`pr-{番号}/` パスで公開）
-- ビジュアル差分コメント用の GitHub PR 統合
-
-### API クライアント生成
-
-- `document/api/services/`の OpenAPI 仕様
-- Orval が React Query フックと TypeScript 型を生成
-- `packages/api/lib/demoHttpClient.ts`のカスタム HTTP クライアント設定
-- API クライアントコードと一緒に生成される MSW モック
-
-## 主要技術
-
-- **フロントエンド**: React 18、Next.js 14、TypeScript 5
-- **状態管理**: アトミック状態管理用 Jotai
-- **スタイリング**: PostCSS を使用する Tailwind CSS
-- **テスト**: ユニットテスト用 Vitest、E2E 用 Playwright、コンポーネントテスト用 Storybook
-- **API**: Orval 生成クライアントを使用する React Query
-- **ビジュアルテスト**: 回帰テスト用 reg-suit、コンポーネント分離用 Storybook
-
-## テスト戦略
-
-- Vitest とスナップショットテストによるユニットテスト
-- reg-suit によるビジュアル回帰テスト
-- Playwright によるアクセシビリティテスト
-- Storybook ストーリーはコンポーネントドキュメントとビジュアルテストとして機能
-- Storybook テストと統合されたカバレッジレポート
+- 撮影の流れ: `pnpm <web|ui> vrtest-setup`（storybook build）→ `pnpm <web|ui> vrtest-snapshot`（Playwright で撮影し、`snapshot/__snapshots__/` を更新）。撮影されるのは名前が "Default" のストーリーだけ。
+- 比較は reg-suit で行う。`regconfig.json` はルート・web・ui にある。PR 上の比較と公開は CI（`visual-regression-test.yaml`）が担い、レポートは gh-pages の `pr-{番号}/` に置かれる。
+- web の a11y チェック: `pnpm web vrtest-a11y`。
