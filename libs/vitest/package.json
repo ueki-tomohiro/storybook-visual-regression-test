@@ -10,13 +10,13 @@
     "@juggle/resize-observer": "^3.4.0",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
-    "@vitejs/plugin-react": "^5.1.4",
-    "@vitejs/plugin-react-swc": "^4.3.0",
-    "@vitest/coverage-v8": "5.0.1",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitejs/plugin-react-swc": "^4.3.3",
+    "@vitest/coverage-v8": "5.0.3",
     "canvas": "^3.2.3",
     "jsdom": "^30.0.1",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.3"
   },
   "engines": {
     "node": "^22",

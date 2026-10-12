@@ -28,10 +28,10 @@
     "autoprefixer": "10.6.1",
     "jotai": "^3.0.0",
     "lodash": "^4.17.21",
-    "next": "^16.3.5",
+    "next": "^16.3.6",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-hook-form": "^7.85.0",
+    "react-hook-form": "^7.89.0",
     "typescript": "5.9.3",
     "yup": "^1.1.1"
   },
