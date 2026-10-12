@@ -10,7 +10,8 @@
 - [Jotai](https://jotai.org/)
 - [Playwright](https://playwright.dev/)
 - [Storybook](https://storybook.js.org/)
-- [jest](https://jestjs.io/ja/)
+- [Vitest](https://vitest.dev/)
+- [reg-suit](https://reg-viz.github.io/reg-suit/)
 
 ## ディレクトリ構成
 
@@ -21,12 +22,13 @@
 └── packages
     ├── web
     │   └── src
-    │        ├── atoms                  # 状態管理
-    │        ├── features               # 機能ごとにディレクトリを分割
-    │        │   └── feature1
-    │        │   └── feature2
-    │        ├── pages
-    │        └── schemas      　　　　　　# バリデーション
+    │        ├── mocks                  # MSWサーバー
+    │        ├── pages                  # Next.js pages router
+    │        └── presentation           # 機能ごとにディレクトリを分割
+    │            ├── home
+    │            ├── detail
+    │            ├── edit
+    │            └── register
     ├── ui                              # UIコンポーネント
     │   └── components
     └── api                             # OpenAPIの書き出し先
