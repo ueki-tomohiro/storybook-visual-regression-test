@@ -18,7 +18,8 @@ overrides:
   cookie@<0.7.0: 0.7.0
   esbuild@>=0.27.3 <0.28.1: 0.28.2
   fast-uri@<4: ^3.1.8
-  follow-redirects@<2: ^1.16.0
+  follow-redirects@<2: ^1.16.1
+  handlebars@>=3 <4.7.10: ^4.7.10
   ip-address@<11: ^10.3.1
   joi@<18: ^17.13.8
   joi@>=18 <19: ^18.2.9
@@ -33,7 +34,7 @@ overrides:
   picomatch@<3: ^2.3.2
   postcss@<9: ^8.5.29
   qs@<7: ^6.16.0
-  sharp@<1: ^0.35.4
+  sharp@<1: ^0.35.5
   sigstore@<5: ^4.1.1
   smol-toml@<2: ^1.9.0
   source-map-js@>=1 <1.2.2: ^1.2.2
@@ -41,7 +42,8 @@ overrides:
   tinypool@<2.1.2: ^2.1.2
   tmp: ^0.2.7
   typescript: 5.9.3
+  undici@>=7 <7.29.1: ^7.29.1
   undici@>=8 <8.10.2: ^8.10.2
   uuid@<11.1.1: ^11.1.1
-  vite: 8.3.0
+  vite: 8.3.5
   yaml@>=2 <3: ^2.9.1
