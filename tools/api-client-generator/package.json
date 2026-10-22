@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "openapi3-ts": "^4.6.1",
-    "orval": "^8.22.0"
+    "orval": "^8.44.0"
   },
   "engines": {
     "node": "^22",
